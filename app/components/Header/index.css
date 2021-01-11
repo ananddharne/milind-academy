@@ -1,0 +1,141 @@
+@import url(https://fonts.googleapis.com/css?family=Lora:700,700italic|Oswald:700|Cabin:700);
+
+@media (min-width: 300px) {
+   
+#navbar {
+  padding: 1% 0% 1% 0%;
+  background-color: #F1F8FF;
+  /* background-color: #f2e4d2; */
+}
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10% 10%;
+    grid-template-areas:
+      "Logo-and-name"
+      "phone-section"
+      "clock-section";
+    padding: 5% 0px 13% 0px;
+    justify-items: center;
+    background-color: #F1F8FF;
+  /* background-color: #f2e4d2; */
+  }
+    
+  .Logo-and-name { grid-area: Logo-and-name; 
+    font-family: 'Oswald', sans-serif;
+    font-weight:400;
+    font-size: 200%;
+    margin-left: 1%;
+    cursor: pointer;
+   color: #513a50;
+
+}
+.name {
+  animation-duration: 3s;
+  animation-name: slidein;
+
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 40%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+    
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+  
+  .phone-section { grid-area: phone-section; 
+    display: flex;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    min-width: 50%;
+   color: #513a50;
+
+}
+
+
+.phone-logo{
+    font-size: 200% !important;
+    padding-right: 2.5%;
+    color: #ED7170 !important;
+}
+  
+  .clock-section { grid-area: clock-section; 
+    display: flex;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    min-width: 50%;
+   color: #513a50;
+}
+
+ .ant-menu-horizontal{
+      border-bottom: 2.5px solid #ED7170 !important;
+}
+/* .ant-menu-submenu:hover {
+  color: #F2184F !important;
+}  */
+
+.students-image {
+  background-image: url('./students2.jpg');
+  background-position: 75% 20%;
+  height: 20vh;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+}
+
+
+
+
+@media (min-width: 700px) {
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Logo-and-name phone-section clock-section";
+    padding: 2% 0px 2% 0px;
+    justify-items: stretch;
+  }
+  .phone-logo{
+    font-size: 200% !important;
+    /* margin-right: 2.5%; */
+}
+.students-image {
+  background-position: 50% 20%;
+}
+}
+
+@media (min-width: 1500px) {
+    /* .phone-logo{
+      margin-right: 2.5%;
+  } */
+  .Logo-and-name {
+    font-size: 300%;
+  }
+  .phone-section {
+    font-size: 200%;
+  }
+  .clock-section {
+    font-size: 200%;
+  }
+  }
+  
