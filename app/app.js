@@ -16,7 +16,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
-
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
 // Import root app
 import App from 'containers/App';
 
@@ -40,6 +41,9 @@ const openSansObserver = new FontFaceObserver('Open Sans', {});
 openSansObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
+
+Amplify.configure(awsconfig);
+
 
 // Create redux store with history
 const initialState = {};

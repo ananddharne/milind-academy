@@ -12,11 +12,14 @@ import {
   HomeOutlined,
   DownloadOutlined,
   ClockCircleOutlined,
+  LoginOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import SocialMediaSection from './SocialMediaSection';
 import A from './A';
 import './index.css';
+import { Auth } from 'aws-amplify'
+
 
 const { SubMenu } = Menu;
 
@@ -86,6 +89,9 @@ function Header() {
         <Menu.Item key="downloads" icon={<DownloadOutlined />}>
           Downloads
           <Link to="downloads/" />
+        </Menu.Item>
+        <Menu.Item onClick={() => Auth.federatedSignIn()} key="login" icon={ <LoginOutlined />}>
+          Login
         </Menu.Item>
       </Menu>
       <div className="students-image" />

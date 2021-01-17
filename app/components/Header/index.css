@@ -4,7 +4,10 @@
    
 #navbar {
   padding: 1% 0% 1% 0%;
-  background-color: #F1F8FF;
+  background-color: #F4F7FD;
+  background: linear-gradient(to right, #D7DDE8, #757F9A);
+  background: black;
+  color: white;
   /* background-color: #f2e4d2; */
 }
   .grid-container {
@@ -19,16 +22,24 @@
     padding: 5% 0px 13% 0px;
     justify-items: center;
     background-color: #F1F8FF;
+    background: linear-gradient(to right, #D7DDE8, #757F9A);
+    background: black;
+   color: white !important;
+	/* background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  */
+	/* background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  */
+	
+	/* background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A);   */
   /* background-color: #f2e4d2; */
   }
     
   .Logo-and-name { grid-area: Logo-and-name; 
     font-family: 'Oswald', sans-serif;
-    font-weight:400;
     font-size: 200%;
     margin-left: 1%;
     cursor: pointer;
    color: #513a50;
+   color: white !important;
+
 
 }
 .name {
@@ -67,6 +78,8 @@
     font-family: 'Oswald', sans-serif;
     min-width: 50%;
    color: #513a50;
+   color: white !important;
+
 
 }
 
@@ -83,6 +96,7 @@
     font-family: 'Oswald', sans-serif;
     min-width: 50%;
    color: #513a50;
+   color: white !important;
 }
 
  .ant-menu-horizontal{

@@ -17,15 +17,16 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import './index.css';
-
+// import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 const AppWrapper = styled.div`
   margin: 0 auto;
   min-height: 100%;
 `;
 
-export default function App() {
+function App() {
   return (
     <AppWrapper>
+       {/* <AmplifySignOut /> */}
       <Helmet
         titleTemplate="Milind academy"
         defaultTitle="Milind academy of engineering"
@@ -49,3 +50,7 @@ export default function App() {
     </AppWrapper>
   );
 }
+
+// export default withAuthenticator(App);
+export default App;
+

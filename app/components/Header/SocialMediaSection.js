@@ -10,7 +10,8 @@ export default styled.div`
   }
   cursor: pointer;
   color: #513a50;
-  background-color: #ed7170;
+  color: #ED7170;
+  background-color: black;
   padding-top: 1.5%;
   padding-bottom: 1%;
   padding-right: 2%;

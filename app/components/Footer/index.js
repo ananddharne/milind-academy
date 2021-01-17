@@ -26,9 +26,6 @@ class Footer extends Component {
                   'https://www.google.com/maps/place/Milind+Academy/@18.5325278,73.8462393,15z/data=!4m2!3m1!1s0x0:0xa034e8199e478e36?sa=X&ved=2ahUKEwiLjruKxpTuAhWfFFkFHUuAD6oQ_BIwCnoECBIQBQ',
               },
             ],
-            url: 'https://yuque.com',
-            description: 'asssss',
-            openExternal: true,
           },
           {
             title: 'Creators',
@@ -41,10 +38,11 @@ class Footer extends Component {
                 title: 'Payal (Design)',
                 url: '',
               },
+              {
+                title: 'Komal (Business)',
+                url: '',
+              }
             ],
-            url: 'https://yuque.com',
-            description: 'bssss',
-            openExternal: true,
           },
         ]}
       />
