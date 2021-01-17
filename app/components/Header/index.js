@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 import {
@@ -18,7 +18,7 @@ import { Menu } from 'antd';
 import SocialMediaSection from './SocialMediaSection';
 import A from './A';
 import './index.css';
-import { Auth } from 'aws-amplify'
+import { Auth, Hub } from 'aws-amplify'
 
 
 const { SubMenu } = Menu;
@@ -28,6 +28,36 @@ function Header() {
     // console.log('click ', e);
     setCurrentNav(e.key);
   };
+
+  function checkUser() {
+    Auth.currentAuthenticatedUser()
+      .then(user => console.log({ user }))
+      .catch(err => console.log(err))
+      Hub.listen('auth', (data) => {
+        const { payload } = data
+        console.log('A new auth event has happened: ', data)
+          if (payload.event === 'signIn') {
+            console.log('a user has signed in!')
+          }
+          if (payload.event === 'signOut') {
+            console.log('a user has signed out!')
+          }
+      })
+  }
+
+  // in useEffect, we create the listener
+  useEffect(() => {
+    Hub.listen('auth', (data) => {
+      const { payload } = data
+      console.log('A new auth event has happened: ', data)
+        if (payload.event === 'signIn') {
+          console.log('a user has signed in!')
+        }
+        if (payload.event === 'signOut') {
+          console.log('a user has signed out!')
+        }
+    })
+  }, [])
 
   const [currentNav, setCurrentNav] = useState('home');
   return (
@@ -82,11 +112,11 @@ function Header() {
             </Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
-        <Menu.Item key="timetable" icon={<ClockCircleFilled />}>
+        <Menu.Item onClick={checkUser} key="timetable" icon={<ClockCircleFilled />}>
           TimeTable
           <Link to="/timetable" />
         </Menu.Item>
-        <Menu.Item key="downloads" icon={<DownloadOutlined />}>
+        <Menu.Item onClick={() => Auth.federatedSignIn()} key="downloads" icon={<DownloadOutlined />}>
           Downloads
           <Link to="downloads/" />
         </Menu.Item>
