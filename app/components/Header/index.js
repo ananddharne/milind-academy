@@ -31,8 +31,11 @@ function Header() {
 
   function checkUser() {
     Auth.currentAuthenticatedUser()
-      .then(user => console.log({ user }))
+      .then(user => console.log({ user })
+      // const btn = document.getElementById()
+      )
       .catch(err => console.log(err))
+    
       Hub.listen('auth', (data) => {
         const { payload } = data
         console.log('A new auth event has happened: ', data)
@@ -44,6 +47,12 @@ function Header() {
           }
       })
   }
+
+function signOut() {
+  Auth.signOut()
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+}
 
   // in useEffect, we create the listener
   useEffect(() => {
@@ -116,11 +125,11 @@ function Header() {
           TimeTable
           <Link to="/timetable" />
         </Menu.Item>
-        <Menu.Item onClick={() => Auth.federatedSignIn()} key="downloads" icon={<DownloadOutlined />}>
+        <Menu.Item onClick={signOut} key="downloads" icon={<DownloadOutlined />}>
           Downloads
           <Link to="downloads/" />
         </Menu.Item>
-        <Menu.Item onClick={() => Auth.federatedSignIn()} key="login" icon={ <LoginOutlined />}>
+        <Menu.Item id="login-account" onClick={() => Auth.federatedSignIn()} key="login" icon={ <LoginOutlined />}>
           Login
         </Menu.Item>
       </Menu>
