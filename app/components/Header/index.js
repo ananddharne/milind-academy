@@ -29,6 +29,10 @@ function Header() {
     setCurrentNav(e.key);
   };
 
+  function signIn () {
+    
+  }
+
   function checkUser() {
     Auth.currentAuthenticatedUser()
       .then(user => {console.log({ user })
