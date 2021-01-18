@@ -40,7 +40,7 @@ function Header() {
       .catch(err => {console.log(err)
         // const btn = document.getElementById('login-account')
         // btn.innerHTML = 'Logout'
-        console.log(btn)
+        // console.log(btn)
       })
     
       Hub.listen('auth', (data) => {
