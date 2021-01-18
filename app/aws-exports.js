@@ -8,7 +8,7 @@ const awsmobile = {
     "aws_user_pools_id": "us-east-1_3JmoOawJq",
     "aws_user_pools_web_client_id": "43pkuos2n6t9bs78pqqre02uft",
     "oauth": {
-        "domain": "milindacademy013e7ecf-013e7ecf-staging.auth.us-east-1.amazoncognito.com",
+        "domain": "milindacademyd64fcc92-d64fcc92-staging.auth.us-east-1.amazoncognito.com",
         "scope": [
             "phone",
             "email",
@@ -16,11 +16,19 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "http://localhost:3000/",
-        "redirectSignOut": "http://localhost:3000/",
+        "redirectSignIn": "https://milindacademy.com/",
+        "redirectSignOut": "https://milindacademy.com/",
         "responseType": "code"
     },
-    "federationTarget": "COGNITO_USER_POOLS"
+    "federationTarget": "COGNITO_USER_POOLS",
+    "aws_bots": "enable",
+    "aws_bots_config": [
+        {
+            "name": "ScheduleAppointment_staging",
+            "alias": "$LATEST",
+            "region": "us-east-1"
+        }
+    ]
 };
 
 
