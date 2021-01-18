@@ -31,15 +31,24 @@ function Header() {
 
   function checkUser() {
     Auth.currentAuthenticatedUser()
-      .then(user => console.log({ user })
-      // const btn = document.getElementById()
+      .then(user => {console.log({ user })
+    
+      const btn = document.getElementById('login-account')
+      btn.innerHTML = 'Logout'
+    }
       )
-      .catch(err => console.log(err))
+      .catch(err => {console.log(err)
+        // const btn = document.getElementById('login-account')
+        // btn.innerHTML = 'Logout'
+        console.log(btn)
+      })
     
       Hub.listen('auth', (data) => {
         const { payload } = data
         console.log('A new auth event has happened: ', data)
           if (payload.event === 'signIn') {
+            const btn = document.getElementById('login-account')
+            btn.innerHTML = 'Logout'
             console.log('a user has signed in!')
           }
           if (payload.event === 'signOut') {
@@ -60,6 +69,8 @@ function signOut() {
       const { payload } = data
       console.log('A new auth event has happened: ', data)
         if (payload.event === 'signIn') {
+          const btn = document.getElementById('login-account')
+          btn.innerHTML = 'Logout'
           console.log('a user has signed in!')
         }
         if (payload.event === 'signOut') {
