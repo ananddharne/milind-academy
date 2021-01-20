@@ -77,9 +77,9 @@ function signOut() {
   //     const { payload } = data
   //     console.log('A new auth event has happened: ', data)
   //       if (payload.event === 'signIn') {
-  //         const btn = document.getElementById('login-account')
-  //         btn.innerHTML = 'Logout'
-  //         console.log('a user has signed in!')
+          // const btn = document.getElementById('login-account')
+          // btn.innerHTML = 'Logout'
+          // console.log('a user has signed in!')
   //       }
   //       if (payload.event === 'signOut') {
   //         console.log('a user has signed out!')
@@ -91,6 +91,9 @@ function signOut() {
       try {
         let user = await Auth.currentAuthenticatedUser()
         setUser(user)
+        const btn = document.getElementById('login-account')
+        btn.innerHTML = 'Logout'
+        console.log('a user has signed in!')
       } catch {
         setUser(null)
       }
