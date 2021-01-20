@@ -74,7 +74,7 @@ function signOut() {
     Hub.listen('auth', (data) => {
       const { payload } = data
       console.log('A new auth event has happened: ', data)
-        if (payload.event === 'signIn') {
+        if (payload.event === 'signIns') {
           const btn = document.getElementById('login-account')
           btn.innerHTML = 'Logout'
           console.log('a user has signed in!')
