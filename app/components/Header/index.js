@@ -33,9 +33,11 @@ function Header() {
 
   }
 
+  let [user, setUser] = useState(null)
+
   function checkUser() {
     Auth.currentAuthenticatedUser()
-      .then(user => {console.log({ user })
+      .then(() => {console.log( user )
     
       const btn = document.getElementById('login-account')
       btn.innerHTML = 'Logout'
@@ -47,18 +49,18 @@ function Header() {
         // console.log(btn)
       })
     
-      Hub.listen('auth', (data) => {
-        const { payload } = data
-        console.log('A new auth event has happened: ', data)
-          if (payload.event === 'signIn') {
-            const btn = document.getElementById('login-account')
-            btn.innerHTML = 'Logout'
-            console.log('a user has signed in!')
-          }
-          if (payload.event === 'signOut') {
-            console.log('a user has signed out!')
-          }
-      })
+      // Hub.listen('auth', (data) => {
+      //   const { payload } = data
+      //   console.log('A new auth event has happened: ', data)
+      //     if (payload.event === 'signIn') {
+      //       const btn = document.getElementById('login-account')
+      //       btn.innerHTML = 'Logout'
+      //       console.log('a user has signed in!')
+      //     }
+      //     if (payload.event === 'signOut') {
+      //       console.log('a user has signed out!')
+      //     }
+      // })
   }
 
 function signOut() {
@@ -70,20 +72,33 @@ function signOut() {
 }
 
   // in useEffect, we create the listener
+  // useEffect(() => {
+  //   Hub.listen('auth', (data) => {
+  //     const { payload } = data
+  //     console.log('A new auth event has happened: ', data)
+  //       if (payload.event === 'signIn') {
+  //         const btn = document.getElementById('login-account')
+  //         btn.innerHTML = 'Logout'
+  //         console.log('a user has signed in!')
+  //       }
+  //       if (payload.event === 'signOut') {
+  //         console.log('a user has signed out!')
+  //       }
+  //   })
+  // }, [])
   useEffect(() => {
-    Hub.listen('auth', (data) => {
-      const { payload } = data
-      console.log('A new auth event has happened: ', data)
-        if (payload.event === 'signIns') {
-          const btn = document.getElementById('login-account')
-          btn.innerHTML = 'Logout'
-          console.log('a user has signed in!')
-        }
-        if (payload.event === 'signOut') {
-          console.log('a user has signed out!')
-        }
-    })
-  }, [])
+    let updateUser = async authState => {
+      try {
+        let user = await Auth.currentAuthenticatedUser()
+        setUser(user)
+      } catch {
+        setUser(null)
+      }
+    }
+    Hub.listen('auth', updateUser) // listen for login/signup events
+    updateUser() // check manually the first time because we won't get a Hub event
+    return () => Hub.remove('auth', updateUser) // cleanup
+  }, []);
 
   const [currentNav, setCurrentNav] = useState('home');
   return (
