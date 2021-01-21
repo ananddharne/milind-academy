@@ -54,10 +54,10 @@
     "usernameCaseSensitive": false,
     "dependsOn": [],
     "hostedUI": true,
-    "hostedUIDomainName": "milindacademyc4388b1b-c4388b1b",
+    "hostedUIDomainName": "milindacademy6cfc4ee2-6cfc4ee2",
     "authProvidersUserPool": [
         "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://milindacademy.com/\",\"http://localhost:3000/\"],\"LogoutURLs\":[\"https://milindacademy.com/\",\"http://localhost:3000/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}"
 }
