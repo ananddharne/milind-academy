@@ -12,7 +12,9 @@ import {
   HomeOutlined,
   DownloadOutlined,
   ClockCircleOutlined,
-  LoginOutlined
+  UserOutlined,
+  LoginOutlined,
+  LogoutOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import SocialMediaSection from './SocialMediaSection';
@@ -23,21 +25,24 @@ import { Auth, Hub } from 'aws-amplify'
 
 const { SubMenu } = Menu;
 
+
 function Header() {
+  const [currentNav, setCurrentNav] = useState('home');
+const [user, setUser] = useState(null)
   const handleClick = e => {
     // console.log('click ', e);
     setCurrentNav(e.key);
   };
 
-  function signIn () {
-
-  }
-
-  let [user, setUser] = useState(null)
 
   function getUser() {
     return Auth.currentAuthenticatedUser()
-      .then(userData => userData)
+      .then(userData => {userData
+      console.log(userData)
+        setUser(userData)
+        const btn = document.getElementById('login-account')
+        btn.innerHTML = userData.attributes.email;
+      })
       .catch(() => console.log('Not signed in'));
   }
 
@@ -53,10 +58,18 @@ function signOut() {
 
   useEffect(() => {
     Hub.listen('auth', ({ payload: { event, data } }) => {
+      console.log(event)
       switch (event) {
         case 'signIn':
         case 'cognitoHostedUI':
-          getUser().then(userData => setUser(userData));
+          getUser().then(userData => {
+          //   setUser(userData)
+          // console.log(userData)
+          // const btn = document.getElementById('login-account')
+          // btn.innerHTML = userData.attributes.email;
+          // console.log(user)
+          });
+      
           break;
         case 'signOut':
           setUser(null);
@@ -68,10 +81,17 @@ function signOut() {
       }
     });
 
-    getUser().then(userData => setUser(userData));
+    getUser().then(userData => {
+      // console.log(userData)
+      //   setUser(userData)
+      //   const btn = document.getElementById('login-account')
+      //   btn.innerHTML = userData.attributes.email;
+      //   console.log(user)
+    });
   }, []);
 
-  const [currentNav, setCurrentNav] = useState('home');
+
+
   return (
     <div>
       <A href="https://www.reactboilerplate.com/" />
@@ -128,13 +148,42 @@ function signOut() {
           TimeTable
           <Link to="/timetable" />
         </Menu.Item>
-        <Menu.Item onClick={signOut} key="downloads" icon={<DownloadOutlined />}>
+        <Menu.Item key="downloads" icon={<DownloadOutlined />}>
           Downloads
           <Link to="downloads/" />
         </Menu.Item>
-        <Menu.Item id="login-account" onClick={() => Auth.federatedSignIn()} key="login" icon={ <LoginOutlined />}>
-          Login
-        </Menu.Item>
+        {
+        //   user === null ?   
+        //   <Menu.Item id="login-accounts" onClick={() => Auth.federatedSignIn()} key="login" icon={ <LoginOutlined />}>
+        //   Login
+        // </Menu.Item> :
+        // <Menu.Item id="login-accounts" onClick={signOut} key="logout" icon={ <LogoutOutlined />}>
+        //    {'Sign Out'} {'-' + user.attributes.email}
+        //  </Menu.Item>
+        //    <Menu.ItemGroup icon={ <LogoutOutlined/>}>
+        //    <Menu.Item key="useremail:1">
+        //    {user.attributes.email}
+        //    </Menu.Item>
+        //    <Menu.Item onClick={signOut} key="signout:2">
+        //      Sign out
+        //    </Menu.Item>
+        //  </Menu.ItemGroup>
+        }
+        {
+          user === null ?   
+             <Menu.Item id="login-accounts" onClick={() => Auth.federatedSignIn()} key="login" icon={ <LoginOutlined />}>
+             Login
+           </Menu.Item> :
+          <SubMenu key="SubMenus" icon={<UserOutlined />} title={user.attributes.email}>
+          <Menu.ItemGroup>
+            <Menu.Item onClick={signOut} key="settings:2" icon={ <LogoutOutlined />}>
+              Sign out
+              {/* <Link to="/diploma" /> */}
+            </Menu.Item>
+          </Menu.ItemGroup>
+          </SubMenu>
+        }
+        
       </Menu>
       <div className="students-image" />
     </div>
