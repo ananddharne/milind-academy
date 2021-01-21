@@ -35,32 +35,10 @@ function Header() {
 
   let [user, setUser] = useState(null)
 
-  function checkUser() {
-    Auth.currentAuthenticatedUser()
-      .then(() => {console.log( user )
-    
-      const btn = document.getElementById('login-account')
-      btn.innerHTML = 'Logout'
-    }
-      )
-      .catch(err => {console.log(err)
-        // const btn = document.getElementById('login-account')
-        // btn.innerHTML = 'Logout'
-        // console.log(btn)
-      })
-    
-      // Hub.listen('auth', (data) => {
-      //   const { payload } = data
-      //   console.log('A new auth event has happened: ', data)
-      //     if (payload.event === 'signIn') {
-      //       const btn = document.getElementById('login-account')
-      //       btn.innerHTML = 'Logout'
-      //       console.log('a user has signed in!')
-      //     }
-      //     if (payload.event === 'signOut') {
-      //       console.log('a user has signed out!')
-      //     }
-      // })
+  function getUser() {
+    return Auth.currentAuthenticatedUser()
+      .then(userData => userData)
+      .catch(() => console.log('Not signed in'));
   }
 
 function signOut() {
@@ -72,35 +50,25 @@ function signOut() {
 }
 
   // in useEffect, we create the listener
-  // useEffect(() => {
-  //   Hub.listen('auth', (data) => {
-  //     const { payload } = data
-  //     console.log('A new auth event has happened: ', data)
-  //       if (payload.event === 'signIn') {
-          // const btn = document.getElementById('login-account')
-          // btn.innerHTML = 'Logout'
-          // console.log('a user has signed in!')
-  //       }
-  //       if (payload.event === 'signOut') {
-  //         console.log('a user has signed out!')
-  //       }
-  //   })
-  // }, [])
+
   useEffect(() => {
-    let updateUser = async authState => {
-      try {
-        let user = await Auth.currentAuthenticatedUser()
-        setUser(user)
-        const btn = document.getElementById('login-account')
-        btn.innerHTML = 'Logout'
-        console.log('a user has signed in!')
-      } catch {
-        setUser(null)
+    Hub.listen('auth', ({ payload: { event, data } }) => {
+      switch (event) {
+        case 'signIn':
+        case 'cognitoHostedUI':
+          getUser().then(userData => setUser(userData));
+          break;
+        case 'signOut':
+          setUser(null);
+          break;
+        case 'signIn_failure':
+        case 'cognitoHostedUI_failure':
+          console.log('Sign in failure', data);
+          break;
       }
-    }
-    Hub.listen('auth', updateUser) // listen for login/signup events
-    updateUser() // check manually the first time because we won't get a Hub event
-    return () => Hub.remove('auth', updateUser) // cleanup
+    });
+
+    getUser().then(userData => setUser(userData));
   }, []);
 
   const [currentNav, setCurrentNav] = useState('home');
@@ -156,7 +124,7 @@ function signOut() {
             </Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
-        <Menu.Item onClick={checkUser} key="timetable" icon={<ClockCircleFilled />}>
+        <Menu.Item onClick={getUser} key="timetable" icon={<ClockCircleFilled />}>
           TimeTable
           <Link to="/timetable" />
         </Menu.Item>

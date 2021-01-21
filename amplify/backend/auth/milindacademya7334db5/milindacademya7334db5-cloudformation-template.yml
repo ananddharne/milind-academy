@@ -137,10 +137,6 @@ Parameters:
   hostedUI:
     Type: String
             
-  hostedUIProviderCreds:
-    Type: String
-  
-            
   hostedUIDomainName:
     Type: String
   
@@ -150,6 +146,10 @@ Parameters:
     Type: CommaDelimitedList
       
   hostedUIProviderMeta:
+    Type: String
+  
+            
+  hostedUIProviderCreds:
     Type: String
   
             

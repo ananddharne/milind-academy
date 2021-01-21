@@ -16,8 +16,8 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "https://milindacademy.com/",
-        "redirectSignOut": "https://milindacademy.com/",
+        "redirectSignIn": "https://milindacademy.com/,http://localhost:3000/",
+        "redirectSignOut": "https://milindacademy.com/,http://localhost:3000/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS"
