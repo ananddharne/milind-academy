@@ -28,7 +28,7 @@ const { SubMenu } = Menu;
 
 function Header() {
   const [currentNav, setCurrentNav] = useState('home');
-const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null)
   const handleClick = e => {
     // console.log('click ', e);
     setCurrentNav(e.key);
@@ -40,8 +40,8 @@ const [user, setUser] = useState(null)
       .then(userData => {userData
       console.log(userData)
         setUser(userData)
-        const btn = document.getElementById('login-account')
-        btn.innerHTML = userData.attributes.email;
+        // const btn = document.getElementById('login-account')
+        // btn.innerHTML = userData.attributes.email;
       })
       .catch(() => console.log('Not signed in'));
   }
@@ -53,6 +53,41 @@ function signOut() {
     )
     .catch(err => console.log(err))
 }
+
+
+function signIn() {
+  Auth.federatedSignIn()
+  .then(data => {
+    console.log(data)
+  })
+}
+
+async function signUp(username, password, email, phone_number) {
+  try {
+      const user = {
+        username: "sharviltekani@gmail.com",
+        password: "Mphasis$69",
+        attributes: {
+          email: "sharviltekani@gmail.com", // optional
+          phone_number: "+16462098332" // optional - E.164 number convention
+          // other custom attributes
+        }
+      }; 
+      await Auth.signUp(user);
+      console.log(user);
+  } catch (error) {
+      console.log('error signing up:', error);
+  }
+}
+
+async function signInn() {
+  try {
+      const user = await Auth.signIn('anand.dharne24@gmail.com', 'password');
+  } catch (error) {
+      console.log('error signing in', error);
+  }
+}
+
 
   // in useEffect, we create the listener
 
@@ -82,11 +117,6 @@ function signOut() {
     });
 
     getUser().then(userData => {
-      // console.log(userData)
-      //   setUser(userData)
-      //   const btn = document.getElementById('login-account')
-      //   btn.innerHTML = userData.attributes.email;
-      //   console.log(user)
     });
   }, []);
 
@@ -94,7 +124,6 @@ function signOut() {
 
   return (
     <div>
-      <A href="https://www.reactboilerplate.com/" />
       <SocialMediaSection>
         <FacebookOutlined style={{ fontSize: '150%' }} />
         <TwitterOutlined
@@ -153,32 +182,14 @@ function signOut() {
           <Link to="downloads/" />
         </Menu.Item>
         {
-        //   user === null ?   
-        //   <Menu.Item id="login-accounts" onClick={() => Auth.federatedSignIn()} key="login" icon={ <LoginOutlined />}>
-        //   Login
-        // </Menu.Item> :
-        // <Menu.Item id="login-accounts" onClick={signOut} key="logout" icon={ <LogoutOutlined />}>
-        //    {'Sign Out'} {'-' + user.attributes.email}
-        //  </Menu.Item>
-        //    <Menu.ItemGroup icon={ <LogoutOutlined/>}>
-        //    <Menu.Item key="useremail:1">
-        //    {user.attributes.email}
-        //    </Menu.Item>
-        //    <Menu.Item onClick={signOut} key="signout:2">
-        //      Sign out
-        //    </Menu.Item>
-        //  </Menu.ItemGroup>
-        }
-        {
           user === null ?   
-             <Menu.Item id="login-accounts" onClick={() => Auth.federatedSignIn()} key="login" icon={ <LoginOutlined />}>
+             <Menu.Item id="login-accounts" onClick={signUp} key="login" icon={ <LoginOutlined />}>
              Login
            </Menu.Item> :
           <SubMenu key="SubMenus" icon={<UserOutlined />} title={user.attributes.email}>
           <Menu.ItemGroup>
             <Menu.Item onClick={signOut} key="settings:2" icon={ <LogoutOutlined />}>
               Sign out
-              {/* <Link to="/diploma" /> */}
             </Menu.Item>
           </Menu.ItemGroup>
           </SubMenu>
