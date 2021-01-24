@@ -8,7 +8,7 @@ const awsmobile = {
     "aws_user_pools_id": "us-east-1_3JmoOawJq",
     "aws_user_pools_web_client_id": "43pkuos2n6t9bs78pqqre02uft",
     "oauth": {
-        "domain": "milindacademy6cfc4ee2-6cfc4ee2-staging.auth.us-east-1.amazoncognito.com",
+        "domain": "milindacademy4e89c2c6-4e89c2c6-staging.auth.us-east-1.amazoncognito.com",
         "scope": [
             "phone",
             "email",
@@ -17,7 +17,7 @@ const awsmobile = {
             "aws.cognito.signin.user.admin"
         ],
         "redirectSignIn": "http://localhost:3000/,https://milindacademy.com/",
-        "redirectSignOut": "http://localhost:3000/,https://milindacademy.com/",
+        "redirectSignOut": "http://localhost:3000/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS"
