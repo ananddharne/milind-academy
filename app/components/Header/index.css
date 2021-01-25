@@ -113,6 +113,19 @@
   margin: 0 auto;
   opacity: 0.9;
 }
+
+.ant-carousel {
+  height: 300px;
+  color: #ED7170 !important;
+  background: black;
+}
+.ant-carousel .slick-slider {
+  height: 300px;
+}
+.ant-carousel .carousel-item-div {
+  text-align: center;
+  margin-top: 3%;
+}
 }
 
 
@@ -135,6 +148,14 @@
 }
 .students-image {
   background-position: 50% 20%;
+}
+.ant-carousel {
+  height: 320px;
+  /* color: white !important; */
+  background: black;
+}
+.ant-carousel .slick-slider {
+  height: 320px;
 }
 }
 
