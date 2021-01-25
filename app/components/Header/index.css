@@ -115,12 +115,12 @@
 }
 
 .ant-carousel {
-  height: 300px;
+  height: 340px;
   color: #ED7170 !important;
   background: black;
 }
 .ant-carousel .slick-slider {
-  height: 300px;
+  height: 340px;
 }
 .ant-carousel .carousel-item-div {
   text-align: center;
