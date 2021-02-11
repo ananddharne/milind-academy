@@ -1,0 +1,69 @@
+@media (min-width: 300px) {
+.main-features {
+    padding-top: 10%; 
+    padding-bottom: 10%;
+    /* background-image: url('./cta.jpg'); */
+    /* background-position: 0 50%; */
+    /* background-size: cover; */
+    /* height: 4em; */
+    color:black;
+    text-align: center;
+}
+.ant-carousel {
+    margin: 2% !important;
+    /* position: absolute !important; */
+}
+.carousel-item-div-main-feat{
+    /* padding: 2%; */
+    color: white;
+    font-family: 'Circular,Tahoma,sans-serif'
+}
+
+.carousel-item-div-main-feat p{
+    font-size: 100%;
+}
+
+
+
+.ant-btn.ant-btn-primary.know-more-button {
+    background: black !important;
+    color: white !important;
+    border-radius: 0 !important;
+    transition: all 0.35s linear !important;
+}
+
+.ant-btn.ant-btn-primary.know-more-button:hover {
+    background: white !important;
+    color: black !important;
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1) !important;
+}
+
+.main-feature-header {
+    color: white;
+    font-size: 230%;
+}
+.ant-carousel .carousel-item-div-main-feat {
+    text-align: center;
+    margin-top: 0%;
+  }
+
+.ant-btn-primary {
+    background: #375bd2 !important;
+    border-color: #fff !important;
+    border-radius: 40px !important;
+  }
+
+.ant-btn-primary:hover {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+@media (min-width: 700px) {
+
+}
+
+
+@media (min-width: 1500px) {
+
+}

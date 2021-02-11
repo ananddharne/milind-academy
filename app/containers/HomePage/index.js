@@ -25,6 +25,11 @@ import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import './index.css';
+import MainFeatures from 'components/MainFeatures';
+import ReviewsPanel from 'components/ReviewsPanel';
+import video from './homepage_bg.mp4'
+import Footer from "components/Footer";
+
 
 const key = 'home';
 
@@ -62,10 +67,10 @@ export function HomePage({ username, onSubmitForm }) {
           content="A React.js Boilerplate application homepage"
         />
       </Helmet>
-      <div className="home-content">
-        <div className="home-text">
-          <H2>Welcome to Milind Academy!</H2>
-          <div style={{ textAlign: 'center' }}>
+
+      
+        {/* <div className="home-text">
+        <div style={{ textAlign: 'center' }}>
             <p>Lorem ipsum lorem ipsum</p>
             <p>Lorem ipsum lorem ipsum</p>
             <p>Lorem ipsum lorem ipsum</p>
@@ -73,8 +78,21 @@ export function HomePage({ username, onSubmitForm }) {
             <p>Lorem ipsum lorem ipsum</p>
             <p>Lorem ipsum lorem ipsum</p>
           </div>
-        </div>
-        <div className="home-form">
+          <H2>Welcome to Milind Academy!</H2>
+          </div> */}
+          <MainFeatures/>
+          {/* <MainFeatures/> */}
+         
+          <div className="master-container">
+          <video className='videoTag' autoPlay loop muted>
+          <source src={video} type='video/mp4' />
+          </video>
+          </div>
+     
+      {/* <Footer /> */}
+        
+    
+        {/* <div className="home-form">
           <Form
             {...layout}
             name="form-antd"
@@ -127,9 +145,9 @@ export function HomePage({ username, onSubmitForm }) {
                 Submit
               </Button>
             </Form.Item>
-          </Form>
-        </div>
-      </div>
+          </Form> 
+        </div>  */}
+        {/* <ReviewsPanel/> */}
     </article>
   );
 }

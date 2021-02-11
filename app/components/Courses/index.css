@@ -1,0 +1,24 @@
+@media (min-width: 300px) {
+.courses {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    color: black;
+    padding: 10%;
+
+}
+.courses span {
+}
+}
+
+@media (min-width: 700px) {
+    .courses {
+        flex-direction: row;
+    }
+}
+
+
+@media (min-width: 1500px) {
+   
+
+}

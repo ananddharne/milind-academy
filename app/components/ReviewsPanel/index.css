@@ -1,0 +1,37 @@
+@media (min-width: 300px) {
+
+.ant-carousel {
+    /* margin-top: 2em !important; */
+    /* height: 500px!important; */
+    /* padding-top: 96px; */
+    /* padding-bottom: 96px; */
+    color: #1a2b6b !important;
+    /* background: black; */
+    height: 340px !important;
+    /* background-size: cover; */
+    /* background-image: url('./background-light.jpg') !important */
+  }
+  .ant-carousel .slick-slider {
+    height: 340px;
+  }
+.reviews p {
+    text-align: center;
+    /* margin-top: 3%; */
+    color: black !important;
+    padding: 2%;
+  }
+  .ant-carousel .slick-slider {
+    height: 340px;
+  }
+  .ant-carousel .carousel-item-div {
+    text-align: center;
+    padding: 1.5%;
+    margin-top: 2%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #eae7e8;
+    border-radius: 8px;
+    background-color: rgb(241, 248, 255);
+  }
+
+}

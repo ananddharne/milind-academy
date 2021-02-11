@@ -39,7 +39,7 @@ const openSansObserver = new FontFaceObserver('Open Sans', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
+  // document.body.classList.add('fontLoaded');
 });
 
 const isLocalhost = Boolean(
