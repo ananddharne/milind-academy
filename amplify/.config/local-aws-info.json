@@ -1,0 +1,7 @@
+{
+  "staging": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "/Users/adharne/.amplify/awscloudformation/2OC0Tv6AlQ"
+  }
+}

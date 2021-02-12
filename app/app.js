@@ -53,26 +53,27 @@ const isLocalhost = Boolean(
 );
 
 // Assuming you have two redirect URIs, and the first is for localhost and second is for production
-const [
-  localRedirectSignIn,
-  productionRedirectSignIn,
-] = awsConfig.oauth.redirectSignIn.split(",");
+// const [
+//   localRedirectSignIn,
+//   productionRedirectSignIn,
+// ] = awsConfig.oauth.redirectSignIn.split(",");
 
-const [
-  localRedirectSignOut,
-  productionRedirectSignOut,
-] = awsConfig.oauth.redirectSignOut.split(",");
+// const [
+//   localRedirectSignOut,
+//   productionRedirectSignOut,
+// ] = awsConfig.oauth.redirectSignOut.split(",");
 
-const updatedAwsConfig = {
-  ...awsConfig,
-  oauth: {
-    ...awsConfig.oauth,
-    redirectSignIn: isLocalhost ? localRedirectSignIn : productionRedirectSignIn,
-    redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
-  }
-}
+// const updatedAwsConfig = {
+//   ...awsConfig,
+//   oauth: {
+//     ...awsConfig.oauth,
+//     redirectSignIn: isLocalhost ? localRedirectSignIn : productionRedirectSignIn,
+//     redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
+//   }
+// }
 
-Amplify.configure(updatedAwsConfig);
+Amplify.configure(awsConfig);
+
 
 
 // Create redux store with history
