@@ -58,10 +58,12 @@ function Header() {
       .catch(err => console.log(err));
   }
 
-  function signIn() {
-    Auth.federatedSignIn().then(data => {
-      console.log(data);
-    });
+  async function signIn() {
+    try {
+      const user = await Auth.signIn("sharviltekani@gmail.com", "Mphasis$69");
+  } catch (error) {
+      console.log('error signing in', error);
+  }
   }
 
   async function signUp(username, password, email, phone_number) {
