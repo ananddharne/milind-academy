@@ -9,10 +9,10 @@ export default styled.div`
     padding-bottom: 2.5%;
   }
   cursor: pointer;
-  color: #513a50;
-  color: #ED7170;
+  color: white;
   background-color: black;
   padding-top: 1.5%;
   padding-bottom: 1%;
   padding-right: 2%;
+  border-bottom: 2.5px solid #ED7170 !important;
 `;

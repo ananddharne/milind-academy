@@ -6,19 +6,22 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import { Helmet } from "react-helmet";
+import styled from "styled-components";
+import { Switch, Route } from "react-router-dom";
 import { Menu, Carousel } from "antd";
-import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import LoginPage from 'containers/LoginPage/Loadable';
+import HomePage from "containers/HomePage/Loadable";
+import FeaturePage from "containers/FeaturePage/Loadable";
+import NotFoundPage from "containers/NotFoundPage/Loadable";
+import LoginPage from "containers/LoginPage/Loadable";
+import EnggCoursesPage from "containers/EnggCoursesPage/Loadable";
 
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import './index.css';
+
+import Header from "components/Header";
+import Footer from "components/Footer";
+import SimpleForm from "components/SimpleForm";
+import "./index.css";
 // import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 const AppWrapper = styled.div`
   margin: 0 auto;
@@ -28,7 +31,7 @@ const AppWrapper = styled.div`
 function App() {
   return (
     <AppWrapper>
-       {/* <AmplifySignOut /> */}
+      {/* <AmplifySignOut /> */}
       <Helmet
         titleTemplate="Milind academy"
         defaultTitle="Milind academy of engineering"
@@ -42,21 +45,23 @@ function App() {
       >
         <i className="fa fa-whatsapp my-float" />
       </a>
+      {/* <a className="chatbot-btn"></a> */}
+      {/* <SimpleForm className="chatbot" /> */}
+      <aside class="aside-page"></aside>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/engineering" component={EnggCoursesPage} />
         <Route path="" component={NotFoundPage} />
-
-
       </Switch>
 
-      <Footer />
+     
+      <Footer/>
     </AppWrapper>
   );
 }
 
 // export default withAuthenticator(App);
 export default App;
-
