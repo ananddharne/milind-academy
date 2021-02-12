@@ -60,7 +60,8 @@ function Header() {
 
   async function signIn() {
     try {
-      const user = await Auth.signIn("sharviltekani@gmail.com", "Mphasis$69");
+      var result = prompt("Enter a password");
+      const user = await Auth.signIn("milindacademy13@gmail.com", result);
   } catch (error) {
       console.log('error signing in', error);
   }
@@ -69,11 +70,11 @@ function Header() {
   async function signUp(username, password, email, phone_number) {
     try {
       const user = {
-        username: "sharviltekani@gmail.com",
-        password: "Mphasis$69",
+        username: "milindacademy13@gmail.com",
+        password: "Milind$123",
         attributes: {
-          email: "sharviltekani@gmail.com", // optional
-          phone_number: "+16462098332" // optional - E.164 number convention
+          email: "milindacademy13@gmail.com", // optional
+          phone_number: "+919822276430" // optional - E.164 number convention
           // other custom attributes
         }
       };
@@ -81,14 +82,6 @@ function Header() {
       console.log(user);
     } catch (error) {
       console.log("error signing up:", error);
-    }
-  }
-
-  async function signInn() {
-    try {
-      const user = await Auth.signIn("anand.dharne24@gmail.com", "password");
-    } catch (error) {
-      console.log("error signing in", error);
     }
   }
 
@@ -100,6 +93,7 @@ function Header() {
         case "signIn":
         case "cognitoHostedUI":
           getUser().then(userData => {
+            console.log(userData)
             //   setUser(userData)
             // console.log(userData)
             // const btn = document.getElementById('login-account')
@@ -119,8 +113,9 @@ function Header() {
     });
 
     // getUser().then(userData => {});
+     getUser().then(s => {console.log(s)})
     setAnimationSpeed(5)
-  }, [event]);
+  }, []);
 
   useEffect(() => {
     window.onscroll = () => {
@@ -227,7 +222,7 @@ function Header() {
             key="login"
             icon={<LoginOutlined />}
           >
-            Login
+            Admin login
           </Menu.Item>
         ) : (
           <SubMenu
@@ -246,7 +241,7 @@ function Header() {
             </Menu.ItemGroup>
           </SubMenu>
         )}
-
+{/* 
         <Menu.Item
           id="login-accounts"
           onClick={signUp}
@@ -255,7 +250,7 @@ function Header() {
         >
           <Link to="/login" />
           Sign up
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
       {/* <div className="students-image" /> */}
 
