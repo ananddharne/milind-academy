@@ -204,7 +204,7 @@ function Header() {
           </Menu.ItemGroup>
         </SubMenu>
         <Menu.Item
-          onClick={getUser}
+          // onClick={getUser}
           key="timetable"
           icon={<ClockCircleFilled />}
         >

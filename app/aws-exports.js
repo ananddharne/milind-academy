@@ -7,7 +7,21 @@ const awsmobile = {
     "aws_cognito_region": "us-east-1",
     "aws_user_pools_id": "us-east-1_q6VJW9gpj",
     "aws_user_pools_web_client_id": "5f4k53tcbs1tghml8rjoo4t6f9",
-    "oauth": {}
+    "oauth": {},
+    "aws_cloud_logic_custom": [
+        {
+            "name": "formapi",
+            "endpoint": "https://emaaagpyk4.execute-api.us-east-1.amazonaws.com/staging",
+            "region": "us-east-1"
+        }
+    ],
+    "aws_dynamodb_all_tables_region": "us-east-1",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "formtable-staging",
+            "region": "us-east-1"
+        }
+    ]
 };
 
 
