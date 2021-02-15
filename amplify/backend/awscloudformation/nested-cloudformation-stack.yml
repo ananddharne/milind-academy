@@ -119,6 +119,68 @@
         }
       }
     },
+    "functionformfunction": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/function/formfunction-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-amplify4827064cc86a4-staging-233301-deployment",
+          "s3Key": "amplify-builds/formfunction-69714a45564a654d7a47-build.zip",
+          "storageformtableName": {
+            "Fn::GetAtt": [
+              "storageformtable",
+              "Outputs.Name"
+            ]
+          },
+          "storageformtableArn": {
+            "Fn::GetAtt": [
+              "storageformtable",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "apiformapi": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/api/formapi-cloudformation-template.json",
+        "Parameters": {
+          "authRoleName": {
+            "Ref": "AuthRoleName"
+          },
+          "unauthRoleName": {
+            "Ref": "UnauthRoleName"
+          },
+          "functionformfunctionName": {
+            "Fn::GetAtt": [
+              "functionformfunction",
+              "Outputs.Name"
+            ]
+          },
+          "functionformfunctionArn": {
+            "Fn::GetAtt": [
+              "functionformfunction",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "storageformtable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/storage/formtable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "formtable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "staging"
+        }
+      }
+    },
     "UpdateRolesWithIDPFunction": {
       "DependsOn": [
         "AuthRole",

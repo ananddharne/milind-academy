@@ -16,6 +16,7 @@ import FeaturePage from "containers/FeaturePage/Loadable";
 import NotFoundPage from "containers/NotFoundPage/Loadable";
 import LoginPage from "containers/LoginPage/Loadable";
 import EnggCoursesPage from "containers/EnggCoursesPage/Loadable";
+import TimetablePage from "containers/TimetablePage/Loadable";
 
 
 import Header from "components/Header";
@@ -54,6 +55,7 @@ function App() {
         <Route path="/features" component={FeaturePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/engineering" component={EnggCoursesPage} />
+        <Route path="/timetable" component={TimetablePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
 
