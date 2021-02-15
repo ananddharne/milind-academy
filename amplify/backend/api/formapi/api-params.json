@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/contact",
+            "lambdaFunction": "formfunction",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/contact"
+        }
+    ],
+    "resourceName": "formapi",
+    "apiName": "formapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "formfunction"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-amplify4827064cc86a4-staging-233301-authRole",
+        "unAuthRoleName": "amplify-amplify4827064cc86a4-staging-233301-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "formfunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
