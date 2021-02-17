@@ -316,7 +316,10 @@ const originData = [];
                 }}
               />
             </Form>
-      <Button style={{margin: '2.5% 45%'}} onClick={showModal}>Add a new row!</Button>
+            {
+            user ?   
+            <Button style={{margin: '2.5% 45%'}} onClick={showModal}>Add a new row!</Button> : null
+            }
       <Modal title="Add new timetable row" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
        footer={[
         <Button form="basic" key="submit" htmlType="submit">
