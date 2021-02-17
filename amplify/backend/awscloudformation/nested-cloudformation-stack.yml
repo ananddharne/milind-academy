@@ -125,7 +125,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/function/formfunction-cloudformation-template.json",
         "Parameters": {
           "deploymentBucketName": "amplify-amplify4827064cc86a4-staging-233301-deployment",
-          "s3Key": "amplify-builds/formfunction-714d6d4779664e787244-build.zip",
+          "s3Key": "amplify-builds/formfunction-486c41767a2f426f6651-build.zip",
           "storageformtableName": {
             "Fn::GetAtt": [
               "storageformtable",
@@ -135,6 +135,29 @@
           "storageformtableArn": {
             "Fn::GetAtt": [
               "storageformtable",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
+    "functiontimetablefunction": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/function/timetablefunction-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-amplify4827064cc86a4-staging-233301-deployment",
+          "s3Key": "amplify-builds/timetablefunction-68786168773957796e64-build.zip",
+          "storagetttableName": {
+            "Fn::GetAtt": [
+              "storagetttable",
+              "Outputs.Name"
+            ]
+          },
+          "storagetttableArn": {
+            "Fn::GetAtt": [
+              "storagetttable",
               "Outputs.Arn"
             ]
           },
@@ -169,6 +192,33 @@
         }
       }
     },
+    "apittapi": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/api/ttapi-cloudformation-template.json",
+        "Parameters": {
+          "authRoleName": {
+            "Ref": "AuthRoleName"
+          },
+          "unauthRoleName": {
+            "Ref": "UnauthRoleName"
+          },
+          "functiontimetablefunctionName": {
+            "Fn::GetAtt": [
+              "functiontimetablefunction",
+              "Outputs.Name"
+            ]
+          },
+          "functiontimetablefunctionArn": {
+            "Fn::GetAtt": [
+              "functiontimetablefunction",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "staging"
+        }
+      }
+    },
     "storageformtable": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
@@ -176,6 +226,18 @@
         "Parameters": {
           "tableName": "formtable",
           "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "env": "staging"
+        }
+      }
+    },
+    "storagetttable": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/storage/tttable-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "ttable",
+          "partitionKeyName": "key",
           "partitionKeyType": "S",
           "env": "staging"
         }

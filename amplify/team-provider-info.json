@@ -18,7 +18,11 @@
       "function": {
         "formfunction": {
           "deploymentBucketName": "amplify-amplify4827064cc86a4-staging-233301-deployment",
-          "s3Key": "amplify-builds/formfunction-714d6d4779664e787244-build.zip"
+          "s3Key": "amplify-builds/formfunction-486c41767a2f426f6651-build.zip"
+        },
+        "timetablefunction": {
+          "deploymentBucketName": "amplify-amplify4827064cc86a4-staging-233301-deployment",
+          "s3Key": "amplify-builds/timetablefunction-68786168773957796e64-build.zip"
         }
       }
     }

@@ -13,12 +13,21 @@ const awsmobile = {
             "name": "formapi",
             "endpoint": "https://emaaagpyk4.execute-api.us-east-1.amazonaws.com/staging",
             "region": "us-east-1"
+        },
+        {
+            "name": "ttapi",
+            "endpoint": "https://mb0re7i3jk.execute-api.us-east-1.amazonaws.com/staging",
+            "region": "us-east-1"
         }
     ],
     "aws_dynamodb_all_tables_region": "us-east-1",
     "aws_dynamodb_table_schemas": [
         {
             "tableName": "formtable-staging",
+            "region": "us-east-1"
+        },
+        {
+            "tableName": "ttable-staging",
             "region": "us-east-1"
         }
     ]
