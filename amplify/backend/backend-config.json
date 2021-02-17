@@ -20,6 +20,18 @@
           "attributes": ["Name", "Arn"]
         }
       ]
+    },
+    "timetablefunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "tttable",
+          "attributes": ["Name", "Arn"]
+        }
+      ]
     }
   },
   "api": {
@@ -33,10 +45,25 @@
           "attributes": ["Name", "Arn"]
         }
       ]
+    },
+    "ttapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "timetablefunction",
+          "attributes": ["Name", "Arn"]
+        }
+      ]
     }
   },
   "storage": {
     "formtable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "tttable": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }

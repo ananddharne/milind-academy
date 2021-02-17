@@ -1,0 +1,32 @@
+{
+  "paths": [
+    {
+      "name": "/timetable",
+      "lambdaFunction": "timetablefunction",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/timetable"
+    }
+  ],
+  "resourceName": "ttapi",
+  "apiName": "ttapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "timetablefunction"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-amplify4827064cc86a4-staging-233301-authRole",
+    "unAuthRoleName": "amplify-amplify4827064cc86a4-staging-233301-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "timetablefunction",
+      "attributes": ["Name", "Arn"]
+    }
+  ]
+}

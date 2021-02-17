@@ -48,13 +48,13 @@ function id () {
 
 // app.get('/contact', function(req, res) {
 //   // Add your code here
-//   var params = {
-//     TableName: "formtable-staging" // TODO: UPDATE THIS WITH THE ACTUAL NAME OF THE FORM TABLE ENV VAR (set by Amplify CLI)
-//   }
-//   docClient.scan(params, function(err, data) {
-//     if (err) res.json({ err })
-//     else res.json({ data })
-//   })
+  // var params = {
+  //   TableName: "formtable-staging" // TODO: UPDATE THIS WITH THE ACTUAL NAME OF THE FORM TABLE ENV VAR (set by Amplify CLI)
+  // }
+  // docClient.scan(params, function(err, data) {
+  //   if (err) res.json({ err })
+  //   else res.json({ data })
+  // })
 // });
 
 app.get('/contact', function(req, res) {
@@ -85,7 +85,7 @@ app.post('/contact', function(req, res) {
   var params = {
     TableName : "formtable-staging", // TODO: UPDATE THIS WITH THE ACTUAL NAME OF THE FORM TABLE ENV VAR (set by Amplify CLI)
     Item: {
-      id: id(),
+      id: req.body.id,
       name: req.body.name,
       phone: req.body.phone
     }

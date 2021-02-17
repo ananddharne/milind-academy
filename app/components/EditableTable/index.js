@@ -1,25 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Table, Input, InputNumber, Popconfirm, Form, Typography, Button } from 'antd'
+import { Table, Input, InputNumber, Popconfirm, Form, Typography, Button, Modal } from 'antd'
 import './index.css'
 import { Auth, Hub } from "aws-amplify";
 import { API } from 'aws-amplify';
 
 
 const originData = [];
-
-
-for (let i = 0; i < 6; i++) {
-    originData.push({
-      key: i.toString(),
-      subject: `Engg Maths ${i}`,
-      age: 32,
-      address: `London Park no. ${i}`,
-    });
-  }
-
-
 
   const EditableCell = ({
     editing,
@@ -64,23 +52,61 @@ for (let i = 0; i < 6; i++) {
     const [data, setData] = useState(originData);
     const [editingKey, setEditingKey] = useState('');
     const [user, setUser] = useState(null);
-    // const [tableArray, setTableArray] = useState([
-   
-    // ]);
 
-    function addRow() {
-      // setData([...originData, {
-        // key: originData.length,
-        // subject: 'bla bla',
-        // age: 32,
-        // address: 'dolores'
-      // }])
+    // Modal stuff
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+      setIsModalVisible(true);
+    };
+  
+    const handleOk = () => {
+      setIsModalVisible(false);
+      addRow()
+    };
+  
+    const handleCancel = () => {
+      setIsModalVisible(false);
+    };
+
+    const onFinish = (values) => {
+      setIsModalVisible(false);
+      addRow(values)
+      console.log('Success:', values);
+    };
+  
+    const onFinishFailed = (errorInfo) => {
+      console.log('Failed:', errorInfo);
+    };
+
+  function id () {
+    return Math.random().toString(36).substring(2) + Date.now().toString(36);
+  }
+
+    async function addRow(values) {
+      let key = id()
       setData(originData => [...originData, {
-        key: originData.length,
-        subject: '',
-        age: 0,
-        address: ''
+        key: key,
+        subject: values.subject,
+        professor: values.professor,
+        fees: values.fees,
+        time: values.time,
+        day: values.day,
+        zoom: values.zoom
       }]);
+      const data = {
+        body: {
+          key: key,
+          subject: values.subject,
+          professor: values.professor,
+          fees: values.fees,
+          time: values.time,
+          day: values.day,
+          zoom: values.zoom
+        }
+      };
+      const apiData = await API.post('ttapi', '/timetable', data);
+      console.log({ apiData });
     }
     
     function getUser() {
@@ -97,37 +123,18 @@ for (let i = 0; i < 6; i++) {
 
 
     useEffect(() => {
-        Hub.listen("auth", ({ payload: { event, data } }) => {
-          switch (event) {
-            case "signIn":
-            case "cognitoHostedUI":
-              getUser().then(userData => {
-                console.log(userData)
-              
-              });
-    
-              break;
-            case "signOut":
-              setUser(null);
-              break;
-            case "signIn_failure":
-            case "cognitoHostedUI_failure":
-              console.log("Sign in failure", data);
-              break;
-          }
-        });
-    
-        // getUser().then(userData => {});
-         getUser().then(s => {console.log(s)})
-      }, []);
+      getUser();
+      getTableRows()
+      }, data);
   
     const isEditing = (record) => record.key === editingKey;
   
     const edit = (record) => {
+      console.log(record)
       form.setFieldsValue({
-        name: '',
-        age: '',
-        address: '',
+        subject: '',
+        fees: '',
+        professor: '',
         ...record,
       });
       setEditingKey(record.key);
@@ -137,10 +144,16 @@ for (let i = 0; i < 6; i++) {
       setEditingKey('');
     };
 
-    const deleteRow = async (key) => {
-      console.log(key)
+    const deleteRow = async (record) => {
+      console.log(record)
+      const datas = {
+        body: {
+          key: record.key,
+        }
+      }
+      const apiData = await API.del('ttapi', '/timetable', datas);
       const newData = [...data];
-      const index = newData.findIndex((item) => key === item.key);
+      const index = newData.findIndex((item) => record.key === item.key);
       if (index > -1) {
         const item = newData[index];
         newData.splice(index, 1);
@@ -176,19 +189,19 @@ for (let i = 0; i < 6; i++) {
         {
           title: 'Subject',
           dataIndex: 'subject',
-          width: '25%',
+          width: '15%',
           editable: true,
         },
         {
           title: 'Professor',
-          dataIndex: 'age',
+          dataIndex: 'professor',
           width: '15%',
           editable: true,
         },
         {
           title: 'Fees',
-          dataIndex: 'address',
-          width: '20%',
+          dataIndex: 'fees',
+          width: '10%',
           editable: true,
         },
         {
@@ -203,33 +216,39 @@ for (let i = 0; i < 6; i++) {
             width: '10%',
             editable: true,
           },
-        {
-          title: 'operation',
-          dataIndex: 'operation',
-          render: (_, record) => {
-            const editable = isEditing(record);
-            return editable && user ? (
-              <span>
-                <a
-                  href="javascript:;"
-                  onClick={() => save(record.key)}
-                  style={{
-                    marginRight: 8,
-                  }}
-                >
-                  Save
-                </a>
-                <Popconfirm title="Sure to Cancel?" onConfirm={cancel}>
-                  <a>Cancel</a>
-                </Popconfirm>
-              </span>
-            ) : (
-              <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-                Edit
-              </Typography.Link>
-            );
+          {
+            title: 'Zoom video link',
+            dataIndex: 'zoom',
+            width: '20%',
+            editable: true,
           },
-        },
+        // {
+        //   title: 'operation',
+        //   dataIndex: 'operation',
+        //   render: (_, record) => {
+        //     const editable = isEditing(record);
+        //     return editable && user ? (
+        //       <span>
+        //         <a
+        //           href="javascript:;"
+        //           onClick={() => save(record)}
+        //           style={{
+        //             marginRight: 8,
+        //           }}
+        //         >
+        //           Save
+        //         </a>
+        //         <Popconfirm title="Sure to Cancel?" onConfirm={cancel}>
+        //           <a>Cancel</a>
+        //         </Popconfirm>
+        //       </span>
+        //     ) : (
+        //       <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
+        //         Edit
+        //       </Typography.Link>
+        //     );
+        //   },
+        // },
         {
           title: 'Delete',
           dataIndex: 'operation',
@@ -246,7 +265,7 @@ for (let i = 0; i < 6; i++) {
                 >
                   Cancel
                 </a>
-                  <a  onClick={() => deleteRow(record.key)} style={{color: 'red'}}>Confirm , you want to delete?</a>
+                  <a  onClick={() => deleteRow(record)} style={{color: 'red'}}>Confirm?</a>
               </span>
             ) : (
               <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
@@ -256,36 +275,12 @@ for (let i = 0; i < 6; i++) {
           },
         },
       ];
-      async function createContact() {
-        const data = {
-          body: {
-            name: formState.name,
-            phone: formState.phone
-          }
-        };
-        const apiData = await API.post('formapi', '/contact', data);
-        console.log({ apiData });
+
+      async function getTableRows() {
+        const apiData = await API.get('ttapi', '/timetable');
+        setData(apiData.data.Items)
       }
-      async function getContact() {
-        const apiData = await API.get('formapi', '/contact', data);
-        console.log({ apiData });
-      }
-      async function getContacts(name, id) {
-        name = "hgyt"
-        // id = "0vcvjnr38jkkl30gquy"
-        const data = {
-          body: {
-            // id: id,
-            name: name
-          }
-        };
-        const apiData = await API.get('formapi', '/contact', data);
-        console.log({ apiData });
-      }
-      const formState = { phone: '', name: '' };
-      function updateFormState(key, value) {
-        formState[key] = value;
-      }
+      
       const mergedColumns = columns.map((col) => {
         if (!col.editable) {
           return col;
@@ -304,13 +299,9 @@ for (let i = 0; i < 6; i++) {
 
         return (
           <div>
-          <Button onClick={addRow}>Add</Button>
-          <input placeholder="phone" onChange={e => updateFormState('phone', e.target.value)} />
-          <input placeholder="name" onChange={e => updateFormState('name', e.target.value)} />
-          <button onClick={createContact}>Create New Contact</button>
-          <button onClick={getContacts}>Get Contact</button>
+          
             <Form form={form} component={false}>
-              <Table
+              <Table style={{margin: '2.5%'}}
                 components={{
                   body: {
                     cell: EditableCell,
@@ -325,6 +316,65 @@ for (let i = 0; i < 6; i++) {
                 }}
               />
             </Form>
+      <Button style={{margin: '2.5% 45%'}} onClick={showModal}>Add a new row!</Button>
+      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
+       footer={[
+        <Button form="basic" key="submit" htmlType="submit">
+            Submit
+        </Button>
+        ]}
+      >
+      <Form
+      name="basic"
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+    >
+      <Form.Item
+        label="Sub"
+        name="subject"
+        rules={[{ required: true, message: 'Please input your username!' }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Prof."
+        name="professor"
+        rules={[{ required: true, message: 'Please input !' }]}
+      >
+        <Input/>
+      </Form.Item>
+      <Form.Item
+        label="Fees"
+        name="fees"
+        rules={[{ required: true, message: 'Please input !' }]}
+      >
+        <Input/>
+      </Form.Item>
+      <Form.Item
+        label="Time"
+        name="time"
+        rules={[{ required: true, message: 'Please input !' }]}
+      >
+        <Input/>
+      </Form.Item>
+      <Form.Item
+        label="Day"
+        name="day"
+        rules={[{ required: true, message: 'Please input !' }]}
+      >
+        <Input/>
+      </Form.Item>
+      <Form.Item
+        label="Zoom"
+        name="zoom"
+        rules={[{ required: true, message: 'Please input !' }]}
+      >
+        <Input/>
+      </Form.Item>
+      </Form>
+      </Modal>
             </div>
           );
         };

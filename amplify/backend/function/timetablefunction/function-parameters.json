@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "storage": {
+      "tttable": ["create", "read", "update", "delete"]
+    }
+  },
+  "lambdaLayers": []
+}
