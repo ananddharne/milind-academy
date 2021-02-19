@@ -189,37 +189,37 @@ const originData = [];
         {
           title: 'Subject',
           dataIndex: 'subject',
-          width: '15%',
+          width: '100',
           editable: true,
         },
         {
           title: 'Professor',
           dataIndex: 'professor',
-          width: '15%',
+          width: '100',
           editable: true,
         },
         {
           title: 'Fees',
           dataIndex: 'fees',
-          width: '10%',
+          // width: '10%',
           editable: true,
         },
         {
             title: 'Time',
             dataIndex: 'time',
-            width: '10%',
+            // width: '10%',
             editable: true,
           },
           {
             title: 'Day',
             dataIndex: 'day',
-            width: '10%',
+            // width: '10%',
             editable: true,
           },
           {
             title: 'Zoom video link',
             dataIndex: 'zoom',
-            width: '20%',
+            // width: '20%',
             editable: true,
           },
         // {
@@ -251,6 +251,7 @@ const originData = [];
         // },
         {
           title: 'Delete',
+          // width: '100z',
           dataIndex: 'operation',
           render: (_, record) => {
             const editable = isEditing(record);
@@ -301,7 +302,8 @@ const originData = [];
           <div>
           
             <Form form={form} component={false}>
-              <Table style={{margin: '2.5%'}}
+              <Table
+                id="ant-table-timetable"
                 components={{
                   body: {
                     cell: EditableCell,
@@ -309,6 +311,7 @@ const originData = [];
                 }}
                 bordered
                 dataSource={data}
+                scroll={{ x: 1000 }}
                 columns={mergedColumns}
                 rowClassName="editable-row"
                 pagination={{
@@ -336,7 +339,7 @@ const originData = [];
       <Form.Item
         label="Sub"
         name="subject"
-        rules={[{ required: true, message: 'Please input your username!' }]}
+        rules={[{ required: true, message: 'Please input!' }]}
       >
         <Input />
       </Form.Item>
