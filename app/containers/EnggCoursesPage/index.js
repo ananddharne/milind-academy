@@ -96,7 +96,7 @@ export default function EnggCoursesPage() {
                   <Tabs defaultActiveKey="1" >
     <TabPane tab="FE" key="1">
     <List
-      bordered
+      // // bordered
       dataSource={civilSubjectsFE}
       renderItem={item => (
         <List.Item>
@@ -107,7 +107,7 @@ export default function EnggCoursesPage() {
     </TabPane>
     <TabPane tab="SE" key="2">
     <List
-      bordered
+      // bordered
       dataSource={civilSubjectsSE}
       renderItem={item => (
         <List.Item>
@@ -118,7 +118,7 @@ export default function EnggCoursesPage() {
     </TabPane>
     <TabPane tab="TE" key="3">
     <List
-      bordered
+      // bordered
       dataSource={civilSubjectsTE}
       renderItem={item => (
         <List.Item>
@@ -129,7 +129,7 @@ export default function EnggCoursesPage() {
     </TabPane>
     <TabPane tab="BE" key="4">
     <List
-      bordered
+      // bordered
       dataSource={civilSubjectsBE}
       renderItem={item => (
         <List.Item>
@@ -160,7 +160,7 @@ export default function EnggCoursesPage() {
                   <Tabs defaultActiveKey="1" >
     <TabPane tab="FE" key="1">
     <List
-      bordered
+      // bordered
       dataSource={mechSubjectsFE}
       renderItem={item => (
         <List.Item>
@@ -171,7 +171,7 @@ export default function EnggCoursesPage() {
     </TabPane>
     <TabPane tab="SE" key="2">
     <List
-      bordered
+      // bordered
       dataSource={mechSubjectsSE}
       renderItem={item => (
         <List.Item>
@@ -182,7 +182,7 @@ export default function EnggCoursesPage() {
     </TabPane>
     <TabPane tab="TE" key="3">
     <List
-      bordered
+      // bordered
       dataSource={mechSubjectsTE}
       renderItem={item => (
         <List.Item>
@@ -193,7 +193,7 @@ export default function EnggCoursesPage() {
     </TabPane>
     <TabPane tab="BE" key="4">
     <List
-      bordered
+      // bordered
       dataSource={mechSubjectsBE}
       renderItem={item => (
         <List.Item>
