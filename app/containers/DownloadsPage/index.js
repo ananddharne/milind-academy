@@ -23,6 +23,9 @@ export default function DownloadsPage() {
 
     const [current, setCurrent] = useState(null);
 
+    const [urls, setUrl] = useState(null);
+
+
     const targetTime = new Date().getTime() + 45000;
 
 
@@ -49,8 +52,9 @@ export default function DownloadsPage() {
     const downloadS3 = async (itemKey) => {
         const result = await Storage.get(itemKey, { download: true });
         // result.Body.text().then(string => {
-            downloadBlob(result.Body, itemKey);
-            // alert(result.Body)
+            // alert(urls)
+            // downloadBlob(result.Body, itemKey);
+            downloadBlob2(result.Body)
         // })
     }
 
@@ -59,23 +63,29 @@ export default function DownloadsPage() {
         location.reload()
     }
 
-    function downloadBlob(blob, filename) {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.target="_blank" 
-        a.rel="noopener noreferrer"
-        a.download = filename || 'download';
-        const clickHandler = () => {
-            setTimeout(() => {
-                URL.revokeObjectURL(url);
-                a.removeEventListener('click', clickHandler);
-            }, 150);
-        };
-        a.addEventListener('click', clickHandler, false);
-        a.click();
-        alert(url)
-        return a;
+    // function downloadBlob(blob, filename) {
+    //     const url = URL.createObjectURL(blob);
+    //     // setUrl(url)
+    //     // const b = `<a href=${url}></a>`
+    //     const a = document.createElement('a');
+    //     a.href = url;
+    //     a.download = filename || 'download';
+    //     const clickHandler = () => {
+    //         setTimeout(() => {
+    //             URL.revokeObjectURL(url);
+    //             a.removeEventListener('click', clickHandler);
+    //         }, 150);
+    //     };
+    //     a.addEventListener('click', clickHandler, false);
+    //     // alert(url)
+    //     prompt(url)
+    //     a.click();
+    //     return a;
+    // }
+
+    function downloadBlob2(blob) {
+        var blobUrl = URL.createObjectURL(blob);
+        location.replace(blobUrl)
     }
 
     const uploadS3 = async () => {
