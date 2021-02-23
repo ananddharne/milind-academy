@@ -51,10 +51,10 @@ export default function DownloadsPage() {
 
     const downloadS3 = async (itemKey) => {
         const result = await Storage.get(itemKey, { download: true });
-        result.Body.text().then(string => { 
-        console.log(string)
-        downloadBlob(result.Body, itemKey);
-      })
+        result.Body.text().then(string => {
+            console.log(string)
+            downloadBlob(result.Body, itemKey);
+        })
     }
 
     const deleteFile = async (key) => {
@@ -86,7 +86,7 @@ export default function DownloadsPage() {
     function cancel(e) {
         console.log(e);
         message.error('Click on No');
-      }
+    }
 
     // const S3ImageUpload = () => {
     const onChange = async (file) => {
@@ -96,7 +96,7 @@ export default function DownloadsPage() {
             //     contentType: 'image/png'
             //   }
         )
-        setFiles(files => [...files, file] )
+        setFiles(files => [...files, file])
         // setMyArray(oldArray => [...oldArray, newElement])
 
         console.log('S3 Object key', key)
@@ -120,13 +120,13 @@ export default function DownloadsPage() {
     }, files);
     return (
         //   <p>sssß</p>
-        <div style={{textAlign: 'center'}}>
+        <div style={{ textAlign: 'center' }}>
             {/* {
     user ?   
     <Button style={{margin: '2.5% 45%'}} onClick={uploadS3}>Upload file</Button> : null
     
     } */}
-           
+
 
             {/* <Dragger {...props}>
     <p className="ant-upload-drag-icon">
@@ -150,48 +150,48 @@ export default function DownloadsPage() {
             <List
                 itemLayout="horizontal"
                 dataSource={files}
-                style={{margin: '5%'}}
+                style={{ margin: '5%' }}
                 pagination={{
                     onChange: page => {
-                      console.log(page);
+                        console.log(page);
                     },
                     pageSize: 5,
-                  }}
-                  size={"large"}
+                }}
+                size={"large"}
                 renderItem={item => (
                     <List.Item>
                         {/* <img src={FileImageTwoTone}></img>
                          */}
-                         <FileImageTwoTone style={{ fontSize: '150%'}} />
+                        <FileImageTwoTone style={{ fontSize: '150%' }} />
                         <List.Item.Meta
                             // avatar={<Avatar icon={<FileImageTwoTone />} />}
                             title={<a style={{ fontSize: '150%' }} onClick={() => downloadS3(item.key)}>{item.key || item.name}</a>}
-                            // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                        // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                         />
                         { user ?
-                                                 <Popconfirm
-                                                 title="Are you sure to delete this file?"
-                                                 onConfirm={() => deleteFile(item.key)}
-                                                 onCancel={cancel}
-                                                 okText="Yes"
-                                                 cancelText="No"
-                                               >
-                                                                     <DeleteTwoTone style={{ fontSize: '150%'}} />
-                                                                     </Popconfirm> : null
+                            <Popconfirm
+                                title="Are you sure to delete this file?"
+                                onConfirm={() => deleteFile(item.key)}
+                                onCancel={cancel}
+                                okText="Yes"
+                                cancelText="No"
+                            >
+                                <DeleteTwoTone style={{ fontSize: '150%' }} />
+                            </Popconfirm> : null
 
                         }
-   
+
                     </List.Item>
                 )}
             />
 
-{
+            {
                 user ?
-                <input
-                type='file'
-                //   accept='image/png'
-                onChange={(e) => onChange(e.target.files[0])}
-            /> : null
+                    <input
+                        type='file'
+                        //   accept='image/png'
+                        onChange={(e) => onChange(e.target.files[0])}
+                    /> : null
 
             }
         </div>

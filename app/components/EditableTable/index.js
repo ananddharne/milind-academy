@@ -218,7 +218,7 @@ const originData = [];
       };
 
 
-      const columns = [
+      let columns = [
         {
           title: 'Subject',
           dataIndex: 'subject',
@@ -314,6 +314,10 @@ const originData = [];
         const apiData = await API.get('ttapi', '/timetable');
         setData(apiData.data.Items)
       }
+
+      if(!user) {
+        columns = columns.filter(col => col.title !== 'Delete')
+      }
       
       const mergedColumns = columns.map((col) => {
         if (!col.editable) {
@@ -352,6 +356,10 @@ const originData = [];
                 }}
               />
             </Form>
+            {
+            user ?   
+            <Button style={{margin: '2.5% 45%'}} onClick={showModal}>Add a new row!</Button> : null
+            }
       <Modal title="Add new timetable row" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
        footer={[
         <Button form="basic" key="submit" htmlType="submit">
