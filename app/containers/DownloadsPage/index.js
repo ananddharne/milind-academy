@@ -85,8 +85,11 @@ export default function DownloadsPage() {
 
     function downloadBlob2(blob) {
         var blobUrl = URL.createObjectURL(blob);
+        setUrl(blobUrl)
+        showModal()
+        // showBlobModal()
         // alert(blobUrl)
-        open(blobUrl, '_blank');
+        // open(blobUrl, '_blank');
         // location.replace(blobUrl)
     }
 
@@ -141,7 +144,7 @@ export default function DownloadsPage() {
     useEffect(() => {
         getUser();
         listS3Files()
-        showModal()
+        // showModal()
     }, files);
     return (
         <div style={{ textAlign: 'center' }}>
@@ -152,7 +155,8 @@ export default function DownloadsPage() {
                 footer={null}
                 closable={false}
             >
-                <span>{current}</span>
+                {/* <span>{urls}</span> */}
+                <a href={urls}>ju</a>
                 {/* <CountDown style={{ fontSize: 20 }} target={targetTime} /> */}
 
             </Modal>
