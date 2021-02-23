@@ -27,7 +27,7 @@ import saga from './saga';
 import './index.css';
 import MainFeatures from 'components/MainFeatures';
 import ReviewsPanel from 'components/ReviewsPanel';
-import video from './homepage_bg.mp4'
+import video from './homepage_bgg.mp4'
 import Footer from "components/Footer";
 
 

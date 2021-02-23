@@ -32,17 +32,15 @@ const SubjectsModal = ({ isShowing, hide, FE, SE, TE, BE }) => {
                 visible={isShowing}
                 // onOk={hide}
                 onCancel={hide}
-                // okText="Cancel"
-                // cancelText="OK"
                 footer={null}
                 closable={true}
                 id="join-pool-modal"
-                // cancelButtonProps={{ disabled: buttonDisabled }}
             >
                   <Tabs defaultActiveKey="1" onChange={callback}>
     <TabPane tab="FE" key="1">
     <List
       bordered
+      style={{minHeight: '50%'}}
       dataSource={FE}
       renderItem={item => (
         <List.Item>
@@ -54,6 +52,7 @@ const SubjectsModal = ({ isShowing, hide, FE, SE, TE, BE }) => {
     <TabPane tab="SE" key="2">
     <List
       bordered
+      style={{minHeight: '50%'}}
       dataSource={SE}
       renderItem={item => (
         <List.Item>
@@ -64,6 +63,7 @@ const SubjectsModal = ({ isShowing, hide, FE, SE, TE, BE }) => {
     </TabPane>
     <TabPane tab="TE" key="3">
     <List
+      style={{minHeight: '50%'}}
       bordered
       dataSource={TE}
       renderItem={item => (
@@ -76,6 +76,7 @@ const SubjectsModal = ({ isShowing, hide, FE, SE, TE, BE }) => {
     <TabPane tab="BE" key="4">
     <List
       bordered
+      style={{minHeight: '307px'}}
       dataSource={BE}
       renderItem={item => (
         <List.Item>
@@ -86,7 +87,6 @@ const SubjectsModal = ({ isShowing, hide, FE, SE, TE, BE }) => {
     </TabPane>
   </Tabs>
              
-                {/* <p style={{ fontSize: '2vh' }}><b>Are you sure you want to enter this pool?</b></p> */}
             </Modal>
         </>
     );

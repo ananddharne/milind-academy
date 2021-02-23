@@ -22,7 +22,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/auth/milindacademyb497968d-cloudformation-template.yml",
         "logicalId": "authmilindacademyb497968d"
       },
-      "lastPushTimeStamp": "2021-02-17T02:46:23.481Z",
+      "lastPushTimeStamp": "2021-02-22T17:54:40.912Z",
       "output": {
         "UserPoolId": "us-east-1_q6VJW9gpj",
         "AppClientIDWeb": "5f4k53tcbs1tghml8rjoo4t6f9",
@@ -31,7 +31,7 @@
         "IdentityPoolName": "milindacademyb497968d_identitypool_b497968d__staging",
         "UserPoolName": "milindacademyb497968d_userpool_b497968d"
       },
-      "lastPushDirHash": "fQTZux3azKPvWBO2x2QEy+Ka1/c="
+      "lastPushDirHash": "sOCk+1sP71mQ8zMrnz6iO10hhr0="
     }
   },
   "interactions": {},
@@ -44,7 +44,10 @@
         {
           "category": "storage",
           "resourceName": "formtable",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ],
       "lastBuildTimeStamp": "2021-02-15T17:21:41.885Z",
@@ -58,7 +61,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/function/formfunction-cloudformation-template.json",
         "logicalId": "functionformfunction"
       },
-      "lastPushTimeStamp": "2021-02-17T02:46:23.485Z",
+      "lastPushTimeStamp": "2021-02-22T17:54:40.897Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:274898067830:function:formfunction-staging",
@@ -75,11 +78,14 @@
         {
           "category": "storage",
           "resourceName": "tttable",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ],
-      "lastBuildTimeStamp": "2021-02-17T02:45:16.107Z",
-      "lastPackageTimeStamp": "2021-02-17T02:45:16.937Z",
+      "lastBuildTimeStamp": "2021-02-22T17:53:05.352Z",
+      "lastPackageTimeStamp": "2021-02-22T17:53:06.319Z",
       "distZipFilename": "timetablefunction-68786168773957796e64-build.zip",
       "s3Bucket": {
         "deploymentBucketName": "amplify-amplify4827064cc86a4-staging-233301-deployment",
@@ -89,14 +95,14 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/function/timetablefunction-cloudformation-template.json",
         "logicalId": "functiontimetablefunction"
       },
-      "lastPushTimeStamp": "2021-02-17T02:46:23.497Z",
+      "lastPushTimeStamp": "2021-02-22T17:54:40.912Z",
       "output": {
         "Region": "us-east-1",
         "Arn": "arn:aws:lambda:us-east-1:274898067830:function:timetablefunction-staging",
         "Name": "timetablefunction-staging",
         "LambdaExecutionRole": "milindacademyLambdaRole46a7dc93-staging"
       },
-      "lastPushDirHash": "qkbobpzDYQqp+d+Z0YFpR3IOY7o="
+      "lastPushDirHash": "4oMgsuY4F4WrrN/QiEl+yj5R4bc="
     }
   },
   "api": {
@@ -107,14 +113,17 @@
         {
           "category": "function",
           "resourceName": "formfunction",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ],
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/api/formapi-cloudformation-template.json",
         "logicalId": "apiformapi"
       },
-      "lastPushTimeStamp": "2021-02-17T02:46:23.488Z",
+      "lastPushTimeStamp": "2021-02-22T17:54:40.901Z",
       "output": {
         "ApiName": "formapi",
         "RootUrl": "https://emaaagpyk4.execute-api.us-east-1.amazonaws.com/staging",
@@ -129,20 +138,23 @@
         {
           "category": "function",
           "resourceName": "timetablefunction",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ],
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/api/ttapi-cloudformation-template.json",
         "logicalId": "apittapi"
       },
-      "lastPushTimeStamp": "2021-02-17T02:46:23.490Z",
+      "lastPushTimeStamp": "2021-02-22T17:54:40.912Z",
       "output": {
         "ApiName": "ttapi",
         "RootUrl": "https://mb0re7i3jk.execute-api.us-east-1.amazonaws.com/staging",
         "ApiId": "mb0re7i3jk"
       },
-      "lastPushDirHash": "o+edoooOs2lNOT+0BNVZspKzqJU="
+      "lastPushDirHash": "kA9ywenkkYQc75cnLjjUsShrh2U="
     }
   },
   "storage": {
@@ -153,7 +165,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/storage/formtable-cloudformation-template.json",
         "logicalId": "storageformtable"
       },
-      "lastPushTimeStamp": "2021-02-17T02:46:23.492Z",
+      "lastPushTimeStamp": "2021-02-22T17:54:40.905Z",
       "output": {
         "PartitionKeyName": "id",
         "Region": "us-east-1",
@@ -171,7 +183,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/storage/tttable-cloudformation-template.json",
         "logicalId": "storagetttable"
       },
-      "lastPushTimeStamp": "2021-02-17T02:46:23.493Z",
+      "lastPushTimeStamp": "2021-02-22T17:54:40.912Z",
       "output": {
         "PartitionKeyName": "key",
         "Region": "us-east-1",
@@ -180,7 +192,21 @@
         "PartitionKeyType": "S",
         "Name": "ttable-staging"
       },
-      "lastPushDirHash": "uBrn/F9BRi3aoKHMAP/Je90a0GI="
+      "lastPushDirHash": "mszuld8zmQ4SXvF/fruN5zB28ZM="
+    },
+    "milinddownloads": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify4827064cc86a4-staging-233301-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+        "logicalId": "storagemilinddownloads"
+      },
+      "lastPushTimeStamp": "2021-02-22T17:54:40.912Z",
+      "output": {
+        "BucketName": "milinddownloads233301-staging",
+        "Region": "us-east-1"
+      },
+      "lastPushDirHash": "5dwg5LqNReSIXUBW+Whn5tIRcvw="
     }
   }
 }
