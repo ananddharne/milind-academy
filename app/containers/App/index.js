@@ -49,7 +49,7 @@ function App() {
       </a>
       {/* <a className="chatbot-btn"></a> */}
       <SimpleForm className="chatbot" />
-      <aside class="aside-page"></aside>
+      {/* <aside class="aside-page"></aside> */}
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />

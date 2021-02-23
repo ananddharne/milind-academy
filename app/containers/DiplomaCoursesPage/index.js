@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Courses from 'components/Courses';
-import {Card, Button, Modal, Typography, List, Tabs} from 'antd'
+import { Card, Button, Modal, Typography, List, Tabs } from 'antd'
 import "./index.css"
 import civil from "./civil.jpg"
 import mechanical from "./mechanical-engg.jpg"
@@ -16,6 +16,8 @@ export default function DiplomaCoursesPage() {
 
   const [isCivilModalVisible, setIsCivilModalVisible] = useState(false);
   const [isMechModalVisible, setIsMechModalVisible] = useState(false);
+  const [isCompModalVisible, setIsCompModalVisible] = useState(false);
+
 
 
   const showCivilModal = () => {
@@ -35,183 +37,224 @@ export default function DiplomaCoursesPage() {
     setIsMechModalVisible(true);
   };
 
+  const showCompModal = () => {
+    setIsCompModalVisible(true);
+  };
+
   const handleOkMech = () => {
     setIsMechModalVisible(false);
   };
+
+  const handleOkComp = () => {
+    setIsCompModalVisible(false)
+  }
 
   const handleCancelMech = () => {
     setIsMechModalVisible(false);
   };
 
   const civilSubjectsFE = [
-    'Engineering Mechanics', 'M1', 'M2'
+    "BASIC MATHEMATICS(M1)",
+    "BASIC PHYSICS",
+    "BASIC CHEMISTRY",
+    "ENGINEERING MECHANICS",
+    "APPLIED MATHEMATICS (M2)",
+    "APPLIED MECHANICS",
+    "ENGINEERING MECHANICS",
+    "APPLIED PHYSICS",
+    "APPLIED CHEMISTRY",
+    "SY DIPLOMA (CIVIL)"
   ];
   const civilSubjectsSE = [
-    'M3', 'Mechanics of Structures', 'Fluid Mechanics', 'Structural Analysis 1', 'Fluid Mechanics 1'
+    " MECHANICS OF STRUCTURES(MOS)",
+    "M3(AUTONOMOUS)",
+    "THEORY OF STRUCTURES",
+    "HYDRAULICS"
   ];
 
   const civilSubjectsTE = [
-    'STRUCTURAL ANALYSIS 2', 'FLUID MECHANICS 2', 'STRUCTURAL DESIGN AND DRAWING 1', 'STRUCTURAL DESIGN AND DRAWING 2'
+    "DESIGN OF STEEL AND RCC STRUCTURES",
+    "ANALYSIS AND DESIGN OF RCC STRUCTURES",
+    "ESTIMATING COSTING AND VALUATION",
+    "PRECAST AND PRESTRESSED CONCRETE"
   ];
 
-  const civilSubjectsBE = [
-    'STRUCTURAL DESIGN AND DRAWING 3'
-  ];
 
   const mechSubjectsFE = [
-    'Engineering Mechanics', 'M1', 'M2'
+    "BASIC MATHEMATICS(M1)",
+    "BASIC PHYSICS",
+    "BASIC CHEMISTRY",
+    "ENGINEERING MECHANICS",
+    "APPLIED MATHEMATICS (M2)",
+    " APPLIED MECHANICS",
+    "ENGINEERING MECHANICS",
+    "APPLIED PHYSICS",
+    "APPLIED CHEMISTRY",
+    "ENGINEERING DRAWING"
   ];
 
   const mechSubjectsSE = [
-    'M3', 'SOLID MECHANICS', 'ENGINEERING THERMODYNAMICS', 'EEE'
+    "STRENGTH OF MATERIALS(SOM)",
+    "M3(AUTONOMOUS)",
+    "MECHANICAL WORKING DRAWING",
+    "MECHANICAL ENGINEERING DRAWING",
+    "THERMAL ENGINEERING",
+    "THEORY OF MACHINES (TOM)",
+    "FLUID MECHANICS",
+    "THEORY OF MACHINES(TOM)",
   ];
 
   const mechSubjectsTE = [
-    'DESIGN OF MACHINE ELEMENTS 1', 'HEAT TRANSFER', 'TOM 2', 'TURBO MACHINES', 'DESIGN OF MACHINE ELEMENTS 2', 'RAC', 'MECHATRONICS'
+    "ELEMENTS OF MACHINE DESIGN",
+    "POWER ENGINEERING",
+    "TOOL ENGINEERING",
+    "INDUSTRIAL HYDAULICS AND PNEUMATICS",
+    "AUTOMOBILE ENGINEERING",
+    "REFRIGERATION AND AIRCONDITIONING"
   ];
 
-  const mechSubjectsBE = [
-    'STRUCTURAL DESIGN AND DRAWING 3'
+  const compSubjectsFE = [
+    "BASIC MATHEMATICS(M1)",
+    "BASIC PHYSICS",
+    "BASIC CHEMISTRY",
+    "APPLIED MATHEMATICS (M2)",
+    "BASIC ELECTRONICS",
+    "ELEMENTS OF ELECTRICAL ENGINEERING",
+   " PROGRAMMING IN C"
   ];
+
+  const compSubjectsSE = [
+   "C++",
+"DATA STRUCTURES USING ACA",
+"DIGITAL TECHNIQUES",
+"MICROPROCESSORS",
+"JAVA PROGRAMMING",
+"DATA COMMUNICATION AND COMPUTER NETWORK"
+  ];
+
+  const compSubjectsTE = [
+    "OPERATING SYSTEMS",
+    "ADVANCED JAVA PROGRAMMING",
+   " PROGRAMMING WITH PYTHON"
+  ];
+
 
   return (
-      <div className="gallery-grid">
-    <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={civil} />}
-  >
-    <Meta title="Civil Engineering Diploma" description="" />
-    <Button onClick={showCivilModal} style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
-    <Modal
-                title="Subjects List"
-                visible={isCivilModalVisible}
-                onCancel={handleOkCivil}
-                footer={null}
-                closable={true}
-                id="join-pool-modal"
-            >
-                  <Tabs defaultActiveKey="1" >
-    <TabPane tab="FE" key="1">
-    <List
-      // bordered
-      dataSource={civilSubjectsFE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{item}</Typography.Text>
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="SE" key="2">
-    <List
-      // bordered
-      dataSource={civilSubjectsSE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{item}</Typography.Text>
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="TE" key="3">
-    <List
-      // bordered
-      dataSource={civilSubjectsTE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong> {item} </Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="BE" key="4">
-    <List
-      // bordered
-      dataSource={civilSubjectsBE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-  </Tabs>
-             
-            </Modal>
-  </Card>
-  <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={mechanical} />}
-  >
-    <Meta title="Mechanical Engg. Diploma" description="" />
-    <Button onClick={showMechModal} style={{marginTop: '5%' , fontWeight: 'bold'}}>View Subjects</Button>
-    <Modal
-                title="Subjects List"
-                visible={isMechModalVisible}
-                onCancel={handleOkMech}
-                footer={null}
-                closable={true}
-                id="join-pool-modal"
-            >
-                  <Tabs defaultActiveKey="1" >
-    <TabPane tab="FE" key="1">
-    <List
-      // bordered
-      dataSource={mechSubjectsFE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{item} </Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="SE" key="2">
-    <List
-      // bordered
-      dataSource={mechSubjectsSE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="TE" key="3">
-    <List
-      // bordered
-      dataSource={mechSubjectsTE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong> {item}</Typography.Text>
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="BE" key="4">
-    <List
-      // bordered
-      dataSource={mechSubjectsBE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-  </Tabs>
-             
-            </Modal>
-  </Card>
-  <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={electrical} />}
-  >
-    <Meta title="Electrical Engg. Diploma" description="" />
-  </Card>
-  {/* <Card
+    <div className="gallery-grid">
+      <Card
+        hoverable
+        style={{ width: 275 }}
+        cover={<img alt="example" src={civil} />}
+      >
+        <Meta title="Civil Engineering Diploma" description="" />
+        <Button onClick={showCivilModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <Modal
+          title="Subjects List"
+          visible={isCivilModalVisible}
+          onCancel={handleOkCivil}
+          footer={null}
+          closable={true}
+          id="join-pool-modal"
+        >
+          <Tabs defaultActiveKey="1" >
+            <TabPane tab="FY" key="1">
+              <List
+                // bordered
+                dataSource={civilSubjectsFE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="SY" key="2">
+              <List
+                // bordered
+                dataSource={civilSubjectsSE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="TY" key="3">
+              <List
+                // bordered
+                dataSource={civilSubjectsTE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong> {item} </Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+          </Tabs>
+
+        </Modal>
+      </Card>
+      <Card
+        hoverable
+        style={{ width: 275 }}
+        cover={<img alt="example" src={mechanical} />}
+      >
+        <Meta title="Mechanical Engg. Diploma" description="" />
+        <Button onClick={showMechModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <Modal
+          title="Subjects List"
+          visible={isMechModalVisible}
+          onCancel={handleOkMech}
+          footer={null}
+          closable={true}
+          id="join-pool-modal"
+        >
+          <Tabs defaultActiveKey="1" >
+            <TabPane tab="FY" key="1">
+              <List
+                // bordered
+                dataSource={mechSubjectsFE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item} </Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="SY" key="2">
+              <List
+                // bordered
+                dataSource={mechSubjectsSE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="TY" key="3">
+              <List
+                // bordered
+                dataSource={mechSubjectsTE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong> {item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+          </Tabs>
+
+        </Modal>
+      </Card>
+      <Card
+        hoverable
+        style={{ width: 275 }}
+        cover={<img alt="example" src={electrical} />}
+      >
+        <Meta title="Electrical Engg. Diploma" description="" />
+      </Card>
+      {/* <Card
     hoverable
     style={{ width: 275 }}
     cover={<img alt="example" src={mechanical} />}
@@ -220,15 +263,59 @@ export default function DiplomaCoursesPage() {
     <Button style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
 
   </Card> */}
-  <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={computer} />}
-  >
-    <Meta title="Computer/IT Engg Diploma" description="" />
-    <Button style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
+      <Card
+        hoverable
+        style={{ width: 275 }}
+        cover={<img alt="example" src={computer} />}
+      >
+        <Meta title="Computer/IT Engg Diploma" description="" />
+        <Button onClick={showCompModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <Modal
+          title="Subjects List"
+          visible={isCompModalVisible}
+          onCancel={handleOkComp}
+          footer={null}
+          closable={true}
+          id="join-pool-modal"
+        >
+          <Tabs defaultActiveKey="1" >
+            <TabPane tab="FY" key="1">
+              <List
+                // bordered
+                dataSource={compSubjectsFE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item} </Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="SY" key="2">
+              <List
+                // bordered
+                dataSource={compSubjectsSE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="TY" key="3">
+              <List
+                // bordered
+                dataSource={compSubjectsTE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong> {item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+          </Tabs>
 
-  </Card>
-  </div>
+        </Modal>
+      </Card>
+    </div>
   );
 }
