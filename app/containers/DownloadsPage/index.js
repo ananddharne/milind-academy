@@ -1,38 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Card, Button, Modal, Typography, List, Tabs, Avatar, Upload, message, Icon, Popconfirm } from 'antd'
 import "./index.css"
 import { Auth, Hub, Storage } from "aws-amplify";
-import { FileImageFilled, FileImageTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import { FileImageFilled, FileImageTwoTone, DeleteTwoTone, InboxOutlined } from '@ant-design/icons';
+import 'ant-design-pro/dist/ant-design-pro.css';
+import CountDown from 'ant-design-pro/lib/CountDown';
+
 
 const { Dragger } = Upload;
 
-// const props = {
-//     name: 'file',
-//     multiple: true,
-//     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-//     async onChange(info) {
-//         console.log(info)
-//       const { status } = info.file;
-//       if (status !== 'uploading') {
-//         console.log(info.file, info.fileList);
-//       }
-//       if (status === 'done') {
-//         message.success(`${info.file.name} file uploaded successfully.`);
-//         // const result = await Storage.put(info.file)
-//         // console.log(result)
 
-//               const { key } = await Storage.put(info.file.name, info.file, {
-//             // contentType: 'image/png'
-//           })
 
-//           console.log('S3 Object key', key)
-//         // console.log(result)
-//       } else if (status === 'error') {
-//           console.log
-//         message.error(`${info.file.name} file upload failed.`);
-//       }
-//     },
-//   };
 
 
 export default function DownloadsPage() {
@@ -40,6 +18,25 @@ export default function DownloadsPage() {
     const [user, setUser] = useState(null);
 
     const [files, setFiles] = useState([])
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const [current, setCurrent] = useState(null);
+
+    const targetTime = new Date().getTime() + 45000;
+
+
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleOk = () => {
+        setIsModalVisible(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
 
 
 
@@ -51,8 +48,8 @@ export default function DownloadsPage() {
 
     const downloadS3 = async (itemKey) => {
         const result = await Storage.get(itemKey, { download: true });
+        alert(result)
         result.Body.text().then(string => {
-            console.log(string)
             downloadBlob(result.Body, itemKey);
         })
     }
@@ -88,28 +85,40 @@ export default function DownloadsPage() {
         message.error('Click on No');
     }
 
-    // const S3ImageUpload = () => {
-    const onChange = async (file) => {
-        console.log(file)
-        const { key } = await Storage.put(file.name, file,
-            //     {
-            //     contentType: 'image/png'
-            //   }
-        )
-        setFiles(files => [...files, file])
-        // setMyArray(oldArray => [...oldArray, newElement])
-
-        console.log('S3 Object key', key)
-    }
+    // const onChanges = async (name, file) => {
+    //     console.log(file)
+    //     const { key } = await Storage.put(name, file,
+    //     )
+    //     setFiles(files => [...files, file])
+    //     // location.reload()
+    //     console.log('S3 Object key', key)
     // }
+
+    // const props = {
+    //     name: 'file',
+    //     multiple: false,
+    //     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    //     async onChange(info) {
+    //         console.log(info)
+    //       const { status } = info.file;
+    //       if (status !== 'uploading') {
+    //         console.log(info.file, info.fileList);
+    //       }
+    //       if (status === 'done') {
+    //         message.success(`${info.file.name} file uploaded successfully.`);
+    //         onChanges(info.file.name, info.file.originFileObj)
+    //       } else if (status === 'error') {
+    //           console.log
+    //         message.error(`${info.file.name} file upload failed.`);
+    //       }
+    //     },
+    //   };
 
     function getUser() {
         return Auth.currentAuthenticatedUser()
             .then(userData => {
                 userData;
                 setUser(userData);
-                // const btn = document.getElementById('login-account')
-                // btn.innerHTML = userData.attributes.email;
             })
             .catch(() => console.log("Not signed in"));
     }
@@ -117,36 +126,21 @@ export default function DownloadsPage() {
     useEffect(() => {
         getUser();
         listS3Files()
+        showModal()
     }, files);
     return (
-        //   <p>sssß</p>
         <div style={{ textAlign: 'center' }}>
-            {/* {
-    user ?   
-    <Button style={{margin: '2.5% 45%'}} onClick={uploadS3}>Upload file</Button> : null
-    
-    } */}
 
+            <Modal title="Basic Modal" visible={isModalVisible}
+                // onOk={handleOk} 
+                onCancel={handleCancel}
+                footer={null}
+                closable={false}
+            >
+                <span>{current}</span>
+                {/* <CountDown style={{ fontSize: 20 }} target={targetTime} /> */}
 
-            {/* <Dragger {...props}>
-    <p className="ant-upload-drag-icon">
-      <InboxOutlined />
-    </p>
-    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-    <p className="ant-upload-hint">
-      Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-      band files
-    </p>
-  </Dragger> */}
-
-            {/* <input
-                type='file'
-                //   accept='image/png'
-                onChange={(e) => onChange(e.target.files[0])}
-            /> */}
-
-
-
+            </Modal>
             <List
                 itemLayout="horizontal"
                 dataSource={files}
@@ -189,9 +183,19 @@ export default function DownloadsPage() {
                 user ?
                     <input
                         type='file'
-                        //   accept='image/png'
                         onChange={(e) => onChange(e.target.files[0])}
-                    /> : null
+                    />
+                //     <Dragger {...props}>
+                //     <p className="ant-upload-drag-icon">
+                //       <InboxOutlined />
+                //     </p>
+                //     <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                //     <p className="ant-upload-hint">
+                //       Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+                //       band files
+                //     </p>
+                //   </Dragger> 
+                     : null
 
             }
         </div>
