@@ -25,7 +25,6 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import SimpleForm from "components/SimpleForm";
 import "./index.css";
-// import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 const AppWrapper = styled.div`
   margin: 0 auto;
   min-height: 100%;
@@ -49,7 +48,7 @@ function App() {
         <i className="fa fa-whatsapp my-float" />
       </a>
       {/* <a className="chatbot-btn"></a> */}
-      {/* <SimpleForm className="chatbot" /> */}
+      <SimpleForm className="chatbot" />
       <aside class="aside-page"></aside>
       <Header />
       <Switch>
