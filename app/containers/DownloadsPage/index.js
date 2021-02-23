@@ -85,8 +85,9 @@ export default function DownloadsPage() {
 
     function downloadBlob2(blob) {
         var blobUrl = URL.createObjectURL(blob);
-        alert(blobUrl)
-        location.replace(blobUrl)
+        // alert(blobUrl)
+        open(blobUrl, '_blank');
+        // location.replace(blobUrl)
     }
 
     const uploadS3 = async () => {
