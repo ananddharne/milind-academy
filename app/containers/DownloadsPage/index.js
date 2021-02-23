@@ -85,6 +85,7 @@ export default function DownloadsPage() {
 
     function downloadBlob2(blob) {
         var blobUrl = URL.createObjectURL(blob);
+        alert(blobUrl)
         location.replace(blobUrl)
     }
 
