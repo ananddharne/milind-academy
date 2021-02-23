@@ -63,16 +63,18 @@ export default function DownloadsPage() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
+        a.target="_blank" 
+        a.rel="noopener noreferrer"
         a.download = filename || 'download';
         const clickHandler = () => {
-            // setTimeout(() => {
-            //     URL.revokeObjectURL(url);
-            //     a.removeEventListener('click', clickHandler);
-            // }, 150);
+            setTimeout(() => {
+                URL.revokeObjectURL(url);
+                a.removeEventListener('click', clickHandler);
+            }, 150);
         };
         a.addEventListener('click', clickHandler, false);
         a.click();
-        alert(a)
+        alert(url)
         return a;
     }
 
@@ -163,6 +165,7 @@ export default function DownloadsPage() {
                             title={<a style={{ fontSize: '150%' }} onClick={() => downloadS3(item.key)}>{item.key || item.name}</a>}
                         // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                         />
+                        <a ></a>
                         { user ?
                             <Popconfirm
                                 title="Are you sure to delete this file?"

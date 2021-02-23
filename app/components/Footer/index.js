@@ -28,22 +28,52 @@ class Footer extends Component {
             ],
           },
           {
-            title: 'Creators',
+            title: 'Work with us',
             items: [
               {
-                title: 'Anand (Development)',
-                url: 'https://github.com/ananddharne/',
+                title: 'Openings',
+                url: 'https://linkedin.com',
               },
               {
-                title: 'Payal (Design)',
-                url: '',
-              },
-              {
-                title: 'Komal (Business)',
-                url: '',
+                title: 'Our Reviews',
+                url: '/',
               }
             ],
           },
+          {
+            title: 'Pay Per Consultation',
+            items: [
+              {
+                title: <a target="_blank" rel="noopener noreferrer" href = 'https://github.com/ananddharne/'> Assignment Solutions</a>,
+                url: '' ,
+              },
+              {
+                title: 'Private Coaching',
+                url: 'https://github.com/ananddharne/',
+              },
+              {
+                title: 'Contact Us',
+                url: '/downloads',
+              }
+            ],
+          },
+          // {
+          //   title: 'Creators',
+          //   items: [
+          //     {
+          //       title: 'Anand (Development)',
+          //       url: 'https://github.com/ananddharne/',
+          //     },
+          //     {
+          //       title: 'Payal (Design)',
+          //       url: '',
+          //     },
+          //     {
+          //       title: 'Komal (Business)',
+          //       url: '',
+          //     }
+          //   ],
+          // }
         ]}
       />
     );
