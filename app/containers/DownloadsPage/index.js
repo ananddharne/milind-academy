@@ -50,7 +50,7 @@ export default function DownloadsPage() {
         const result = await Storage.get(itemKey, { download: true });
         // result.Body.text().then(string => {
             downloadBlob(result.Body, itemKey);
-            alert(result.Body)
+            // alert(result.Body)
         // })
     }
 
@@ -65,13 +65,14 @@ export default function DownloadsPage() {
         a.href = url;
         a.download = filename || 'download';
         const clickHandler = () => {
-            setTimeout(() => {
-                URL.revokeObjectURL(url);
-                a.removeEventListener('click', clickHandler);
-            }, 150);
+            // setTimeout(() => {
+            //     URL.revokeObjectURL(url);
+            //     a.removeEventListener('click', clickHandler);
+            // }, 150);
         };
         a.addEventListener('click', clickHandler, false);
         a.click();
+        alert(a)
         return a;
     }
 
