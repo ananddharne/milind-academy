@@ -48,10 +48,10 @@ export default function DownloadsPage() {
 
     const downloadS3 = async (itemKey) => {
         const result = await Storage.get(itemKey, { download: true });
-        alert(result)
-        result.Body.text().then(string => {
+        // result.Body.text().then(string => {
             downloadBlob(result.Body, itemKey);
-        })
+            alert(result.Body)
+        // })
     }
 
     const deleteFile = async (key) => {
