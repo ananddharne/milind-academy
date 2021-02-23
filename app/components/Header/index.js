@@ -56,12 +56,14 @@ function Header() {
     Auth.signOut()
       .then(data => console.log(data))
       .catch(err => console.log(err));
+      location.reload()
   }
 
   async function signIn() {
     try {
       var result = prompt("Enter a password");
       const user = await Auth.signIn("milindacademy13@gmail.com", result);
+      location.reload()
   } catch (error) {
       console.log('error signing in', error);
   }

@@ -30,7 +30,9 @@ const awsmobile = {
             "tableName": "ttable-staging",
             "region": "us-east-1"
         }
-    ]
+    ],
+    "aws_user_files_s3_bucket": "milinddownloads233301-staging",
+    "aws_user_files_s3_bucket_region": "us-east-1"
 };
 
 

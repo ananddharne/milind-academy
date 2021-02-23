@@ -16,7 +16,9 @@ import FeaturePage from "containers/FeaturePage/Loadable";
 import NotFoundPage from "containers/NotFoundPage/Loadable";
 import LoginPage from "containers/LoginPage/Loadable";
 import EnggCoursesPage from "containers/EnggCoursesPage/Loadable";
+import DiplomaCoursesPage from "containers/DiplomaCoursesPage/Loadable";
 import TimetablePage from "containers/TimetablePage/Loadable";
+import DownloadsPage from "containers/DownloadsPage/Loadable";
 
 
 import Header from "components/Header";
@@ -55,7 +57,9 @@ function App() {
         <Route path="/features" component={FeaturePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/engineering" component={EnggCoursesPage} />
+        <Route path="/diploma" component={DiplomaCoursesPage} />
         <Route path="/timetable" component={TimetablePage} />
+        <Route path="/downloads" component={DownloadsPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
 

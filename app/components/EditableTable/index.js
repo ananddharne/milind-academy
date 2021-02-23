@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography, Button, Modal } from 'antd'
 import './index.css'
-import { Auth, Hub } from "aws-amplify";
+import { Auth, Hub, Storage } from "aws-amplify";
 import { API } from 'aws-amplify';
 
 
@@ -59,6 +59,39 @@ const originData = [];
     const showModal = () => {
       setIsModalVisible(true);
     };
+
+    const uploads3 = async () => {
+      const result = await Storage.put('test.txt', 'Hello');
+      console.log(result)
+    }
+    const downloadS3 = async () => {
+      // const result = await Storage.get(`sample.pdf`, { download: true });
+      // // data.Body is a Blob
+      // result.Body.text().then(string => { 
+      // // handle the String data return String 
+      // console.log(string)
+      // // downloadBlob(result.Body, 'sample.pdf');
+
+      const result = await Storage.list('') // for listing ALL files without prefix, pass '' instead
+      console.log(result)
+    // });
+    }
+
+    function downloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename || 'download';
+      const clickHandler = () => {
+        setTimeout(() => {
+          URL.revokeObjectURL(url);
+          a.removeEventListener('click', clickHandler);
+        }, 150);
+      };
+      a.addEventListener('click', clickHandler, false);
+      a.click();
+      return a;
+    }
   
     const handleOk = () => {
       setIsModalVisible(false);
@@ -319,10 +352,6 @@ const originData = [];
                 }}
               />
             </Form>
-            {
-            user ?   
-            <Button style={{margin: '2.5% 45%'}} onClick={showModal}>Add a new row!</Button> : null
-            }
       <Modal title="Add new timetable row" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
        footer={[
         <Button form="basic" key="submit" htmlType="submit">
