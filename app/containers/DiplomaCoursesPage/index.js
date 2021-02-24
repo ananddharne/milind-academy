@@ -60,10 +60,8 @@ export default function DiplomaCoursesPage() {
     "ENGINEERING MECHANICS",
     "APPLIED MATHEMATICS (M2)",
     "APPLIED MECHANICS",
-    "ENGINEERING MECHANICS",
     "APPLIED PHYSICS",
-    "APPLIED CHEMISTRY",
-    "SY DIPLOMA (CIVIL)"
+    "APPLIED CHEMISTRY"
   ];
   const civilSubjectsSE = [
     " MECHANICS OF STRUCTURES(MOS)",

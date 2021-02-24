@@ -49,7 +49,7 @@ export default function EnggCoursesPage() {
     'Engineering Mechanics', 'M1', 'M2'
   ];
   const civilSubjectsSE = [
-    'M3', 'Mechanics of Structures', 'Fluid Mechanics', 'Structural Analysis 1', 'Fluid Mechanics 1'
+    'M3', 'MECHANICS OF STRUCTURES', 'FLUID MECHANICS', 'STRUCTURAL ANALYSIS', 'STRUCTURAL ANALYSIS 1', 'FLUID MECHANICS 1'
   ];
 
   const civilSubjectsTE = [
@@ -61,7 +61,7 @@ export default function EnggCoursesPage() {
   ];
 
   const mechSubjectsFE = [
-    'Engineering Mechanics', 'M1', 'M2'
+    'ENGINEERING MECHANICS', 'M1', 'M2'
   ];
 
   const mechSubjectsSE = [
@@ -69,11 +69,14 @@ export default function EnggCoursesPage() {
   ];
 
   const mechSubjectsTE = [
-    'DESIGN OF MACHINE ELEMENTS 1', 'HEAT TRANSFER', 'TOM 2', 'TURBO MACHINES', 'DESIGN OF MACHINE ELEMENTS 2', 'RAC', 'MECHATRONICS'
+    'DESIGN OF MACHINE ELEMENTS 1', 'HEAT TRANSFER', 'TOM 2', 'TURBO MACHINES', 'DESIGN OF MACHINE ELEMENTS 2', 'MECHATRONICS'
   ];
 
   const mechSubjectsBE = [
-    'STRUCTURAL DESIGN AND DRAWING 3'
+    'RAC', 
+    'DYNAMICS OF MACHINERY',
+'POWER PLANT ENGINEERING',
+'MECHANICAL SYSTEM DESIGN'
   ];
 
   return (
