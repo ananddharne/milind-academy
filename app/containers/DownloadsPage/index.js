@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Card, Button, Modal, Typography, List, Tabs, Avatar, Upload, message, Icon, Popconfirm, Spin } from 'antd'
 import "./index.css"
 import { Auth, Hub, Storage } from "aws-amplify";
-import { FileImageFilled, FileImageOutlined, DeleteOutlined, InboxOutlined, CloudDownloadOutlined, LinkOutlined, PaperClipOutlined } from '@ant-design/icons';
+import { FileImageFilled, FileImageOutlined, DeleteOutlined, InboxOutlined, UploadOutlined, CloudDownloadOutlined, LinkOutlined, PaperClipOutlined } from '@ant-design/icons';
 import 'ant-design-pro/dist/ant-design-pro.css';
 import CountDown from 'ant-design-pro/lib/CountDown';
 var fileDownload = require('js-file-download');
@@ -20,6 +20,8 @@ export default function DownloadsPage() {
     const [user, setUser] = useState(null);
 
     const [files, setFiles] = useState([])
+
+    const inputRef = useRef(null)
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -79,8 +81,7 @@ export default function DownloadsPage() {
     const deleteFile = async (key) => {
         await Storage.remove(key)
         message.success('File Deleted successfully!');
-        location.reload()
-        
+        listS3Files()
     }
 
     function downloadBlob(blob, filename) {
@@ -101,6 +102,7 @@ export default function DownloadsPage() {
             // alert(url)
             // prompt(url)
             a.click();
+            message.success('File Downloaded successfully!');
             console.log('hey lappy')
             return a;
         } else {
@@ -124,48 +126,52 @@ export default function DownloadsPage() {
         // location.replace(blobUrl)
     }
 
-    const uploadS3 = async () => {
-        const result = await Storage.put('test.txt', 'Hello');
-        console.log(result)
-    }
 
     function cancel(e) {
         console.log(e);
         // message.error('Click on No');
     }
 
-    // const onChange = async (file) => {
-    //     console.log(file)
-    //     await Storage.put(file.name, file,
-    //     )
-    //     setFiles(files => [...files, file])
-    //     // location.reload()
-    //     // console.log('S3 Object key', key)
-    // }
+    const onChanges = async (info) => {
+        console.log(info)
+        // const file = {info}
+        await Storage.put(info.name, info,
+        )
+        message.success('File Uploaded successfully!');
+        listS3Files()
+        // setFiles(files => [...files, info])
+        // location.reload()
+        // console.log('S3 Object key', key)
+    }
 
-    const props = {
-        name: 'file',
-        multiple: false,
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-        async onChange(info) {
-            console.log(info)
-          const { status } = info.file;
-          if (status !== 'uploading') {
-            console.log(info.file, info.fileList);
-          }
-          if (status === 'done') {
-            await Storage.put(info.file.name, info.file,
-                )
-                setFiles(files => [...files, info.file])
-            message.success(`${info.file.name} file uploaded successfully.`);
-            // location.reload()
-            // onChange(info.file.name, info.file)
-          } else if (status === 'error') {
-              console.log(info)
-            message.error(`${info.file.name} file upload failed.`);
-          }
-        },
-      };
+    const triggerInputClick = (e) => {
+       const elem = document.getElementsByClassName('input-file')
+       elem[0].click()
+    }
+
+    // const props = {
+    //     name: 'file',
+    //     multiple: false,
+    //     // action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    //     async onChange(info) {
+    //         console.log(info)
+    //       const { status } = info.file;
+    //       if (status !== 'uploading') {
+    //         console.log(info.file, info.fileList);
+    //       }
+    //       if (status === 'done') {
+    //         // await Storage.put(info.file.name, info.file,
+    //         //     )
+    //         //     setFiles(files => [...files, info.file])
+    //         message.success(`${info.file.name} file uploaded successfully.`);
+    //         // location.reload()
+    //         // onChange(info.file.name, info.file)
+    //       } else if (status === 'error') {
+    //           console.log(info)
+    //         message.error(`${info.file.originFileObj.name} file upload failed.`);
+    //       }
+    //     },
+    //   };
 
     function getUser() {
         return Auth.currentAuthenticatedUser()
@@ -252,23 +258,37 @@ export default function DownloadsPage() {
 
             {
                 user ?
-                // <div>
-                //     <UploadOutlined style={{ fontSize: '165%', color: '#1890ff' }} />
-                //     <input
-                //         type='file'
-                //         onChange={(e) => onChange(e.target.files[0])}
-                //     />
-                //     </div>
-                    <Dragger {...props}>
-                    <p className="ant-upload-drag-icon">
-                      <InboxOutlined />
-                    </p>
-                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                    <p className="ant-upload-hint">
-                      Support for a single upload only; Strictly prohibit from uploading company data or other
-                      band files
-                    </p>
-                  </Dragger> 
+                <div>
+                    <Button onClick={triggerInputClick}>
+                    <UploadOutlined style={{ fontSize: '135%', color: '#1890ff', cursor: 'pointer' }}>
+                       </UploadOutlined>
+                       Upload file
+                    </Button>
+                    
+                    <input
+                     id="input-file"
+                     className="input-file"
+                     ref={inputRef}
+                     style={{display: 'none'}}
+                     type='file'
+                     onClick={() => {}}
+                     onChange={(e) => onChanges(e.target.files[0])}
+                 />
+                    </div>
+                    
+                    // <Dragger 
+                //     name={'file'}
+                //     onChange={(e) => onChanges(e)}
+                //     >
+                //     <p className="ant-upload-drag-icon">
+                //       <InboxOutlined />
+                //     </p>
+                //     <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                //     <p className="ant-upload-hint">
+                //       Support for a single upload only; Strictly prohibit from uploading company data or other
+                //       band files
+                //     </p>
+                //   </Dragger> 
                      : null
 
             }

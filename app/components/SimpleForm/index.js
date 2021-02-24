@@ -62,7 +62,7 @@ class SimpleForm extends Component {
     super(props);
 if(!isMobile) {
   this.state = {
-    opened: true
+    opened: false
   };
 } else {
   this.state = {
