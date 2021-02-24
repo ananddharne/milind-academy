@@ -79,8 +79,10 @@ class SimpleForm extends Component {
     console.log(values)
     const data = {
       name: values[0],
-      message: values[1],
-      // reply_to: values[2]
+      email: values[1],
+      degree: values[2],
+      subject: values[3],
+      phone: values[4]
     }
     console.log(data)
     var xhr = new XMLHttpRequest();
@@ -97,6 +99,7 @@ class SimpleForm extends Component {
         // The form submission was successful
       }
     };
+    // location.reload()
   }
 
   render() {
@@ -110,35 +113,57 @@ class SimpleForm extends Component {
         steps={[
           {
             id: '1',
-            message: 'What is your name?',
+            message: 'Welcome to Milind Academy! Can we get your name please?',
             trigger: 'name',
           },
           {
             id: 'name',
             user: true,
+            trigger: '20',
+          },
+          {
+            id: '20',
+            message: 'Hi {previousValue}! Please type in your email address',
+            trigger: 'email',
+          },
+          {
+            id: 'email',
+            user: true,
             trigger: '3',
           },
           {
             id: '3',
-            message: 'Hi {previousValue}! What are you interested in?',
+            message: 'What are you interested in?',
             trigger: 'course',
           },
           {
             id: 'course',
             options: [
-              { value: 'engg', label: 'Engineering', trigger: '5' },
-              { value: 'diploma', label: 'Diploma', trigger: '5' },
+              { value: 'engg', label: 'Engineering classes', trigger: '50' },
+              { value: 'diploma', label: 'Diploma Classes', trigger: '50' },
+              { value: 'assignment', label: 'Assignment help', trigger: '50' },
+              { value: 'consult', label: 'One off consultation', trigger: '50' },
             ],
           },
           {
+            id: '50',
+            message: 'Got it! Which subject and course? If you chose assignment/consult please add additional info',
+            trigger: 'subject',
+          },
+          {
+            id: 'subject',
+            user: true,
+            trigger: '5',
+          },
+          {
             id: '5',
-            message: 'What is your phone number',
+            message: 'What is your phone number (Press enter to skip)',
             trigger: 'phone',
           },
           {
             id: 'phone',
             user: true,
-            trigger: '7',
+            trigger: 'end-message',
             // validator: (value) => {
             //   if (isNaN(value)) {
             //     return 'value must be a number';
@@ -151,60 +176,60 @@ class SimpleForm extends Component {
             //   return true;
             // },
           },
-          {
-            id: '7',
-            message: 'Great! Check out your summary',
-            trigger: 'review',
-          },
-          {
-            id: 'review',
-            component: <Review />,
-            asMessage: true,
-            trigger: 'update',
-          },
-          {
-            id: 'update',
-            message: 'Would you like to update some field?',
-            trigger: 'update-question',
-          },
-          {
-            id: 'update-question',
-            options: [
-              { value: 'yes', label: 'Yes', trigger: 'update-yes' },
-              { value: 'no', label: 'No', trigger: 'end-message' },
-            ],
-          },
-          {
-            id: 'update-yes',
-            message: 'What field would you like to update?',
-            trigger: 'update-fields',
-          },
-          {
-            id: 'update-fields',
-            options: [
-              { value: 'name', label: 'Name', trigger: 'update-name' },
-              { value: 'course', label: 'Course', trigger: 'update-course' },
-              { value: 'phone', label: 'Phone', trigger: 'update-phone' },
-            ],
-          },
-          {
-            id: 'update-name',
-            update: 'name',
-            trigger: '7',
-          },
-          {
-            id: 'update-course',
-            update: 'course',
-            trigger: '7',
-          },
-          {
-            id: 'update-phone',
-            update: 'phone',
-            trigger: '7',
-          },
+          // {
+          //   id: '7',
+          //   message: 'Great! Check out your summary',
+          //   trigger: 'review',
+          // },
+          // {
+          //   id: 'review',
+          //   component: <Review />,
+          //   asMessage: true,
+          //   trigger: 'update',
+          // },
+          // {
+          //   id: 'update',
+          //   message: 'Would you like to update some field?',
+          //   trigger: 'update-question',
+          // },
+          // {
+          //   id: 'update-question',
+          //   options: [
+          //     { value: 'yes', label: 'Yes', trigger: 'update-yes' },
+          //     { value: 'no', label: 'No', trigger: 'end-message' },
+          //   ],
+          // },
+          // {
+          //   id: 'update-yes',
+          //   message: 'What field would you like to update?',
+          //   trigger: 'update-fields',
+          // },
+          // {
+          //   id: 'update-fields',
+          //   options: [
+          //     { value: 'name', label: 'Name', trigger: 'update-name' },
+          //     { value: 'course', label: 'Course', trigger: 'update-course' },
+          //     { value: 'phone', label: 'Phone', trigger: 'update-phone' },
+          //   ],
+          // },
+          // {
+          //   id: 'update-name',
+          //   update: 'name',
+          //   trigger: '7',
+          // },
+          // {
+          //   id: 'update-course',
+          //   update: 'course',
+          //   trigger: '7',
+          // },
+          // {
+          //   id: 'update-phone',
+          //   update: 'phone',
+          //   trigger: '7',
+          // },
           {
             id: 'end-message',
-            message: 'Thanks! Your data was submitted successfully!',
+            message: 'Thanks! Your information was submitted successfully! We will contact you very soon :) ',
             end: true,
           },
         ]}

@@ -12,4 +12,16 @@
 
 .rsc-ts-bubble {
     background:#1890ff;
+    color: white;
+}
+
+.rsc-ts-user .rsc-ts-bubble {
+    color:black;
+    background:#fff6e5;
+}
+
+.rsc-os-option-element {
+    color:white;
+    background:black;
+    cursor: pointer;
 }
