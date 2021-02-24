@@ -133,11 +133,16 @@ export default function DownloadsPage() {
     }
 
     const onChanges = async (info) => {
-        console.log(info)
-        // const file = {info}
-        await Storage.put(info.name, info,
-        )
+        try {
+            console.log(info)
+            await Storage.put(info.name, info,
+            )
         message.success('File Uploaded successfully!');
+        } catch (e) {
+            console.log(e)
+        message.error('File Upload failed! Please upload a valid file');
+        }
+       
         listS3Files()
         // setFiles(files => [...files, info])
         // location.reload()
