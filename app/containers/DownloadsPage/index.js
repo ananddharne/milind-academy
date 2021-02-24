@@ -85,10 +85,10 @@ export default function DownloadsPage() {
     // }
 
     function downloadBlob2(blob) {
-        // var blobUrl = URL.createObjectURL(blob);
-        // setUrl(blobUrl)
-        // showModal()
-        fileDownload(blob, "jhuop")
+        var blobUrl = URL.createObjectURL(blob);
+        setUrl(blobUrl)
+        showModal()
+        // fileDownload(blob, "jhuop")
         // showBlobModal()
         // alert(blobUrl)
         // open(blobUrl, '_blank');
