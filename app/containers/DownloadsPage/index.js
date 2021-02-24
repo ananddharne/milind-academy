@@ -203,6 +203,8 @@ export default function DownloadsPage() {
                             <div>
                                    
                                 <a 
+                                className={'list-item-name'}
+                                id={'list-itm-name'}
                                 // style={{ fontSize: '125%', color: 'black' }} 
                                 onClick={() => downloadS3(item.key)}>{
                                      <PaperClipOutlined style={{ fontSize: '130%', marginRight: '1%', color:'black' }} />
@@ -250,7 +252,7 @@ export default function DownloadsPage() {
                     </p>
                     <p className="ant-upload-text">Click or drag file to this area to upload</p>
                     <p className="ant-upload-hint">
-                      Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+                      Support for a single upload only; Strictly prohibit from uploading company data or other
                       band files
                     </p>
                   </Dragger> 
