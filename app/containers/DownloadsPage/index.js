@@ -228,7 +228,7 @@ export default function DownloadsPage() {
                                 okText="Yes"
                                 cancelText="No"
                             >
-                                <DeleteOutlined  style={{ fontSize: '125%', color: 'red' }} />
+                                <DeleteOutlined className="delete-icon"/>
                             </Popconfirm> : null
 
                         }

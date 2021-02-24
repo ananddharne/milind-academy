@@ -25,4 +25,13 @@
     color: black;
 }
 
+.delete-icon {
+    font-size: 125%;
+    color: red;
+}
+
+.delete-icon :hover {
+    color: rgb(240, 113, 113)
+}
+
 
