@@ -1,3 +1,25 @@
 .ant-avatar-circle {
     color: white !important
 }
+
+/* down-list-itm {
+    cursor: pointer;
+} */
+
+.ant-list-item:hover {
+    /* color: #1890ff !important; */
+    background: #fafafa;
+}
+
+.download-icon {
+    font-size: 130%;
+    margin-right: 1%;
+}
+
+.download-icon:hover {
+
+    color: #1890ff !important;
+    
+}
+
+
