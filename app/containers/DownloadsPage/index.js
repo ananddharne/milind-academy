@@ -148,7 +148,7 @@ export default function DownloadsPage() {
                 )
                 setFiles(files => [...files, info.file])
             message.success(`${info.file.name} file uploaded successfully.`);
-            location.reload()
+            // location.reload()
             // onChange(info.file.name, info.file)
           } else if (status === 'error') {
               console.log(info)
