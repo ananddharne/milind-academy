@@ -55,7 +55,18 @@ export default function DownloadsPage() {
         // result.Body.text().then(string => {
             // alert(urls)
             // downloadBlob(result.Body, itemKey);
-            downloadBlob2(result.Body, itemKey)
+            // downloadBlob2(result.Body, itemKey)
+            console.log(result)
+            var reader = new FileReader();
+    reader.onload = function(e) {
+       var bdata = btoa(reader.result);
+       var datauri = 'data:' + result.Body.type + ';base64,' + bdata;
+        open(datauri);
+       newWindow = setTimeout(function() {
+           newWindow.document.title = itemKey;
+       }, 10);
+    };
+    reader.readAsBinaryString(result.Body);
         // })
     }
 
