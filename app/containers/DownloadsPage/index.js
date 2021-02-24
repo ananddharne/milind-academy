@@ -117,12 +117,23 @@ export default function DownloadsPage() {
     }
 
     function downloadBlob2(blob, name) {
-        var blobUrl = URL.createObjectURL(blob);
-        setUrl(blobUrl)
+        // var blobUrl = URL.createObjectURL(blob);
+        // setUrl(blobUrl)
+                  var reader = new FileReader();
+    reader.onload = function(e) {
+       var bdata = btoa(reader.result);
+       var datauri = 'data:' + result.Body.type + ';base64,' + bdata;
+        open(datauri, itemKey);
+       const newWindow = setTimeout(function() {
+           newWindow.document.title = itemKey;
+       }, 10);
+    };
+    reader.readAsBinaryString(blob);
+
         // showModal()
         // alert(blobUrl)
-        open(blobUrl, '_blank');
-        location.replace(blobUrl)
+        // open(blobUrl, '_blank');
+        // location.replace(blobUrl)
     }
 
 
