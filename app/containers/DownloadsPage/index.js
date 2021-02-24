@@ -78,7 +78,9 @@ export default function DownloadsPage() {
 
     const deleteFile = async (key) => {
         await Storage.remove(key)
+        message.success('File Deleted successfully!');
         location.reload()
+        
     }
 
     function downloadBlob(blob, filename) {
@@ -119,7 +121,7 @@ export default function DownloadsPage() {
 
     function cancel(e) {
         console.log(e);
-        message.error('Click on No');
+        // message.error('Click on No');
     }
 
     const onChange = async (file) => {
@@ -211,7 +213,7 @@ export default function DownloadsPage() {
                         />
                         <a ></a>
                         <div onClick={() => downloadS3(item.key)} style={{cursor: 'pointer', margin: "1.5%"}}>
-                                    <DownloadOutlined/>
+                                    <DownloadOutlined style={{ fontSize: '125%', marginRight: '1%' }}/>
                          </div>
                         { user ?
                             <Popconfirm
