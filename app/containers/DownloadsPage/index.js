@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Card, Button, Modal, Typography, List, Tabs, Avatar, Upload, message, Icon, Popconfirm } from 'antd'
+import { Card, Button, Modal, Typography, List, Tabs, Avatar, Upload, message, Icon, Popconfirm, Spin } from 'antd'
 import "./index.css"
 import { Auth, Hub, Storage } from "aws-amplify";
 import { FileImageFilled, FileImageOutlined, DeleteOutlined, InboxOutlined, CloudDownloadOutlined, LinkOutlined, PaperClipOutlined } from '@ant-design/icons';
 import 'ant-design-pro/dist/ant-design-pro.css';
 import CountDown from 'ant-design-pro/lib/CountDown';
 var fileDownload = require('js-file-download');
+import {isMobile} from 'react-device-detect';
 
 
 const { Dragger } = Upload;
@@ -46,7 +47,6 @@ export default function DownloadsPage() {
 
     const listS3Files = async () => {
         const result = await Storage.list('') // for listing ALL files without prefix, pass '' instead
-        console.log(result)
         setFiles(result)
     }
 
@@ -87,27 +87,37 @@ export default function DownloadsPage() {
         const url = URL.createObjectURL(blob);
         // setUrl(url)
         // const b = `<a href=${url}></a>`
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename || 'download';
-        const clickHandler = () => {
-            setTimeout(() => {
-                URL.revokeObjectURL(url);
-                a.removeEventListener('click', clickHandler);
-            }, 150);
-        };
-        a.addEventListener('click', clickHandler, false);
-        // alert(url)
-        // prompt(url)
-        a.click();
-        return a;
+        if(!isMobile) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename || 'download';
+            const clickHandler = () => {
+                setTimeout(() => {
+                    URL.revokeObjectURL(url);
+                    a.removeEventListener('click', clickHandler);
+                }, 150);
+            };
+            a.addEventListener('click', clickHandler, false);
+            // alert(url)
+            // prompt(url)
+            a.click();
+            console.log('hey lappy')
+            return a;
+        } else {
+            var blobUrl = URL.createObjectURL(blob);
+            setUrl(blobUrl)
+            // fileDownload(blob, filename)
+            location.replace(blobUrl)
+            console.log('hey mobile')
+
+        }
+       
     }
 
     function downloadBlob2(blob, name) {
         var blobUrl = URL.createObjectURL(blob);
         setUrl(blobUrl)
         // showModal()
-        // fileDownload(blob, name)
         // showBlobModal()
         // alert(blobUrl)
         // open(blobUrl, '_blank');
@@ -185,6 +195,8 @@ export default function DownloadsPage() {
                 {/* <CountDown style={{ fontSize: 20 }} target={targetTime} /> */}
 
             </Modal>
+           {
+               files.length?
             <List
                 itemLayout="horizontal"
                 dataSource={files}
@@ -235,7 +247,8 @@ export default function DownloadsPage() {
 
                     </List.Item>
                 )}
-            />
+            /> : <Spin/>
+                    }
 
             {
                 user ?
