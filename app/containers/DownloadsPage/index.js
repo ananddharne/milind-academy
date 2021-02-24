@@ -108,8 +108,8 @@ export default function DownloadsPage() {
             // var blobUrl = URL.createObjectURL(blob);
             // setUrl(blobUrl)
             // fileDownload(blob, filename)
-            downloadBlob2(blob)
             alert('mobile')
+            downloadBlob2(blob)
             // location.replace(blobUrl)
 
         }
@@ -119,7 +119,7 @@ export default function DownloadsPage() {
     function downloadBlob2(blob, name) {
         // var blobUrl = URL.createObjectURL(blob);
         // setUrl(blobUrl)
-                  var reader = new FileReader();
+    var reader = new FileReader();
     reader.onload = function(e) {
        var bdata = btoa(reader.result);
        var datauri = 'data:' + result.Body.type + ';base64,' + bdata;
