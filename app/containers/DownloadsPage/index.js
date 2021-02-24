@@ -124,14 +124,14 @@ export default function DownloadsPage() {
         // message.error('Click on No');
     }
 
-    const onChange = async (file) => {
-        console.log(file)
-        await Storage.put(file.name, file,
-        )
-        setFiles(files => [...files, file])
-        // location.reload()
-        // console.log('S3 Object key', key)
-    }
+    // const onChange = async (file) => {
+    //     console.log(file)
+    //     await Storage.put(file.name, file,
+    //     )
+    //     setFiles(files => [...files, file])
+    //     // location.reload()
+    //     // console.log('S3 Object key', key)
+    // }
 
     const props = {
         name: 'file',
@@ -146,11 +146,12 @@ export default function DownloadsPage() {
           if (status === 'done') {
             await Storage.put(info.file.name, info.file,
                 )
-                setFiles(files => [...files, file])
+                setFiles(files => [...files, info.file])
             message.success(`${info.file.name} file uploaded successfully.`);
-            onChanges(info.file.name, info.file.originFileObj)
+            location.reload()
+            // onChange(info.file.name, info.file)
           } else if (status === 'error') {
-              console.log
+              console.log(info)
             message.error(`${info.file.name} file upload failed.`);
           }
         },
