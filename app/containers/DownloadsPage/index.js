@@ -103,7 +103,7 @@ export default function DownloadsPage() {
             // prompt(url)
             a.click();
             message.success('File Downloaded successfully!');
-            console.log('hey lappy')
+            alert('hey lappy')
             return a;
         } else {
             // var blobUrl = URL.createObjectURL(blob);
