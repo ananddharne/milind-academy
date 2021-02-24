@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ChatBot from 'react-simple-chatbot';
 import "./index.css"
+import {isMobile} from 'react-device-detect';
 
 class Review extends Component {
   constructor(props) {
@@ -59,11 +60,17 @@ Review.defaultProps = {
 class SimpleForm extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      opened: true
-    };
-  }
+if(!isMobile) {
+  this.state = {
+    opened: true
+  };
+} else {
+  this.state = {
+    opened: false
+  };
+}
+}
+   
 
   toggleFloating = ({ opened }) => {
     this.setState({ opened }); 
