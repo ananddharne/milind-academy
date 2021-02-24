@@ -55,7 +55,7 @@ export default function DownloadsPage() {
         // result.Body.text().then(string => {
             // alert(urls)
             // downloadBlob(result.Body, itemKey);
-            downloadBlob2(result.Body)
+            downloadBlob2(result.Body, itemKey)
         // })
     }
 
@@ -84,15 +84,15 @@ export default function DownloadsPage() {
     //     return a;
     // }
 
-    function downloadBlob2(blob) {
+    function downloadBlob2(blob, name) {
         var blobUrl = URL.createObjectURL(blob);
         setUrl(blobUrl)
         // showModal()
-        // fileDownload(blob, "jhuop")
+        fileDownload(blob, name)
         // showBlobModal()
         // alert(blobUrl)
         // open(blobUrl, '_blank');
-        location.replace(blobUrl)
+        // location.replace(blobUrl)
     }
 
     const uploadS3 = async () => {
