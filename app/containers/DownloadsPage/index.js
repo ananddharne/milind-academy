@@ -88,7 +88,7 @@ export default function DownloadsPage() {
         const url = URL.createObjectURL(blob);
         // setUrl(url)
         // const b = `<a href=${url}></a>`
-        if(isMobile) {
+        if(screen.width > 500) {
             const a = document.createElement('a');
             a.href = url;
             a.download = filename || 'download';
@@ -103,14 +103,13 @@ export default function DownloadsPage() {
             // prompt(url)
             a.click();
             message.success('File Downloaded successfully!');
-            alert('hey lappy')
             return a;
         } else {
             // var blobUrl = URL.createObjectURL(blob);
             // setUrl(blobUrl)
             fileDownload(blob, filename)
+            alert('mobile')
             // location.replace(blobUrl)
-            alert('hey mobile')
 
         }
        
