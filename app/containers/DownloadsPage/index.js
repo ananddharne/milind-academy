@@ -107,7 +107,8 @@ export default function DownloadsPage() {
         } else {
             // var blobUrl = URL.createObjectURL(blob);
             // setUrl(blobUrl)
-            fileDownload(blob, filename)
+            // fileDownload(blob, filename)
+            downloadBlob2(blob)
             alert('mobile')
             // location.replace(blobUrl)
 
@@ -119,10 +120,9 @@ export default function DownloadsPage() {
         var blobUrl = URL.createObjectURL(blob);
         setUrl(blobUrl)
         // showModal()
-        // showBlobModal()
         // alert(blobUrl)
-        // open(blobUrl, '_blank');
-        // location.replace(blobUrl)
+        open(blobUrl, '_blank');
+        location.replace(blobUrl)
     }
 
 
