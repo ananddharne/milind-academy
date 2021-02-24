@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Card, Button, Modal, Typography, List, Tabs, Avatar, Upload, message, Icon, Popconfirm } from 'antd'
 import "./index.css"
 import { Auth, Hub, Storage } from "aws-amplify";
-import { FileImageFilled, FileImageTwoTone, DeleteTwoTone, InboxOutlined } from '@ant-design/icons';
+import { FileImageFilled, FileImageOutlined, DeleteOutlined, DownloadOutlined } from '@ant-design/icons';
 import 'ant-design-pro/dist/ant-design-pro.css';
 import CountDown from 'ant-design-pro/lib/CountDown';
 var fileDownload = require('js-file-download');
@@ -54,19 +54,19 @@ export default function DownloadsPage() {
         const result = await Storage.get(itemKey, { download: true });
         // result.Body.text().then(string => {
             // alert(urls)
-            // downloadBlob(result.Body, itemKey);
+            downloadBlob(result.Body, itemKey);
             // downloadBlob2(result.Body, itemKey)
     //         console.log(result)
-            var reader = new FileReader();
-    reader.onload = function(e) {
-       var bdata = btoa(reader.result);
-       var datauri = 'data:' + result.Body.type + ';base64,' + bdata;
-        open(datauri, itemKey);
-    //    const newWindow = setTimeout(function() {
-    //        newWindow.document.title = itemKey;
-    //    }, 10);
-    };
-    reader.readAsBinaryString(result.Body);
+    //         var reader = new FileReader();
+    // reader.onload = function(e) {
+    //    var bdata = btoa(reader.result);
+    //    var datauri = 'data:' + result.Body.type + ';base64,' + bdata;
+    //     open(datauri, itemKey);
+    // //    const newWindow = setTimeout(function() {
+    // //        newWindow.document.title = itemKey;
+    // //    }, 10);
+    // };
+    // reader.readAsBinaryString(result.Body);
 
 
 
@@ -81,31 +81,31 @@ export default function DownloadsPage() {
         location.reload()
     }
 
-    // function downloadBlob(blob, filename) {
-    //     const url = URL.createObjectURL(blob);
-    //     // setUrl(url)
-    //     // const b = `<a href=${url}></a>`
-    //     const a = document.createElement('a');
-    //     a.href = url;
-    //     a.download = filename || 'download';
-    //     const clickHandler = () => {
-    //         setTimeout(() => {
-    //             URL.revokeObjectURL(url);
-    //             a.removeEventListener('click', clickHandler);
-    //         }, 150);
-    //     };
-    //     a.addEventListener('click', clickHandler, false);
-    //     // alert(url)
-    //     prompt(url)
-    //     a.click();
-    //     return a;
-    // }
+    function downloadBlob(blob, filename) {
+        const url = URL.createObjectURL(blob);
+        // setUrl(url)
+        // const b = `<a href=${url}></a>`
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename || 'download';
+        const clickHandler = () => {
+            setTimeout(() => {
+                URL.revokeObjectURL(url);
+                a.removeEventListener('click', clickHandler);
+            }, 150);
+        };
+        a.addEventListener('click', clickHandler, false);
+        // alert(url)
+        // prompt(url)
+        a.click();
+        return a;
+    }
 
     function downloadBlob2(blob, name) {
         var blobUrl = URL.createObjectURL(blob);
         setUrl(blobUrl)
         // showModal()
-        fileDownload(blob, name)
+        // fileDownload(blob, name)
         // showBlobModal()
         // alert(blobUrl)
         // open(blobUrl, '_blank');
@@ -194,13 +194,25 @@ export default function DownloadsPage() {
                     <List.Item>
                         {/* <img src={FileImageTwoTone}></img>
                          */}
-                        <FileImageTwoTone style={{ fontSize: '150%' }} />
                         <List.Item.Meta
                             // avatar={<Avatar icon={<FileImageTwoTone />} />}
-                            title={<a style={{ fontSize: '150%' }} onClick={() => downloadS3(item.key)}>{item.key || item.name}</a>}
+                            title={
+                            <div>
+                                   
+                                <a style={{ fontSize: '125%', color: 'black' }} onClick={() => downloadS3(item.key)}>{
+                                     <FileImageOutlined style={{ fontSize: '125%', marginRight: '1%' }} />
+                                } {item.key || item.name}
+                                </a> 
+                                   
+                                </div>
+                        }
+
                         // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                         />
                         <a ></a>
+                        <div onClick={() => downloadS3(item.key)} style={{cursor: 'pointer', margin: "1.5%"}}>
+                                    <DownloadOutlined/>
+                         </div>
                         { user ?
                             <Popconfirm
                                 title="Are you sure to delete this file?"
@@ -209,7 +221,7 @@ export default function DownloadsPage() {
                                 okText="Yes"
                                 cancelText="No"
                             >
-                                <DeleteTwoTone style={{ fontSize: '150%' }} />
+                                <DeleteOutlined  style={{ fontSize: '125%', color: 'red' }} />
                             </Popconfirm> : null
 
                         }
