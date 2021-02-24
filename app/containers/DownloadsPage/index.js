@@ -57,22 +57,22 @@ export default function DownloadsPage() {
             // downloadBlob(result.Body, itemKey);
             // downloadBlob2(result.Body, itemKey)
     //         console.log(result)
-    //         var reader = new FileReader();
-    // reader.onload = function(e) {
-    //    var bdata = btoa(reader.result);
-    //    var datauri = 'data:' + result.Body.type + ';base64,' + bdata;
-    //     open(datauri, itemKey);
-    // //    const newWindow = setTimeout(function() {
-    // //        newWindow.document.title = itemKey;
-    // //    }, 10);
-    // };
-    // reader.readAsBinaryString(result.Body);
+            var reader = new FileReader();
+    reader.onload = function(e) {
+       var bdata = btoa(reader.result);
+       var datauri = 'data:' + result.Body.type + ';base64,' + bdata;
+        open(datauri, itemKey);
+    //    const newWindow = setTimeout(function() {
+    //        newWindow.document.title = itemKey;
+    //    }, 10);
+    };
+    reader.readAsBinaryString(result.Body);
 
 
 
-    var FileSaver = require('file-saver');
-    var blob = new Blob([result.Body], {type: result.Body.type});
-    FileSaver.saveAs(blob, itemKey);
+    // var FileSaver = require('file-saver');
+    // var blob = new Blob([result.Body], {type: result.Body.type});
+    // FileSaver.saveAs(blob, itemKey);
         // })
     }
 
