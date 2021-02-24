@@ -104,11 +104,11 @@ export default function DownloadsPage() {
             console.log('hey lappy')
             return a;
         } else {
-            var blobUrl = URL.createObjectURL(blob);
-            setUrl(blobUrl)
-            // fileDownload(blob, filename)
-            location.replace(blobUrl)
-            console.log('hey mobile')
+            // var blobUrl = URL.createObjectURL(blob);
+            // setUrl(blobUrl)
+            fileDownload(blob, filename)
+            // location.replace(blobUrl)
+            alert('hey mobile')
 
         }
        
