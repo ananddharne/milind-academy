@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Card, Button, Modal, Typography, List, Tabs, Avatar, Upload, message, Icon, Popconfirm } from 'antd'
 import "./index.css"
 import { Auth, Hub, Storage } from "aws-amplify";
-import { FileImageFilled, FileImageOutlined, DeleteOutlined, DownloadOutlined } from '@ant-design/icons';
+import { FileImageFilled, FileImageOutlined, DeleteOutlined, InboxOutlined, CloudDownloadOutlined, LinkOutlined, PaperClipOutlined } from '@ant-design/icons';
 import 'ant-design-pro/dist/ant-design-pro.css';
 import CountDown from 'ant-design-pro/lib/CountDown';
 var fileDownload = require('js-file-download');
@@ -133,25 +133,28 @@ export default function DownloadsPage() {
         // console.log('S3 Object key', key)
     }
 
-    // const props = {
-    //     name: 'file',
-    //     multiple: false,
-    //     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    //     async onChange(info) {
-    //         console.log(info)
-    //       const { status } = info.file;
-    //       if (status !== 'uploading') {
-    //         console.log(info.file, info.fileList);
-    //       }
-    //       if (status === 'done') {
-    //         message.success(`${info.file.name} file uploaded successfully.`);
-    //         onChanges(info.file.name, info.file.originFileObj)
-    //       } else if (status === 'error') {
-    //           console.log
-    //         message.error(`${info.file.name} file upload failed.`);
-    //       }
-    //     },
-    //   };
+    const props = {
+        name: 'file',
+        multiple: false,
+        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        async onChange(info) {
+            console.log(info)
+          const { status } = info.file;
+          if (status !== 'uploading') {
+            console.log(info.file, info.fileList);
+          }
+          if (status === 'done') {
+            await Storage.put(info.file.name, info.file,
+                )
+                setFiles(files => [...files, file])
+            message.success(`${info.file.name} file uploaded successfully.`);
+            onChanges(info.file.name, info.file.originFileObj)
+          } else if (status === 'error') {
+              console.log
+            message.error(`${info.file.name} file upload failed.`);
+          }
+        },
+      };
 
     function getUser() {
         return Auth.currentAuthenticatedUser()
@@ -193,16 +196,15 @@ export default function DownloadsPage() {
                 }}
                 size={"large"}
                 renderItem={item => (
-                    <List.Item>
-                        {/* <img src={FileImageTwoTone}></img>
-                         */}
+                    <List.Item className="download-list-item" id="down-list-itm">
                         <List.Item.Meta
-                            // avatar={<Avatar icon={<FileImageTwoTone />} />}
                             title={
                             <div>
                                    
-                                <a style={{ fontSize: '125%', color: 'black' }} onClick={() => downloadS3(item.key)}>{
-                                     <FileImageOutlined style={{ fontSize: '125%', marginRight: '1%' }} />
+                                <a 
+                                // style={{ fontSize: '125%', color: 'black' }} 
+                                onClick={() => downloadS3(item.key)}>{
+                                     <PaperClipOutlined style={{ fontSize: '130%', marginRight: '1%', color:'black' }} />
                                 } {item.key || item.name}
                                 </a> 
                                    
@@ -213,7 +215,7 @@ export default function DownloadsPage() {
                         />
                         <a ></a>
                         <div onClick={() => downloadS3(item.key)} style={{cursor: 'pointer', margin: "1.5%"}}>
-                                    <DownloadOutlined style={{ fontSize: '125%', marginRight: '1%' }}/>
+                                    <CloudDownloadOutlined className="download-icon" style={{  }}/>
                          </div>
                         { user ?
                             <Popconfirm
@@ -234,20 +236,23 @@ export default function DownloadsPage() {
 
             {
                 user ?
-                    <input
-                        type='file'
-                        onChange={(e) => onChange(e.target.files[0])}
-                    />
-                //     <Dragger {...props}>
-                //     <p className="ant-upload-drag-icon">
-                //       <InboxOutlined />
-                //     </p>
-                //     <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                //     <p className="ant-upload-hint">
-                //       Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-                //       band files
-                //     </p>
-                //   </Dragger> 
+                // <div>
+                //     <UploadOutlined style={{ fontSize: '165%', color: '#1890ff' }} />
+                //     <input
+                //         type='file'
+                //         onChange={(e) => onChange(e.target.files[0])}
+                //     />
+                //     </div>
+                    <Dragger {...props}>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                    <p className="ant-upload-hint">
+                      Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+                      band files
+                    </p>
+                  </Dragger> 
                      : null
 
             }
