@@ -88,7 +88,7 @@ export default function DownloadsPage() {
         const url = URL.createObjectURL(blob);
         // setUrl(url)
         // const b = `<a href=${url}></a>`
-        if(!isMobile) {
+        if(isMobile) {
             const a = document.createElement('a');
             a.href = url;
             a.download = filename || 'download';
