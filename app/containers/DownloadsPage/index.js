@@ -5,6 +5,7 @@ import { Auth, Hub, Storage } from "aws-amplify";
 import { FileImageFilled, FileImageTwoTone, DeleteTwoTone, InboxOutlined } from '@ant-design/icons';
 import 'ant-design-pro/dist/ant-design-pro.css';
 import CountDown from 'ant-design-pro/lib/CountDown';
+var fileDownload = require('js-file-download');
 
 
 const { Dragger } = Upload;
@@ -84,9 +85,10 @@ export default function DownloadsPage() {
     // }
 
     function downloadBlob2(blob) {
-        var blobUrl = URL.createObjectURL(blob);
-        setUrl(blobUrl)
-        showModal()
+        // var blobUrl = URL.createObjectURL(blob);
+        // setUrl(blobUrl)
+        // showModal()
+        fileDownload(blob, "jhuop")
         // showBlobModal()
         // alert(blobUrl)
         // open(blobUrl, '_blank');
@@ -103,14 +105,14 @@ export default function DownloadsPage() {
         message.error('Click on No');
     }
 
-    // const onChanges = async (name, file) => {
-    //     console.log(file)
-    //     const { key } = await Storage.put(name, file,
-    //     )
-    //     setFiles(files => [...files, file])
-    //     // location.reload()
-    //     console.log('S3 Object key', key)
-    // }
+    const onChange = async (file) => {
+        console.log(file)
+        await Storage.put(file.name, file,
+        )
+        setFiles(files => [...files, file])
+        // location.reload()
+        // console.log('S3 Object key', key)
+    }
 
     // const props = {
     //     name: 'file',
