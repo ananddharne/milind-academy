@@ -87,12 +87,12 @@ export default function DownloadsPage() {
     function downloadBlob2(blob) {
         var blobUrl = URL.createObjectURL(blob);
         setUrl(blobUrl)
-        showModal()
+        // showModal()
         // fileDownload(blob, "jhuop")
         // showBlobModal()
         // alert(blobUrl)
         // open(blobUrl, '_blank');
-        // location.replace(blobUrl)
+        location.replace(blobUrl)
     }
 
     const uploadS3 = async () => {
