@@ -71,7 +71,7 @@ export default function DownloadsPage() {
 
 
     var FileSaver = require('file-saver');
-    var blob = new Blob([result.Body], {type: "text/plain;charset=utf-8"});
+    var blob = new Blob([result.Body], {type: result.Body.type});
     FileSaver.saveAs(blob, itemKey);
         // })
     }
