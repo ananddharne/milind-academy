@@ -14,12 +14,15 @@
 .download-icon {
     font-size: 130%;
     margin-right: 1%;
+    color: #1890ff !important;
 }
 
 .download-icon:hover {
+    color: #7db6eb !important;
+}
 
-    color: #1890ff !important;
-    
+.list-item-name {
+    color: black;
 }
 
 

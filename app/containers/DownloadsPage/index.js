@@ -124,14 +124,14 @@ export default function DownloadsPage() {
         // message.error('Click on No');
     }
 
-    const onChange = async (file) => {
-        console.log(file)
-        await Storage.put(file.name, file,
-        )
-        setFiles(files => [...files, file])
-        // location.reload()
-        // console.log('S3 Object key', key)
-    }
+    // const onChange = async (file) => {
+    //     console.log(file)
+    //     await Storage.put(file.name, file,
+    //     )
+    //     setFiles(files => [...files, file])
+    //     // location.reload()
+    //     // console.log('S3 Object key', key)
+    // }
 
     const props = {
         name: 'file',
@@ -146,11 +146,12 @@ export default function DownloadsPage() {
           if (status === 'done') {
             await Storage.put(info.file.name, info.file,
                 )
-                setFiles(files => [...files, file])
+                setFiles(files => [...files, info.file])
             message.success(`${info.file.name} file uploaded successfully.`);
-            onChanges(info.file.name, info.file.originFileObj)
+            // location.reload()
+            // onChange(info.file.name, info.file)
           } else if (status === 'error') {
-              console.log
+              console.log(info)
             message.error(`${info.file.name} file upload failed.`);
           }
         },
@@ -202,6 +203,8 @@ export default function DownloadsPage() {
                             <div>
                                    
                                 <a 
+                                className={'list-item-name'}
+                                id={'list-itm-name'}
                                 // style={{ fontSize: '125%', color: 'black' }} 
                                 onClick={() => downloadS3(item.key)}>{
                                      <PaperClipOutlined style={{ fontSize: '130%', marginRight: '1%', color:'black' }} />
@@ -249,7 +252,7 @@ export default function DownloadsPage() {
                     </p>
                     <p className="ant-upload-text">Click or drag file to this area to upload</p>
                     <p className="ant-upload-hint">
-                      Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+                      Support for a single upload only; Strictly prohibit from uploading company data or other
                       band files
                     </p>
                   </Dragger> 
