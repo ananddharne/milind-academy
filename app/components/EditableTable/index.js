@@ -1,11 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Table, Input, InputNumber, Popconfirm, Form, Typography, Button, Modal } from 'antd'
+import { Table, Input, InputNumber, Popconfirm, Form, Typography, Button, Modal, Spin } from 'antd'
 import './index.css'
 import { Auth, Hub, Storage } from "aws-amplify";
 import { API } from 'aws-amplify';
-
 
 const originData = [];
 
@@ -312,6 +311,7 @@ const originData = [];
 
       async function getTableRows() {
         const apiData = await API.get('ttapi', '/timetable');
+        console.log(apiData)
         setData(apiData.data.Items)
       }
 
@@ -339,6 +339,8 @@ const originData = [];
           <div>
           
             <Form form={form} component={false}>
+         { 
+              data.length ?
               <Table
                 id="ant-table-timetable"
                 components={{
@@ -354,8 +356,9 @@ const originData = [];
                 pagination={{
                   onChange: cancel,
                 }}
-              />
-            </Form>
+              /> : <Spin style={{marginTop: '50%'}}/>
+  }
+            </Form> 
             {
             user ?   
             <Button style={{margin: '2.5% 45%'}} onClick={showModal}>Add a new row!</Button> : null
