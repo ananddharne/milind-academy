@@ -313,7 +313,7 @@ export default function DownloadsPage() {
                 {<Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
                     <Form.Item
                         name={['user', 'name']}
-                        label="Name"
+                        label={"Name"}
                             rules={[{ required: true, message: 'Please input your Name!' }]}
                    
                     >
@@ -321,7 +321,7 @@ export default function DownloadsPage() {
                     </Form.Item>
                     <Form.Item
                         name={['user', 'email']}
-                        label="Email"
+                        label={"Email"}
                         rules={[
                             {
                                 type: 'email',
@@ -333,7 +333,7 @@ export default function DownloadsPage() {
                     </Form.Item>
                     <Form.Item
                         name={['user', 'Phone']}
-                        label="Phone"
+                        label={"Phone"}
                         // rules={[
                         //     {
                         //         type: 'number'
