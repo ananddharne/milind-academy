@@ -125,7 +125,7 @@ export default function DownloadsPage() {
        var datauri = 'data:' + blob.type + ';base64,' + bdata;
         open(datauri, itemKey);
        const newWindow = setTimeout(function() {
-           newWindow.document.title = itemKey;
+           newWindow.document.title = name;
        }, 10);
     };
     reader.readAsBinaryString(blob);
