@@ -123,7 +123,7 @@ export default function DownloadsPage() {
     reader.onload = function(e) {
        var bdata = btoa(reader.result);
        var datauri = 'data:' + blob.type + ';base64,' + bdata;
-        open(datauri, itemKey);
+        open(datauri, name);
        const newWindow = setTimeout(function() {
            newWindow.document.title = name;
        }, 10);
