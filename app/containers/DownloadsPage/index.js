@@ -10,8 +10,6 @@ import { isMobile } from 'react-device-detect';
 import { set } from 'lodash';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
-
-
 const { Dragger } = Upload;
 
 
@@ -124,17 +122,17 @@ export default function DownloadsPage() {
 
     const layout = {
         labelCol: {
-            span: 8,
+            span: 10,
         },
         wrapperCol: {
             span: 10,
         },
     };
     const validateMessages = {
-        required: '${label} is required!',
+        required: 'This field is required!',
         types: {
-            email: '${label} is not a valid email!',
-            number: '${label} is not a valid number!',
+            email: 'email is not a valid email!',
+            number: 'phone is not a valid!',
         },
     };
 
@@ -273,7 +271,8 @@ export default function DownloadsPage() {
     }, files);
     return (
         <div style={{ textAlign: 'center' }}>
-
+{
+       !user ?
             <Modal title={
                 <span>
                     <span> Please fill your contact details to proceed! </span>
@@ -282,7 +281,7 @@ export default function DownloadsPage() {
     style={{marginLeft: '90%'}}
     key={key}
     duration={30}
-    size={40}
+    size={30}
     strokeWidth={1}
      onComplete={() => {
                setCancelState(false)
@@ -310,18 +309,18 @@ export default function DownloadsPage() {
                 closable={false}
             >
                 
-                {<Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+                {<Form name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
                     <Form.Item
                         name={['user', 'name']}
-                        label={"Name"}
+                        // label={"Name"}
                             rules={[{ required: true, message: 'Please input your Name!' }]}
                    
                     >
-                        <Input />
+                        <Input placeholder="Enter your name..." />
                     </Form.Item>
                     <Form.Item
                         name={['user', 'email']}
-                        label={"Email"}
+                        // label={"Email"}
                         rules={[
                             {
                                 type: 'email',
@@ -329,24 +328,28 @@ export default function DownloadsPage() {
                             },
                         ]}
                     >
-                        <Input />
+                        <Input placeholder="Enter your email..." />
                     </Form.Item>
                     <Form.Item
                         name={['user', 'Phone']}
-                        label={"Phone"}
-                        // rules={[
-                        //     {
-                        //         type: 'number'
-                        //     },
-                        // ]}
+                        // label={"Phone"}
+                        rules={[
+                            {
+                                required: true,
+                                type: 'phone'
+                                // message: 'Please input your ph no!'
+                            },
+                        ]}
                     >
-                        <Input />
+                        <Input placeholder="Enter your phone number..." />
                     </Form.Item>
-                    <Form.Item name={['user', 'website']} label="Subject and Course">
-                        <Input />
+                    <Form.Item name={['user', 'website']} 
+                    // label="Subject and Course"
+                    >
+                        <Input placeholder="Subject and Course" />
                     </Form.Item>
-                    <Form.Item name={['user', 'introduction']} label="Additional info">
-                        <Input.TextArea />
+                    <Form.Item name={['user', 'introduction']}>
+                        <Input.TextArea placeholder="Additional info" />
                     </Form.Item>
                     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                         <Button type="primary" htmlType="submit">
@@ -355,7 +358,8 @@ export default function DownloadsPage() {
                     </Form.Item>
                 </Form>
                 }
-            </Modal>
+            </Modal> : null
+}
 
             {
                 files.length ?
@@ -380,7 +384,7 @@ export default function DownloadsPage() {
                                                 className={'list-item-name'}
                                                 id={'list-itm-name'}
                                                 // style={{ fontSize: '125%', color: 'black' }} 
-                                                onClick={() => showModal(item.key)}>{
+                                                onClick={() => user? downloadS3(item.key) : showModal(item.key)}>{
                                                     <PaperClipOutlined style={{ fontSize: '130%', marginRight: '1%', color: 'black' }} />
                                                 } {item.key || item.name}
                                             </a>
@@ -391,7 +395,7 @@ export default function DownloadsPage() {
                                 // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                                 />
                                 <a ></a>
-                                <div onClick={() => showModal(item.key)} style={{ cursor: 'pointer', margin: "1.5%" }}>
+                                <div onClick={ () => user? downloadS3(item.key) : showModal(item.key)} style={{ cursor: 'pointer', margin: "1.5%" }}>
                                     <CloudDownloadOutlined className="download-icon" style={{}} />
                                 </div>
 
