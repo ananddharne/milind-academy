@@ -275,7 +275,7 @@ export default function DownloadsPage() {
        !user ?
             <Modal title={
                 <span>
-                    <span> Please fill your contact details to proceed! </span>
+                    <span> We need your contact details to proceed! </span>
                      <CountdownCircleTimer
     isPlaying={isTimerPlaying}
     style={{marginLeft: '90%'}}
@@ -351,7 +351,7 @@ export default function DownloadsPage() {
                     <Form.Item name={['user', 'introduction']}>
                         <Input.TextArea placeholder="Additional info" />
                     </Form.Item>
-                    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                    <Form.Item wrapperCol={{ ...layout.wrapperCol }}>
                         <Button type="primary" htmlType="submit">
                             Download attachment
 </Button>
