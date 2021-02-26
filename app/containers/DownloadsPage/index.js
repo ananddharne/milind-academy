@@ -34,6 +34,9 @@ export default function DownloadsPage() {
     const [itemKey, setItemKey] = useState(null);
     const [key, setKey] = useState(0);
 
+    const [form] = Form.useForm();
+
+
 
     const [current, setCurrent] = useState(null);
 
@@ -57,7 +60,9 @@ export default function DownloadsPage() {
     };
 
     const handleCancel = () => {
+        form.resetFields()
         setIsModalVisible(false);
+
     };
 
 
@@ -141,6 +146,7 @@ export default function DownloadsPage() {
             }
           };
         setIsModalVisible(false)
+        form.resetFields();
         console.log(values);
     };
 
@@ -285,16 +291,19 @@ export default function DownloadsPage() {
     key={key}
     duration={30}
     size={30}
-    strokeWidth={1}
+    strokeWidth={2.5}
      onComplete={() => {
                setCancelState(false)
                setKey(prevKey => prevKey + 1)
                setIsTimerPlaying(false)
               }}
+    trailColor={'white'}
+    trailStrokeWidth={2.5}
+    // strokeLinecap={square}
     colors={[
-      ['#004777', 0.33],
-      ['#F7B801', 0.33],
-      ['#A30000', 0.33],
+      ['#008000', 0.33],
+      ['#ffff00', 0.33],
+      ['#ff0000 ', 0.33],
     ]}
   >
     {({ remainingTime }) => remainingTime}
@@ -312,7 +321,7 @@ export default function DownloadsPage() {
                 closable={false}
             >
                 
-                {<Form name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+                {<Form form={form} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
                     <Form.Item
                         name={['user', 'name']}
                         // label={"Name"}
