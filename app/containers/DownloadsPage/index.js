@@ -9,6 +9,7 @@ var fileDownload = require('js-file-download');
 import { isMobile } from 'react-device-detect';
 import { set } from 'lodash';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 
 const { Dragger } = Upload;
 
@@ -132,7 +133,7 @@ export default function DownloadsPage() {
         required: 'This field is required!',
         types: {
             email: 'email is not a valid email!',
-            number: 'phone is not a valid!',
+            phone: 'phone is not a valid!',
         },
     };
 
@@ -275,7 +276,7 @@ export default function DownloadsPage() {
        !user ?
             <Modal title={
                 <span>
-                    <span> Please fill your contact details to proceed! </span>
+                    <span> Enter your contact details... </span>
                      <CountdownCircleTimer
     isPlaying={isTimerPlaying}
     style={{marginLeft: '90%'}}
@@ -331,15 +332,26 @@ export default function DownloadsPage() {
                         <Input placeholder="Enter your email..." />
                     </Form.Item>
                     <Form.Item
-                        name={['user', 'Phone']}
+                        name={"phone"}
                         // label={"Phone"}
                         rules={[
                             {
-                                required: true,
-                                type: 'phone'
-                                // message: 'Please input your ph no!'
+                              required: true,
+                              message: 'Phone is required!',
                             },
-                        ]}
+                            ({ getFieldValue }) => ({
+                              validator(_, value) {
+                                var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                                if(!value.match(phoneno)) {
+                                    return Promise.reject('Invalid phone number');
+                                }
+                                // if (value === '1') {
+                                // //   return Promise.resolve();
+                                // }
+                                // return Promise.reject('This is not a valid phone number');
+                              },
+                            }),
+                          ]}
                     >
                         <Input placeholder="Enter your phone number..." />
                     </Form.Item>
@@ -351,7 +363,7 @@ export default function DownloadsPage() {
                     <Form.Item name={['user', 'introduction']}>
                         <Input.TextArea placeholder="Additional info" />
                     </Form.Item>
-                    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                    <Form.Item wrapperCol={{ ...layout.wrapperCol }}>
                         <Button type="primary" htmlType="submit">
                             Download attachment
 </Button>
