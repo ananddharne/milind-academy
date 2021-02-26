@@ -48,27 +48,6 @@ export default function DownloadsPage() {
         setIsModalVisible(true);
         setIsTimerPlaying(true)
         setCancelState(true)
-       
-        // setTimeout(function(){
-            // const btn = document.getElementsByClassName('ant-modal-close')
-            // console.log(btn)
-            // btn[0].style.color = 'white';
-            // btn[0].style.cursor = 'none';
-            // btn[0].style.display = 'block'
-           
-    // }, 3);
-
-//     setTimeout(function(){
-       
-//         // btn[0].style.display = 'block'
-// }, 50000);
-
-// setInterval( function () {
-//     const btn = document.getElementsByClassName('ant-modal-close')
-//     btn[0].style.color = 'black'
-//     btn[0].style.cursor = 'pointer';
-//  }, 30000);
-
 
         // downloadS3(itemKey)
     };
@@ -139,6 +118,28 @@ export default function DownloadsPage() {
 
     const onFinish = (values) => {
         downloadS3(itemKey)
+        const data = {
+            name: values.user.name,
+            email: values.user.email,
+            degree: values.user.subject,
+            subject: values.user.subject,
+            phone: values.user.phone
+          }
+          console.log(data)
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', ' https://hz03bsqszl.execute-api.us-east-1.amazonaws.com/default/SendEmailMilindAcademy', true);
+          xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
+          xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+      
+          // Send the collected data as JSON
+          xhr.send(JSON.stringify(data));
+      
+          // Callback function
+          xhr.onloadend = response => {
+            if (response.target.status === 200) {
+              // The form submission was successful
+            }
+          };
         setIsModalVisible(false)
         console.log(values);
     };
@@ -274,7 +275,8 @@ export default function DownloadsPage() {
         <div style={{ textAlign: 'center' }}>
 {
        !user ?
-            <Modal title={
+            <Modal 
+            title={
                 <span>
                     <span> Enter your contact details... </span>
                      <CountdownCircleTimer
@@ -332,7 +334,7 @@ export default function DownloadsPage() {
                         <Input placeholder="Enter your email..." />
                     </Form.Item>
                     <Form.Item
-                        name={"phone"}
+                         name={['user', 'phone']}
                         // label={"Phone"}
                         rules={[
                             {
@@ -342,20 +344,21 @@ export default function DownloadsPage() {
                             ({ getFieldValue }) => ({
                               validator(_, value) {
                                 var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-                                if(!value.match(phoneno)) {
+                                if(value.match(phoneno)) {
+                                    return Promise.resolve('all good')
+                                } else {
                                     return Promise.reject('Invalid phone number');
                                 }
-                                // if (value === '1') {
-                                // //   return Promise.resolve();
-                                // }
-                                // return Promise.reject('This is not a valid phone number');
+                                
+                                
+
                               },
                             }),
                           ]}
                     >
                         <Input placeholder="Enter your phone number..." />
                     </Form.Item>
-                    <Form.Item name={['user', 'website']} 
+                    <Form.Item name={['user', 'subject']} 
                     // label="Subject and Course"
                     >
                         <Input placeholder="Subject and Course" />
@@ -365,8 +368,9 @@ export default function DownloadsPage() {
                     </Form.Item>
                     <Form.Item wrapperCol={{ ...layout.wrapperCol }}>
                         <Button type="primary" htmlType="submit">
+                        <PaperClipOutlined style={{ fontSize: '120%' }} />
                             Download attachment
-</Button>
+                        </Button>
                     </Form.Item>
                 </Form>
                 }
