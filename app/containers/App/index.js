@@ -19,6 +19,7 @@ import EnggCoursesPage from "containers/EnggCoursesPage/Loadable";
 import DiplomaCoursesPage from "containers/DiplomaCoursesPage/Loadable";
 import TimetablePage from "containers/TimetablePage/Loadable";
 import DownloadsPage from "containers/DownloadsPage/Loadable";
+import AboutUsPage from "containers/AboutUsPage/Loadable";
 
 
 import Header from "components/Header";
@@ -59,6 +60,7 @@ function App() {
         <Route path="/diploma" component={DiplomaCoursesPage} />
         <Route path="/timetable" component={TimetablePage} />
         <Route path="/downloads" component={DownloadsPage} />
+        <Route path="/aboutus" component={AboutUsPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
 

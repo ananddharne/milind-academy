@@ -1,15 +1,15 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Carousel, Button } from 'antd'
+import { Carousel, Button, Rate } from 'antd'
 import './index.css'
 
 function ReviewsPanel() {
     const [reviews, setReviews] = useState([
         {
-            name: 'Deepika',
+            name: 'Shraddha Kadam',
             stars: '⭐⭐⭐⭐⭐',
-            review: 'Superb class for engineering students. Milind sir teaches very well and clears all the doubts of students.'
+            review: 'Best ... Sir Builds our foundation of basic subjects . and also helps learning in easy methods . Sir has a higher patience level to tolerate all kind of students.'
         },
         {
             name: 'Harsh Munot',
@@ -36,64 +36,65 @@ function ReviewsPanel() {
         <Carousel classname="reviews" arrows autoplay
         >
              <div className="carousel-item-div">
-        <h1 style={{color: 'black', fontSize: '180%', color: '#ED7170'}}> OUR GLOWING REVIEWS! </h1>
-        <h1 style={{color: 'black'}}>
-          Deepika
-        </h1>
+        <h1 style={{color: 'black', fontSize: '180%', color: 'white'}}> Our Glowing Reviews  </h1>
+        <h2 style={{color: 'black'}}>
+          Shraddha Kadam
+        </h2>
         <p>
-        ⭐⭐⭐⭐⭐
+        <Rate allowHalf disabled defaultValue={5}/>
         </p>
         <p>
-          <i style={{fontSize: '120%'}}>
-          Superb class for engineering students. Milind sir teaches very well and clears all the doubts of students.
-          </i>
+          <p style={{fontSize: '120%'}}>
+          Best ... Sir Builds our foundation of basic subjects . and also helps learning in easy methods . 
+          Sir has a higher patience level to tolerate all kind of students.
+          </p>
         </p>
-        <h1 style={{color: 'black', fontSize: '110%'}}> <i> As seen on <a style={{color: '#ED7170'}} href="https://www.justdial.com/Pune/Milind-Academy-Opp-Bhavkar-Bhavan-Shivaji-Nagar/020PXX20-XX20-090626131541-H9A8_BZDET" target="_blank"> Justdial </a></i> </h1>
+        <h1 style={{color: 'black', fontSize: '110%', padding: '0.5%'}}> <p> As seen on <a style={{color: 'white'}} href="https://www.justdial.com/Pune/Milind-Academy-Opp-Bhavkar-Bhavan-Shivaji-Nagar/020PXX20-XX20-090626131541-H9A8_BZDET" target="_blank"> Justdial </a></p> </h1>
         </div>
         <div className="carousel-item-div">
-        <h1 style={{color: 'black', fontSize: '180%', color: '#ED7170'}}> OUR GLOWING REVIEWS! </h1>
-        <h1 style={{color: 'black'}}>
+        <h1 style={{color: 'black', fontSize: '180%', color: 'white'}}> Our Glowing Reviews   </h1>
+        <h2 style={{color: 'black'}}>
           Ankit Mohite
-        </h1>
+        </h2>
         <p>
-        ⭐⭐⭐⭐
+        <Rate allowHalf disabled defaultValue={4}/>
         </p>
         <p>
-          <i style={{fontSize: '120%'}}>
+          <p style={{fontSize: '120%'}}>
           Best Class for diploma and engineering technical subjects,teaching method of milind sir is very good,each topic explained in detail and all doubts is cleared after every class. Overall very nice experience here
-          </i>
+          </p>
         </p>
-        <h1 style={{color: 'black', fontSize: '110%'}}> <i> As seen on <a style={{color: '#ED7170'}} href="https://www.justdial.com/Pune/Milind-Academy-Opp-Bhavkar-Bhavan-Shivaji-Nagar/020PXX20-XX20-090626131541-H9A8_BZDET" target="_blank"> Justdial </a></i> </h1>
+        <h1 style={{color: 'black', fontSize: '110%'}}> <p> As seen on <a style={{color: 'white'}} href="https://www.justdial.com/Pune/Milind-Academy-Opp-Bhavkar-Bhavan-Shivaji-Nagar/020PXX20-XX20-090626131541-H9A8_BZDET" target="_blank"> Justdial </a></p> </h1>
         </div>
         <div className="carousel-item-div">
-        <h1 style={{color: 'black', fontSize: '180%', color: '#ED7170'}}> OUR GLOWING REVIEWS! </h1>       
-        <h1 style={{color: 'black'}}>
+        <h1 style={{color: 'black', fontSize: '180%', color: 'white'}}> Our Glowing Reviews </h1>       
+        <h2 style={{color: 'black'}}>
           Hrishikesh Kulkarni
-        </h1>
+        </h2>
         <p>
-        ⭐⭐⭐⭐⭐
+        <Rate allowHalf disabled defaultValue={5}/>
         </p>
         <p>
-          <i style={{fontSize: '120%'}}>
+          <p style={{fontSize: '120%'}}>
           This is one of the best class for diploma n degree.I personally joined it,for diploma n degree too.If your concepts are not clear or you find difficulties in the understand you must join it.It start with basic.
-          </i>
+          </p>
         </p>
-        <h1 style={{color: 'black', fontSize: '110%'}}> <i> As seen on <a style={{color: '#ED7170'}} href="https://www.justdial.com/Pune/Milind-Academy-Opp-Bhavkar-Bhavan-Shivaji-Nagar/020PXX20-XX20-090626131541-H9A8_BZDET" target="_blank"> Justdial </a></i> </h1>
+        <h1 style={{color: 'black', fontSize: '110%'}}> <p> As seen on <a style={{color: 'white'}} href="https://www.justdial.com/Pune/Milind-Academy-Opp-Bhavkar-Bhavan-Shivaji-Nagar/020PXX20-XX20-090626131541-H9A8_BZDET" target="_blank"> Justdial </a></p> </h1>
         </div>
         <div className="carousel-item-div">
-        <h1 style={{color: 'black', fontSize: '180%', color: '#ED7170'}}> OUR GLOWING REVIEWS! </h1>        
-        <h1 style={{color: 'black'}}>
+        <h1 style={{color: 'black', fontSize: '180%', color: 'white'}}> Our Glowing Reviews  </h1>        
+        <h2 style={{color: 'black'}}>
           Harsh Munot
-        </h1>
+        </h2>
         <p>
-        ⭐⭐⭐⭐
+        <Rate allowHalf disabled defaultValue={4.5}/>
         </p>
         <p>
-          <i style={{fontSize: '120%'}}>
+          <p style={{fontSize: '120%'}}>
           This is one of the best class for degree and diploma. I joined it for diploma, they always teach you from basic and if there are any doubts, they always clear it. One must join this class if there is need to complete diploma or degree
-          </i>
+          </p>
         </p>
-        <h1 style={{color: 'black', fontSize: '110%'}}> <i> As seen on <a style={{color: '#ED7170'}} href="https://www.justdial.com/Pune/Milind-Academy-Opp-Bhavkar-Bhavan-Shivaji-Nagar/020PXX20-XX20-090626131541-H9A8_BZDET" target="_blank"> Justdial </a></i> </h1>
+        <h1 style={{color: 'black', fontSize: '110%'}}> <p> As seen on <a style={{color: 'white'}} href="https://www.justdial.com/Pune/Milind-Academy-Opp-Bhavkar-Bhavan-Shivaji-Nagar/020PXX20-XX20-090626131541-H9A8_BZDET" target="_blank"> Justdial </a></p> </h1>
         </div>
 
       </Carousel>

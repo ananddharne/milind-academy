@@ -5,8 +5,13 @@ import { Card, Button, Modal, Typography, List, Tabs } from 'antd'
 import "./index.css"
 import civil from "./civil.jpg"
 import mechanical from "./mechanical-engg.jpg"
-import electrical from "./electrical-engg.jpg"
+import electrical from "./electrical.jpg"
 import computer from "./computer-engg.jpg"
+import auto from "./download.jpg"
+import elex from "./electronics1.jpg"
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 
 
@@ -17,6 +22,10 @@ export default function DiplomaCoursesPage() {
   const [isCivilModalVisible, setIsCivilModalVisible] = useState(false);
   const [isMechModalVisible, setIsMechModalVisible] = useState(false);
   const [isCompModalVisible, setIsCompModalVisible] = useState(false);
+  const [isAutoModalVisible, setIsAutoModalVisible] = useState(false);
+  const [isElexModalVisible, setIsElexModalVisible] = useState(false);
+
+
 
 
 
@@ -28,6 +37,14 @@ export default function DiplomaCoursesPage() {
     setIsCivilModalVisible(false);
   };
 
+  const handleOkElex = () => {
+    setIsElexModalVisible(false);
+  };
+
+  const handleOkAuto = () => {
+    setIsAutoModalVisible(false);
+  };
+
   const handleCancelCivil = () => {
     setIsCivilModalVisible(false);
   };
@@ -35,6 +52,15 @@ export default function DiplomaCoursesPage() {
 
   const showMechModal = () => {
     setIsMechModalVisible(true);
+  };
+
+
+  const showAutoModal = () => {
+    setIsAutoModalVisible(true);
+  };
+
+  const showElexModal = () => {
+    setIsElexModalVisible(true);
   };
 
   const showCompModal = () => {
@@ -48,10 +74,6 @@ export default function DiplomaCoursesPage() {
   const handleOkComp = () => {
     setIsCompModalVisible(false)
   }
-
-  const handleCancelMech = () => {
-    setIsMechModalVisible(false);
-  };
 
   const civilSubjectsFE = [
     "BASIC MATHEMATICS(M1)",
@@ -137,6 +159,69 @@ export default function DiplomaCoursesPage() {
    " PROGRAMMING WITH PYTHON (Computer)",
    "MOBILE APPLICATION DEVELOPMENT (IT)"
   ];
+
+
+  const autoSubjectsFE = [
+    "M1",
+   " BASIC SCIENCE",
+    "APPLIED MATHEMATICS(M2)",
+    "APPLIED MECHANICS",
+    "APPLIED SCIENCE",
+    "ENGINEERING DRAWING",
+  ];
+
+  const autoSubjectsSE = [
+
+    "SOM",
+"BASIC ELECTRICAL AND ELECTRONICS ENGINEERING",
+"AUTOMOBILE ENGINES",
+"AUTOMOBILE TRANSMISSION SYSTEM",
+"TOM",
+"ADVANCED AUTOMOBILE ENGINES",
+"HEAT POWER ENGINEERING",
+"AUTOMOBILE SYSTEMS AND BODY ENGINEERING"
+
+  ];
+
+  const autoSubjectsTE = [
+    "AUTOMOBILE COMPONENT DESIGN",
+"    TWO AND THREE WHEELER TECHNOLOGIES",
+  "  HYDRAULIC AND PNEUMATIC CONTROLS",
+ "   VEHICLE SYSTEM MAINTENANCE",
+   " AUTOMOTIVE ELECTRICAL ANDELECTRONICS SYSTEM",
+   " AUTOMOBILE AIR CONDITIONING"
+  ];
+
+  const elexSubjectsFE = [
+    "M1",
+   " BASIC SCIENCE",
+  "  APPLIED MATHEMATICS(M2)",
+    "BASIC ELECTRONICS",
+    "ELEMENTS OF ELECTRICAL ENGINEERING",
+    "C PROGRAMMING"
+
+  ];
+  const elexSubjectsSE = [
+   " DIGITAL TECHNIQUES",
+"APPLIED ELECTRONICS",
+"ELECTRIC CIRCUITS AND NETWORKS",
+"LIC",
+"MICROCONTROLLER AND APPLICATIONS",
+"BASIC POWER ELECTRONICS",
+"DIGITAL COMMUNICATION SYSTEMS"
+  ];
+  const elexSubjectsTE = [
+
+"    EMBEDDED SYSTEMS",
+"CONTROL SYSTEMS AND PLC",
+"MOBILE AND WIRELESS COMMUNICATION",
+"MICROWAVE AND RADAR",
+"COMPUTER NETWORKING AND DATA COMMUNICATION",
+"VLSI WITH VHDL",
+"MECHATRONICS",
+"OPTICAL NETWORKS ANDSATELLITE COMMUNICATION"
+  ];
+
 
 
   return (
@@ -305,6 +390,116 @@ export default function DiplomaCoursesPage() {
               <List
                 // bordered
                 dataSource={compSubjectsTE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong> {item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+          </Tabs>
+
+        </Modal>
+      </Card>
+
+
+      <Card
+        hoverable
+        style={{ width: 275 }}
+        cover={<img alt="example" src={auto} />}
+      >
+        <Meta title="Automobile Engineering" description="" />
+        <Button onClick={showAutoModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <Modal
+          title="Subjects List"
+          visible={isAutoModalVisible}
+          onCancel={handleOkAuto}
+          footer={null}
+          closable={true}
+          id="join-pool-modal"
+        >
+          <Tabs defaultActiveKey="1" >
+            <TabPane tab="FY" key="1">
+              <List
+                // bordered
+                dataSource={autoSubjectsFE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item} </Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="SY" key="2">
+              <List
+                // bordered
+                dataSource={autoSubjectsSE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="TY" key="3">
+              <List
+                // bordered
+                dataSource={autoSubjectsTE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong> {item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+          </Tabs>
+
+        </Modal>
+      </Card>
+
+
+      <Card
+        hoverable
+        style={{ width: 275 }}
+        cover={<img alt="example" src={elex} />}
+      >
+        <Meta title="Electronics Engineering" description="" />
+        <Button onClick={showElexModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <Modal
+          title="Subjects List"
+          visible={isElexModalVisible}
+          onCancel={handleOkElex}
+          footer={null}
+          closable={true}
+          id="join-pool-modal"
+        >
+          <Tabs defaultActiveKey="1" >
+            <TabPane tab="FY" key="1">
+              <List
+                // bordered
+                dataSource={elexSubjectsFE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item} </Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="SY" key="2">
+              <List
+                // bordered
+                dataSource={elexSubjectsSE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text strong>{item}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="TY" key="3">
+              <List
+                // bordered
+                dataSource={elexSubjectsTE}
                 renderItem={item => (
                   <List.Item>
                     <Typography.Text strong> {item}</Typography.Text>

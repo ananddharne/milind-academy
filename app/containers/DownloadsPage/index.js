@@ -9,8 +9,9 @@ var fileDownload = require('js-file-download');
 import { isMobile } from 'react-device-detect';
 import { set } from 'lodash';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import { ToastContainer, toast } from 'react-toastify';
 const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
-
+import axios from 'axios';
 const { Dragger } = Upload;
 
 
@@ -34,6 +35,11 @@ export default function DownloadsPage() {
     const [itemKey, setItemKey] = useState(null);
     const [key, setKey] = useState(0);
 
+    const [form] = Form.useForm();
+
+    const closeAfter7 = () => toast("Will close after 7s", { autoClose: 7000 });
+
+
 
     const [current, setCurrent] = useState(null);
 
@@ -47,6 +53,7 @@ export default function DownloadsPage() {
         setItemKey(itemKey)
         setIsModalVisible(true);
         setIsTimerPlaying(true)
+        // toast("Will close after 15s", { autoClose: 15000 })
         setCancelState(true)
 
         // downloadS3(itemKey)
@@ -57,7 +64,9 @@ export default function DownloadsPage() {
     };
 
     const handleCancel = () => {
+        form.resetFields()
         setIsModalVisible(false);
+
     };
 
 
@@ -141,6 +150,7 @@ export default function DownloadsPage() {
             }
           };
         setIsModalVisible(false)
+        form.resetFields();
         console.log(values);
     };
 
@@ -269,7 +279,24 @@ export default function DownloadsPage() {
     useEffect(() => {
         getUser();
         listS3Files()
+        const options = {
+            domain: "sessionm.testrail.com",
+            username: "vprysiazhniuk+testci@sessionm.com",
+            password: "yKsihn6tQJSSEfYgS8OM-icN0FHOMfy8.33V0taPP",
+          };
         // showModal()
+        axios.get('https://sessionm.testrail.com/index.php?/api/v2/get_case/47535', {
+            auth: {
+              username: options.username,
+              password: options.password
+            }
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
     }, files);
     return (
         <div style={{ textAlign: 'center' }}>
@@ -277,29 +304,32 @@ export default function DownloadsPage() {
        !user ?
             <Modal 
             title={
-                <span>
-                    <span> Enter your contact details... </span>
+                <div style={{display: 'flex', flexDirection: 'row'}}>
+                    <div> Enter your contact details... </div>
                      <CountdownCircleTimer
     isPlaying={isTimerPlaying}
     style={{marginLeft: '90%'}}
     key={key}
     duration={30}
     size={30}
-    strokeWidth={1}
+    strokeWidth={1.5}
      onComplete={() => {
                setCancelState(false)
                setKey(prevKey => prevKey + 1)
                setIsTimerPlaying(false)
               }}
+    trailColor={'white'}
+    trailStrokeWidth={1.5}
+    // strokeLinecap={square}
     colors={[
-      ['#004777', 0.33],
-      ['#F7B801', 0.33],
-      ['#A30000', 0.33],
+      ['#efefef', 0.33],
+      ['#cdcdcd', 0.33],
+      ['#cdcdcd ', 0.33],
     ]}
   >
     {({ remainingTime }) => remainingTime}
   </CountdownCircleTimer>
-                </span>
+                </div>
             } visible={isModalVisible}
              okButtonProps = { {style: { display: 'none' } }}
                 // onOk={handleOk} 
@@ -312,7 +342,7 @@ export default function DownloadsPage() {
                 closable={false}
             >
                 
-                {<Form name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+                {<Form form={form} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
                     <Form.Item
                         name={['user', 'name']}
                         // label={"Name"}
@@ -468,6 +498,7 @@ export default function DownloadsPage() {
                     //     </p>
                     //   </Dragger> 
                     : null
+
 
             }
         </div>

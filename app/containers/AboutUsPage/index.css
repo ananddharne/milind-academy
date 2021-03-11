@@ -1,0 +1,18 @@
+@import '~antd/dist/antd.css';
+
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+@import url('https://fonts.googleapis.com/css?family=Bungee');
+@import url('https://fonts.googleapis.com/css?family=Cherry+Swash');
+
+.hana {
+    /* font-family: 'Sacramento'; */
+    font-family: 'Bungee';
+    font-family: 'CherrySwash';
+
+    /* text-align: 'center';
+    padding: '40%';
+    font-size: '450%';
+    z-index: 1; */
+    /* color:#1890ff; */
+}
+
