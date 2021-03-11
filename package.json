@@ -71,6 +71,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "ant-design-pro": "^2.3.2",
     "antd": "^4.9.4",
+    "axios": "^0.21.1",
     "chalk": "2.4.2",
     "compression": "1.7.4",
     "connected-react-router": "6.4.0",
@@ -98,13 +99,15 @@
     "react-redux": "7.0.2",
     "react-router-dom": "5.0.0",
     "react-simple-chatbot": "^0.6.1",
+    "react-toastify": "^7.0.3",
     "react-transition-group": "^4.4.1",
     "redux": "4.0.1",
     "redux-saga": "1.0.2",
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
     "styled-components": "4.2.0",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "testrail-api-client": "^1.0.18"
   },
   "devDependencies": {
     "@babel/cli": "7.4.3",

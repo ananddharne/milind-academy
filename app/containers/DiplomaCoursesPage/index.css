@@ -7,3 +7,7 @@
         padding: 2%;
         margin: 2%;
 }
+
+.ant-modal-content {
+        color: green!important;
+}
