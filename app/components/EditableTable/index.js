@@ -358,7 +358,7 @@ const originData = [];
                 pagination={{
                   onChange: cancel,
                 }}
-              /> : <Spin/>
+              /> : <Spin size="large" style={{ marginTop: '10%', marginLeft: '50%', paddingBottom: '30%'}}/>
   }
             </Form> 
             {
