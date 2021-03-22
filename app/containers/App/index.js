@@ -14,12 +14,16 @@ import { Menu, Carousel } from "antd";
 import HomePage from "containers/HomePage/Loadable";
 import FeaturePage from "containers/FeaturePage/Loadable";
 import NotFoundPage from "containers/NotFoundPage/Loadable";
-import LoginPage from "containers/LoginPage/Loadable";
 import EnggCoursesPage from "containers/EnggCoursesPage/Loadable";
 import DiplomaCoursesPage from "containers/DiplomaCoursesPage/Loadable";
 import TimetablePage from "containers/TimetablePage/Loadable";
 import DownloadsPage from "containers/DownloadsPage/Loadable";
 import AboutUsPage from "containers/AboutUsPage/Loadable";
+import SignUpPage from "containers/SignUpPage/Loadable";
+import LoginPage from "containers/LoginPage/Loadable";
+import PrivateConsultPage from "containers/PrivateConsultPage/Loadable";
+
+
 
 
 import Header from "components/Header";
@@ -61,6 +65,9 @@ function App() {
         <Route path="/timetable" component={TimetablePage} />
         <Route path="/downloads" component={DownloadsPage} />
         <Route path="/aboutus" component={AboutUsPage} />
+        <Route path="/signup" component={SignUpPage} />
+        <Route path="/login" component={SignUpPage} />
+        <Route path="/privateconsultpage" component={PrivateConsultPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
 

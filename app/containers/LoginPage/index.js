@@ -1,133 +1,116 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- */
+import React, { useEffect } from 'react';
+import {Form, Row, Input, Button, Col, message } from 'antd'
+import "./index.css"
+import { Auth, Hub } from "aws-amplify";
 
-import React, { useEffect, memo } from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
-
-import { useInjectReducer } from 'utils/injectReducer';
-import { useInjectSaga } from 'utils/injectSaga';
-import { Form, Input, Button, Select } from 'antd';
-import {
-  makeSelectRepos,
-  makeSelectLoading,
-  makeSelectError,
-} from 'containers/App/selectors';
-import H2 from 'components/H2';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
-import reducer from './reducer';
-import saga from './saga';
-import './index.css';
-
-const key = 'home';
-
-export function LoginPage({ username, onSubmitForm }) {
-  useInjectReducer({ key, reducer });
-  useInjectSaga({ key, saga });
-
-  useEffect(() => {
-    // When initial state username is not null, submit the form to load repos
-    if (username && username.trim().length > 0) onSubmitForm();
-  }, []);
-
-  const onFinish = values => {
-    console.log(values);
-  };
-  const layout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 25 },
-  };
-
-  const validateMessages = {
-    required: '${label} is required!',
-    types: {
-      email: '${label} is not a valid email!',
-      number: '${label} is not a valid number!',
+const formItemLayout = {
+    labelCol: {
+      xs: {
+        span: 0,
+      },
+      sm: {
+        span: 0,
+      },
+    },
+    wrapperCol: {
+      xs: {
+        span: 600,
+      },
+      sm: {
+        span: 740,
+      },
     },
   };
 
+  const tailFormItemLayout = {
+    wrapperCol: {
+      xs: {
+        span: 10,
+        offset: 6,
+      },
+      sm: {
+        span: 16,
+        offset: 10,
+      },
+    },
+  };
+
+export default function LoginPage() {
+
+  const signIn = async (username, password) => {
+    try {
+      const user = await Auth.signIn(username, password);
+      location.reload()
+      window.location.replace("/")
+      message.success('Signed in successfully!');
+  } catch (error) {
+      message.error('Uh Oh, something went wrong! ' + error.message);
+      console.log('error signing in', error);
+  }
+  }
+
+    const onFinish = async (values) => {
+        console.log('Success:', values);
+        signIn(values.email, values.password)
+      };
+    
+      const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+      };
+  
   return (
-    <article>
-        <div className="home-form">
-          <Form
-            {...layout}
-            name="form-antd"
-            onFinish={onFinish}
-            validateMessages={validateMessages}
-          >
-            <Form.Item
-              name={['user', 'name']}
-              label="Name"
-              rules={[{ required: true }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name={['user', 'email']}
-              label="Email"
-              rules={[{ type: 'email', required: true }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item label="Course">
-              <Select>
-                <Select.Option value="Engineering">Engineering</Select.Option>
-                <Select.Option value="Diploma">Diploma</Select.Option>
-              </Select>
-            </Form.Item>
-            <Form.Item name={['ph', 'ki']} label="Phone">
-              <Input.TextArea />
-            </Form.Item>
-            <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Form.Item>
-          </Form>
-      </div>
-    </article>
+    <Row type="flex" justify="center" align="middle" 
+    style={{
+    padding: '5%'
+}}
+    >
+    <Col>
+    <Form
+    id="login-form"
+    {...formItemLayout}
+    name="basic"
+    initialValues={{
+      remember: true,
+    }}
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+  >
+
+    <Form.Item
+      name="email"
+      rules={[
+        {
+          required: true,
+          type: 'email',
+          message: 'Please enter a valid email!',
+        },
+      ]}
+    >
+      <Input style={{width: '150%'}}  placeholder="Your Email" size={'large'} />
+    </Form.Item>
+
+    <Form.Item
+      name="password"
+      rules={[
+        {
+          required: true,
+          message: 'Please input your password!',
+        },
+      ]}
+    >
+      <Input.Password style={{width: '150%'}}  placeholder="Input your password" size={'large'} />
+    </Form.Item>
+
+    <Form.Item 
+    {...tailFormItemLayout}
+    
+    >
+      <Button size={'large'} type="secondary" htmlType="submit">
+        Login
+      </Button>
+    </Form.Item>
+  </Form>
+  </Col>
+  </Row>
   );
 }
-
-LoginPage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
-};
-
-const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-});
-
-export function mapDispatchToProps(dispatch) {
-  return {
-    onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: evt => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      // dispatch(loadRepos());
-    },
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-export default compose(
-  withConnect,
-  memo,
-)(LoginPage);
