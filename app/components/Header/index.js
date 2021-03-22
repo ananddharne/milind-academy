@@ -59,34 +59,6 @@ function Header() {
       location.reload()
   }
 
-  async function signIn() {
-    try {
-      var result = prompt("Enter a password");
-      const user = await Auth.signIn("milindacademy13@gmail.com", result);
-      location.reload()
-  } catch (error) {
-      console.log('error signing in', error);
-  }
-  }
-
-  async function signUp(username, password, email, phone_number) {
-    try {
-      const user = {
-        username: "milindacademy13@gmail.com",
-        password: "Milind$123",
-        attributes: {
-          email: "milindacademy13@gmail.com", // optional
-          phone_number: "+919822276430" // optional - E.164 number convention
-          // other custom attributes
-        }
-      };
-      await Auth.signUp(user);
-      console.log(user);
-    } catch (error) {
-      console.log("error signing up:", error);
-    }
-  }
-
   // in useEffect, we create the listener
 
   useEffect(() => {
@@ -220,11 +192,12 @@ function Header() {
         {user === null ? (
           <Menu.Item
             id="login-accounts"
-            onClick={signIn}
+            // onClick={signIn}
             key="login"
             icon={<LoginOutlined />}
           >
-            Admin login
+          <Link to="/login"/>
+            Login
           </Menu.Item>
         ) : (
           <SubMenu
@@ -243,17 +216,20 @@ function Header() {
             </Menu.ItemGroup>
           </SubMenu>
         )}
-{/* 
+
+{
+  !user ?
         <Menu.Item
           id="login-accounts"
-          onClick={signUp}
+          // onClick={signUp}
           key="loginfr"
           icon={<LoginOutlined />}
         >
-          <Link to="/login" />
+          <Link to="/signup"/>
           Sign up
-        </Menu.Item> */}
-      </Menu>
+        </Menu.Item> : null
+}
+</Menu>
       {/* <div className="students-image" /> */}
 
       {/* <div className="carousel"> */}

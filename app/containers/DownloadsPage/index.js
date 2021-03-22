@@ -21,6 +21,8 @@ const { Dragger } = Upload;
 export default function DownloadsPage() {
 
     const [user, setUser] = useState(null);
+    const [adminUser, setAdminUser] = useState(false);
+
 
     const [files, setFiles] = useState([])
 
@@ -121,7 +123,7 @@ export default function DownloadsPage() {
         required: 'This field is required!',
         types: {
             email: 'email is not a valid email!',
-            phone: 'phone is not a valid!',
+            phone: 'phone is not a valid number!',
         },
     };
 
@@ -272,6 +274,7 @@ export default function DownloadsPage() {
             .then(userData => {
                 userData;
                 setUser(userData);
+                if(userData.attributes.email === "milindacademy13@gmail.com") setAdminUser(true)
             })
             .catch(() => console.log("Not signed in"));
     }
@@ -279,24 +282,24 @@ export default function DownloadsPage() {
     useEffect(() => {
         getUser();
         listS3Files()
-        const options = {
-            domain: "sessionm.testrail.com",
-            username: "vprysiazhniuk+testci@sessionm.com",
-            password: "yKsihn6tQJSSEfYgS8OM-icN0FHOMfy8.33V0taPP",
-          };
-        // showModal()
-        axios.get('https://sessionm.testrail.com/index.php?/api/v2/get_case/47535', {
-            auth: {
-              username: options.username,
-              password: options.password
-            }
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+        // const options = {
+        //     domain: "sessionm.testrail.com",
+        //     username: "vprysiazhniuk+testci@sessionm.com",
+        //     password: "yKsihn6tQJSSEfYgS8OM-icN0FHOMfy8.33V0taPP",
+        //   };
+        // // showModal()
+        // axios.get('https://sessionm.testrail.com/index.php?/api/v2/get_case/47535', {
+        //     auth: {
+        //       username: options.username,
+        //       password: options.password
+        //     }
+        //   })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   })
     }, files);
     return (
         <div style={{ textAlign: 'center' }}>
@@ -426,11 +429,20 @@ export default function DownloadsPage() {
                                     title={
                                         <div>
 
-                                            <a
+                                            {/* <a
                                                 className={'list-item-name'}
                                                 id={'list-itm-name'}
                                                 // style={{ fontSize: '125%', color: 'black' }} 
                                                 onClick={() => user? downloadS3(item.key) : showModal(item.key)}>{
+                                                    <PaperClipOutlined style={{ fontSize: '130%', marginRight: '1%', color: 'black' }} />
+                                                } {item.key || item.name}
+                                            </a> */}
+
+                                            <a
+                                                className={'list-item-name'}
+                                                id={'list-itm-name'}
+                                                // style={{ fontSize: '125%', color: 'black' }} 
+                                                onClick={() => user? downloadS3(item.key) : window.location.replace('/login')}>{
                                                     <PaperClipOutlined style={{ fontSize: '130%', marginRight: '1%', color: 'black' }} />
                                                 } {item.key || item.name}
                                             </a>
@@ -446,7 +458,7 @@ export default function DownloadsPage() {
                                 </div>
 
 
-                                { user ?
+                                { adminUser === "milindacademy13@gmail.com" ?
                                     <Popconfirm
                                         title="Are you sure to delete this file?"
                                         onConfirm={() => deleteFile(item.key)}
@@ -465,7 +477,7 @@ export default function DownloadsPage() {
             }
 
             {
-                user ?
+                adminUser ?
                     <div>
                         <Button onClick={triggerInputClick}>
                             <UploadOutlined style={{ fontSize: '135%', color: '#1890ff', cursor: 'pointer' }}>

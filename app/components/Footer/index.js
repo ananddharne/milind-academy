@@ -36,7 +36,7 @@ class Footer extends Component {
               },
               {
                 title: 'Our Reviews',
-                url: '/',
+                url: '/aboutus',
               }
             ],
           },
@@ -44,16 +44,16 @@ class Footer extends Component {
             title: 'Pay Per Consultation',
             items: [
               {
-                title: <a target="_blank" rel="noopener noreferrer" href = 'https://github.com/ananddharne/'> Assignment Solutions</a>,
-                url: '' ,
+                title: 'Assignment Solutions',
+                url: '/privateconsultpage' ,
               },
               {
                 title: 'Private Coaching',
-                url: 'https://github.com/ananddharne/',
+                url: '/privateconsultpage',
               },
               {
                 title: 'Contact Us',
-                url: '/downloads',
+                url: '/privateconsultpage',
               }
             ],
           },

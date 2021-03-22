@@ -51,6 +51,7 @@ const originData = [];
     const [data, setData] = useState(originData);
     const [editingKey, setEditingKey] = useState('');
     const [user, setUser] = useState(null);
+    const [adminUser, setAdminUser] = useState(false);
 
     // Modal stuff
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -147,6 +148,7 @@ const originData = [];
             userData;
             console.log(userData);
             setUser(userData);
+            if(userData.attributes.email === "milindacademy13@gmail.com") setAdminUser(true)
             // const btn = document.getElementById('login-account')
             // btn.innerHTML = userData.attributes.email;
           })
@@ -287,7 +289,7 @@ const originData = [];
           dataIndex: 'operation',
           render: (_, record) => {
             const editable = isEditing(record);
-            return editable && user ? (
+            return editable && adminUser ? (
               <span>
                 <a
                   href="javascript:;"
@@ -360,8 +362,8 @@ const originData = [];
   }
             </Form> 
             {
-            user ?   
-            <Button style={{margin: '2.5% 45%'}} onClick={showModal}>Add a new row!</Button> : null
+            adminUser ?   
+            <Button style={{margin: '2.5% 45%'}} onClick={showModal}>Add a new row!</Button> : ''
             }
       <Modal title="Add new timetable row" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
        footer={[

@@ -7,6 +7,8 @@ import civil from "./civil.jpg"
 import mechanical from "./mechanical-engg.jpg"
 import electrical from "./electrical-engg.jpg"
 import computer from "./computer-engg.jpg"
+import it from "./it-engg.jpg"
+
 import SubjectsModal from 'components/SubjectsModal';
 import useModal from 'components/SubjectsModal/useModal';
 
@@ -18,6 +20,9 @@ export default function EnggCoursesPage() {
 
   const [isCivilModalVisible, setIsCivilModalVisible] = useState(false);
   const [isMechModalVisible, setIsMechModalVisible] = useState(false);
+  const [isCompModalVisible, setIsCompModalVisible] = useState(false);
+  const [isItModalVisible, setIsItModalVisible] = useState(false);
+
 
 
   const showCivilModal = () => {
@@ -28,11 +33,6 @@ export default function EnggCoursesPage() {
     setIsCivilModalVisible(false);
   };
 
-  const handleCancelCivil = () => {
-    setIsCivilModalVisible(false);
-  };
-
-
   const showMechModal = () => {
     setIsMechModalVisible(true);
   };
@@ -41,8 +41,21 @@ export default function EnggCoursesPage() {
     setIsMechModalVisible(false);
   };
 
-  const handleCancelMech = () => {
-    setIsMechModalVisible(false);
+  const showCompModal = () => {
+    setIsCompModalVisible(true);
+  };
+
+  const handleOkComp = () => {
+    setIsCompModalVisible(false);
+  };
+
+
+  const showItModal = () => {
+    setIsItModalVisible(true);
+  };
+
+  const handleOkIt = () => {
+    setIsItModalVisible(false);
   };
 
   const civilSubjectsFE = [
@@ -77,6 +90,68 @@ export default function EnggCoursesPage() {
     'DYNAMICS OF MACHINERY',
 'POWER PLANT ENGINEERING',
 'MECHANICAL SYSTEM DESIGN'
+  ];
+
+
+  const compSubjectsFE = [
+    'ENGINEERING MECHANICS', 'M1', 'M2'
+  ];
+
+  const compSubjectsSE = [
+    "DISCRETE MATHEMATICS",
+    "FUNDAMENTALS OF DATA STRUCTURES",
+    "OBJECT ORIENTED PROGRAMMING",
+    "COMPUTER GRAPHICS",
+    "DIGITAL ELECTRONICS AND LOGIC DESIGN",
+    "M3",
+    "DATA STRUCTURES AND ALGORITHMS",
+    "SOFTWARE ENGINEERING",
+   " MICROPROCESSOR"
+  ];
+
+  const compSubjectsTE = [
+    "COMPUTER NETWORKS",
+"THEORY OF COMPUTATION",
+"DBMS",
+"SOFTWARE ENGINEERING & PROJECT MANAGEMENT",
+"DESIGN AND ANALYSIS OF ALGORITHMS",
+"EMBEDDED SYSTEMS",
+"WEB TECHNOLOGY",
+"SOFTWARE MODELLING AND DESIGN"
+  ];
+
+  const compSubjectsBE = [
+    "DATA ANALYTICS",
+   " HIGH PERFORMANCE COMPUTING",
+   " ARTIFICIAL INTELLIGENCE AND ROBOTICS",
+    "INFORMATION AND CYBER SECURITY"
+  ];
+
+
+  const itSubjectsFE = [
+    'ENGINEERING MECHANICS', 'M1', 'M2'
+  ];
+
+  const itSubjectsSE = [
+    "DISCRETE MATHEMATICS",
+    "OOPS",
+    "DATA STRUCTURES AND ALGORITHMS",
+    "M3",
+   "COMPUTER FRAPHICS",
+    "SOFTWARE ENGINEERING"
+  ];
+
+  const itSubjectsTE = [
+    "OPERATING SYSTEMS",
+    "THEORY OF COMPUTATION",
+   " DATABASE MANAGEMENT SYSTEMS",
+    "DESIGN AND ANALYSIS OF ALGORITHMS",
+    "SYSTEMS PROGRAMMING"
+  ];
+
+  const itSubjectsBE = [
+    "SOFTWARE DESIGN AND MODELLING",
+"INFORMATION AND CYBER SECURITY"
   ];
 
   return (
@@ -231,9 +306,132 @@ export default function EnggCoursesPage() {
     cover={<img alt="example" src={computer} />}
   >
     <Meta title="Computer/IT Engineering" description="" />
-    <Button style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
-
+    <Button onClick={showCompModal} style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
+    <Modal
+                title="Subjects List"
+                visible={isCompModalVisible}
+                onCancel={handleOkComp}
+                footer={null}
+                closable={true}
+                id="join-pool-modal"
+            >
+                  <Tabs defaultActiveKey="1" >
+    <TabPane tab="FE" key="1">
+    <List
+      // bordered
+      dataSource={compSubjectsFE}
+      renderItem={item => (
+        <List.Item>
+          <Typography.Text strong>{item} </Typography.Text> 
+        </List.Item>
+      )}
+    />
+    </TabPane>
+    <TabPane tab="SE" key="2">
+    <List
+      // bordered
+      dataSource={compSubjectsSE}
+      renderItem={item => (
+        <List.Item>
+          <Typography.Text strong>{item}</Typography.Text> 
+        </List.Item>
+      )}
+    />
+    </TabPane>
+    <TabPane tab="TE" key="3">
+    <List
+      // bordered
+      dataSource={compSubjectsTE}
+      renderItem={item => (
+        <List.Item>
+          <Typography.Text strong> {item}</Typography.Text>
+        </List.Item>
+      )}
+    />
+    </TabPane>
+    <TabPane tab="BE" key="4">
+    <List
+      // bordered
+      dataSource={compSubjectsBE}
+      renderItem={item => (
+        <List.Item>
+          <Typography.Text strong>{item}</Typography.Text> 
+        </List.Item>
+      )}
+    />
+    </TabPane>
+  </Tabs>
+             
+            </Modal>
   </Card>
+
+
+{/* it engg */}
+<Card
+    hoverable
+    style={{ width: 275 }}
+    cover={<img alt="example" src={it} />}
+  >
+    <Meta title="Computer/IT Engineering" description="" />
+    <Button onClick={showItModal} style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
+    <Modal
+                title="Subjects List"
+                visible={isItModalVisible}
+                onCancel={handleOkIt}
+                footer={null}
+                closable={true}
+                id="join-pool-modal"
+            >
+                  <Tabs defaultActiveKey="1" >
+    <TabPane tab="FE" key="1">
+    <List
+      // bordered
+      dataSource={itSubjectsFE}
+      renderItem={item => (
+        <List.Item>
+          <Typography.Text strong>{item} </Typography.Text> 
+        </List.Item>
+      )}
+    />
+    </TabPane>
+    <TabPane tab="SE" key="2">
+    <List
+      // bordered
+      dataSource={itSubjectsSE}
+      renderItem={item => (
+        <List.Item>
+          <Typography.Text strong>{item}</Typography.Text> 
+        </List.Item>
+      )}
+    />
+    </TabPane>
+    <TabPane tab="TE" key="3">
+    <List
+      // bordered
+      dataSource={itSubjectsTE}
+      renderItem={item => (
+        <List.Item>
+          <Typography.Text strong> {item}</Typography.Text>
+        </List.Item>
+      )}
+    />
+    </TabPane>
+    <TabPane tab="BE" key="4">
+    <List
+      // bordered
+      dataSource={itSubjectsBE}
+      renderItem={item => (
+        <List.Item>
+          <Typography.Text strong>{item}</Typography.Text> 
+        </List.Item>
+      )}
+    />
+    </TabPane>
+  </Tabs>
+             
+            </Modal>
+  </Card>
+
   </div>
   );
 }
