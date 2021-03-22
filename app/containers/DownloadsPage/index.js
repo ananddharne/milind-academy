@@ -473,7 +473,7 @@ export default function DownloadsPage() {
 
                             </List.Item>
                         )}
-                    /> : <Spin />
+                    /> : <Spin size="large" style={{ marginTop: '10%', marginLeft: '10%', paddingBottom: '30%'}}/>
             }
 
             {
