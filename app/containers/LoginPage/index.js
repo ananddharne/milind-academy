@@ -60,14 +60,11 @@ export default function LoginPage() {
   
   return (
     <Row id="signin-form-row" type="flex" justify="center" align="middle" 
-    style={{
-    padding: '5%'
-}}
     >
     <Col>
     <Form
     id="login-form"
-    {...formItemLayout}
+    // {...formItemLayout}
     name="basic"
     initialValues={{
       remember: true,
@@ -102,10 +99,10 @@ export default function LoginPage() {
     </Form.Item>
 
     <Form.Item 
-    {...tailFormItemLayout}
+    // {...tailFormItemLayout}
     
     >
-      <Button size={'large'} type="secondary" htmlType="submit">
+      <Button type="primary" style={{width: '150%', borderRadius: '0.3em'}} size={'large'} htmlType="submit">
         Login
       </Button>
     </Form.Item>
