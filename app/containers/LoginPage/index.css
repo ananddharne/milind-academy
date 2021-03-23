@@ -7,7 +7,7 @@
 @media (min-width: 300px) {
     #signin-form-row {
         padding: 5% !important;
-        width: 200px !important;
+        width: 240px !important;
         margin: 1% !important;
     }
 
@@ -17,7 +17,7 @@
     @media (min-width: 700px) {
         #signin-form-row {
             width: 100% !important;
-            padding-bottom: 35% !important;
+            padding-bottom: 30% !important;
             padding-right: 20% !important;
         }
        
