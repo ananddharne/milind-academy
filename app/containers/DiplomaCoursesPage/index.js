@@ -27,6 +27,13 @@ export default function DiplomaCoursesPage() {
 
 
 
+  const toTitleCase = (phrase) => {
+    return phrase
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
 
 
   const showCivilModal = () => {
@@ -248,7 +255,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={civilSubjectsFE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item}</Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -259,7 +266,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={civilSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item}</Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -270,7 +277,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={civilSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {item} </Typography.Text>
+                    <Typography.Text strong> {toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
@@ -301,7 +308,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={mechSubjectsFE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item} </Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
@@ -312,7 +319,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={mechSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item}</Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -323,7 +330,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={mechSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {item}</Typography.Text>
+                    <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -370,7 +377,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={compSubjectsFE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item} </Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
@@ -381,7 +388,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={compSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item}</Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -392,7 +399,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={compSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {item}</Typography.Text>
+                    <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -425,7 +432,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={autoSubjectsFE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item} </Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
@@ -436,7 +443,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={autoSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item}</Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -447,7 +454,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={autoSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {item}</Typography.Text>
+                    <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -480,7 +487,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={elexSubjectsFE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item} </Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
@@ -491,7 +498,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={elexSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{item}</Typography.Text>
+                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -502,7 +509,7 @@ export default function DiplomaCoursesPage() {
                 dataSource={elexSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {item}</Typography.Text>
+                    <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
