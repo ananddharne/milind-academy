@@ -16,7 +16,7 @@ import {
   LoginOutlined,
   LogoutOutlined
 } from "@ant-design/icons";
-import { Menu, Carousel, Tooltip } from "antd";
+import { Menu, Carousel, Tooltip, Affix, Button } from "antd";
 import SocialMediaSection from "./SocialMediaSection";
 import logo from './logo.svg'
 
@@ -143,6 +143,7 @@ function Header() {
       </div> */}
 
       <div />
+  <Affix offsetTop={0} onChange={(affixed) => console.log(affixed)}>
       <Menu
         id="navbar"
         theme="light"
@@ -247,6 +248,7 @@ function Header() {
   </Menu.Item>
       )}
 </Menu>
+</Affix>
 
       {/* <div className="students-image" /> */}
 
