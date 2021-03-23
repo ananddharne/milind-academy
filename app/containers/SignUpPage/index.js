@@ -16,7 +16,7 @@ const formItemLayout = {
     },
     wrapperCol: {
       xs: {
-        span: 600,
+        span: 300,
       },
       sm: {
         span: 740,
@@ -82,15 +82,12 @@ export default function SignUpPage() {
       };
   
   return (
-    <Row type="flex" justify="center" align="middle" 
-    style={{
-    padding: '5%'
-}}
+    <Row id="signup-form-row" type="flex" justify="center" align="middle" 
     >
     <Col>
     <Form
     id="signup-form"
-    {...formItemLayout}
+    // {...formItemLayout}
     name="basic"
     initialValues={{
       remember: true,
@@ -201,7 +198,7 @@ export default function SignUpPage() {
       </Form.Item>
 
     <Form.Item 
-    {...tailFormItemLayout}
+    // {...tailFormItemLayout}
     
     >
       <Button size={'large'} type="secondary" htmlType="submit">

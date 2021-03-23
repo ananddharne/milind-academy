@@ -1,3 +1,39 @@
-#signup-form {
-  
+
+
+@import '~antd/dist/antd.css';
+
+
+
+@media (min-width: 300px) {
+    #signup-form-row {
+        padding: 5% !important;
+        width: 300px !important;
+    }
+
 }
+ 
+    
+    @media (min-width: 700px) {
+        #signup-form-row {
+            width: 100% !important;
+            padding-bottom: 35% !important;
+        }
+       
+    }
+
+    @media (min-width: 1000px) {
+   
+       
+    }
+    
+    @media (min-width: 1500px) {
+  
+    
+    } 
+
+    @media (min-width: 1900px) {
+   
+    
+    } 
+
+
