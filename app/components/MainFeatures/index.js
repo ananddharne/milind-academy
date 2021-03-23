@@ -11,6 +11,9 @@ function MainFeatures() {
   const navigateToAboutUs = () => {
     window.location.replace('/aboutus')
   }
+  const navigateToConsult = () => {
+    window.location.replace('/privateconsultpage')
+  }
   return (
    <Carousel className="main-features" autoplay
       >
@@ -27,7 +30,8 @@ function MainFeatures() {
        <div className="carousel-item-div-main-feat">
         <div className="main-feature-header">Paid Assignments and Solution Assistance</div>
         <p> Stuck in one of the questions, sections or a unit? Dont want to join the class but need help with specific topics? No worries we got you!</p>
-        <Button className="know-more-button" type="primary">Know More</Button>
+        <p> We also help with Gate exam, MPSC exam, GRE exam consultations</p>
+        <Button onClick={navigateToConsult} className="know-more-button" type="primary">Know More</Button>
        </div>
 
         </Carousel>

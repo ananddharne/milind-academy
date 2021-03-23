@@ -13,13 +13,10 @@ export default function PrivateConsultPage() {
     >
       <Col>
         <p>
-          We conduct online exams for Engineering degree & Engineering diploma based on past papers and important questions.The papers are checked and result is sent back to the students.The students can have a discussion with our lecturers about their performance
-          Paid Doubts
+          We conduct online exams for Engineering degree & Engineering diploma based on past papers and important questions. The papers are checked and result is sent back to the students.The students can have a discussion with our lecturers about their performance
           We solve doubts of students and clear their basic concepts
 </p>
         <p>
-          The student can contact us and solve the doubts.
-          Paid Tutorials
           We solve tutorials given in the college along with discussion.
           Paid career consultation
 </p>
