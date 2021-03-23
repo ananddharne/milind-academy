@@ -1,43 +1,91 @@
 @import '~antd/dist/antd.css';
 
-.ant-avatar-circle {
-    color: white !important
-}
 
-/* down-list-itm {
-    cursor: pointer;
-} */
 
-.ant-list-item:hover {
-    /* color: #1890ff !important; */
-    background: #fafafa;
-}
+@media (min-width: 300px) {
+    .ant-avatar-circle {
+        color: white !important
+    }
 
-.download-icon {
-    font-size: 130%;
-    margin-right: 1%;
-    color: #1890ff !important;
-}
+    .ant-list-item:hover {
+        background: #fafafa;
+    }
+    
+    .download-icon {
+        font-size: 130%;
+        margin-right: 1%;
+        color: #1890ff !important;
+    }
+    
+    .download-icon:hover {
+        color: #7db6eb !important;
+    }
+    
+    .list-item-name {
+        color: black;
+    }
+    
+    .delete-icon {
+        font-size: 125%;
+        color: red;
+    }
+    
+    .delete-icon :hover {
+        color: rgb(240, 113, 113)
+    }
+    
+    /* .react-pdf__Page {
+        width: 20px;
+    } */
 
-.download-icon:hover {
-    color: #7db6eb !important;
-}
+    .react-pdf__Page__canvas {
+        width: 100% !important;
+    }
+    
+    .react-pdf__message {
+        visibility: hidden;
+    }
+    }
+    
+    @media (min-width: 700px) {
+        .react-pdf__Page {
+            margin-left: 15% !important;
+        }
+        .react-pdf__Page__canvas {
+            width: 85% !important;
+        }
+       
+    }
 
-.list-item-name {
-    color: black;
-}
+    @media (min-width: 1000px) {
+        .react-pdf__Page {
+            margin-left: 20% !important;
+        }
 
-.delete-icon {
-    font-size: 125%;
-    color: red;
-}
+        .react-pdf__Page__canvas {
+            width: 75% !important;
+        }
+       
+    }
+    
+    @media (min-width: 1500px) {
+        .react-pdf__Page {
+            margin-left: 30% !important;
+        }
+        .react-pdf__Page__canvas {
+            width: 55% !important;
+        }
+    
+    } 
 
-.delete-icon :hover {
-    color: rgb(240, 113, 113)
-}
-
-/* .ant-modal-close {
-
-} */
+    @media (min-width: 1900px) {
+        /* .react-pdf__Page {
+            margin-left: 30% !important;
+        } */
+        .react-pdf__Page__canvas {
+            width: 80% !important;
+        }
+    
+    } 
 
 
