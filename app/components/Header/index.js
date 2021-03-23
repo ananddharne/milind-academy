@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useClearCache } from 'react-clear-cache';
 import { Link } from "react-router-dom";
 import {
   FacebookOutlined,
@@ -116,6 +116,7 @@ function Header() {
   }, [offset])
 
   
+  const { isLatestVersion, emptyCacheStorage } = useClearCache();
 
   return (
     <div>
@@ -229,7 +230,18 @@ function Header() {
           Sign up
         </Menu.Item> : null
 }
+
+      {!isLatestVersion && (
+    <Menu.Item 
+      onClick={e => {
+      emptyCacheStorage();
+    }}
+    >
+            Update version
+  </Menu.Item>
+      )}
 </Menu>
+
       {/* <div className="students-image" /> */}
 
       {/* <div className="carousel"> */}
