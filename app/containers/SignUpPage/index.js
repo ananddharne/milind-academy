@@ -201,7 +201,7 @@ export default function SignUpPage() {
     // {...tailFormItemLayout}
     
     >
-      <Button style={{width: '150%', borderRadius: '0.3em'}} size={'large'} type="primary" htmlType="submit">
+      <Button style={{width: '150%', borderRadius: '0.1em'}} size={'large'} type="primary" htmlType="submit">
         Sign Up
       </Button>
     </Form.Item>

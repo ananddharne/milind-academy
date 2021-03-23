@@ -102,7 +102,7 @@ export default function LoginPage() {
     // {...tailFormItemLayout}
     
     >
-      <Button type="primary" style={{width: '150%', borderRadius: '0.3em'}} size={'large'} htmlType="submit">
+      <Button type="primary" style={{width: '150%', borderRadius: '0.1em'}} size={'large'} htmlType="submit">
         Login
       </Button>
     </Form.Item>
