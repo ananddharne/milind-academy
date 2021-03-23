@@ -59,7 +59,7 @@ export default function LoginPage() {
       };
   
   return (
-    <Row type="flex" justify="center" align="middle" 
+    <Row id="signin-form-row" type="flex" justify="center" align="middle" 
     style={{
     padding: '5%'
 }}
