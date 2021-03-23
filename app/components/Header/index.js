@@ -16,7 +16,7 @@ import {
   LoginOutlined,
   LogoutOutlined
 } from "@ant-design/icons";
-import { Menu, Carousel } from "antd";
+import { Menu, Carousel, Tooltip } from "antd";
 import SocialMediaSection from "./SocialMediaSection";
 import logo from './logo.svg'
 
@@ -237,7 +237,13 @@ function Header() {
       emptyCacheStorage();
     }}
     >
-            Update version
+      <Tooltip
+                  placement="bottom"
+                  title={'Click here if you dont see the latest updates'}
+                  className="tooltip"
+                >
+                    Update Version
+                </Tooltip>
   </Menu.Item>
       )}
 </Menu>
