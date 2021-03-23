@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Card, Button, Modal, Form, Input, InputNumber, Typography, List, Tabs, Avatar, Upload, message, Icon, Popconfirm, Spin } from 'antd'
 import "./index.css"
 import { Auth, Storage } from "aws-amplify";
-import { DeleteOutlined, UploadOutlined, CloudDownloadOutlined, PaperClipOutlined } from '@ant-design/icons';
+import { DeleteOutlined, UploadOutlined, CloudDownloadOutlined, PaperClipOutlined, RightOutlined, LeftOutlined  } from '@ant-design/icons';
 import 'ant-design-pro/dist/ant-design-pro.css';
 import { Document, Page, pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -183,15 +183,19 @@ export default function DownloadsPage() {
              onContextMenu={(e) => e.preventDefault()}
             >
                 <div style={{ marginTop: '5%' }}>
-                    <Button onClick={prevPage}> Previous</Button>
-                    <Button onClick={nextPage}>Next</Button>
+                    <Button onClick={prevPage}> 
+                        <LeftOutlined/>
+                    </Button>
+                    <Button onClick={nextPage}>
+                        <RightOutlined/>
+                    </Button>
                 </div>
-
-                <div style={{marginTop: '2.5%', fontWeight: 'bold'}}>{itemKey}</div>
+                <div style={{marginTop: '2%', fontWeight: 'bold'}}> Page {currentPage} of {pageCount.length} </div>
+                <div style={{marginTop: '2%', fontWeight: 'bold'}}>{itemKey}</div>
                 {
                     <Page pageNumber={currentPage} />
                 }
-                <div> Page {currentPage} of {pageCount.length} </div>
+                
             </Document>
             {
                 files.length ?
