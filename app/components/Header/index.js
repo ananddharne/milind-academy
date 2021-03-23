@@ -231,7 +231,7 @@ function Header() {
         </Menu.Item> : null
 }
 
-      {!isLatestVersion && (
+      {(
     <Menu.Item 
       onClick={e => {
       emptyCacheStorage();
