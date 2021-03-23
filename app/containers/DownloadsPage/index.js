@@ -180,7 +180,7 @@ export default function DownloadsPage() {
     return (
         <div style={{ textAlign: 'center' }}>
             <Document file={urlBlob}
-            //  onContextMenu={(e) => e.preventDefault()}
+             onContextMenu={(e) => e.preventDefault()}
             >
                 <div style={{ marginTop: '5%' }}>
                     <Button onClick={prevPage}> Previous</Button>
