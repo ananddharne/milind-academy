@@ -5,9 +5,9 @@
 #navbar {
   padding: 1% 0% 1% 0%;
   background-color: #F4F7FD;
-  background: linear-gradient(to right, #D7DDE8, #757F9A);
-  background: black;
-  color: white;
+  /* background: linear-gradient(to right, #D7DDE8, #757F9A); */
+  background: white;
+  color: black;
   /* position: fixed; */
   top: 0;
   z-index: 999;
@@ -32,7 +32,7 @@
     font-size: 100%;
     margin-left: 1%;
     cursor: pointer;
-    color: white;
+    color: black;
 
   }
 
