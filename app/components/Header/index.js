@@ -151,7 +151,7 @@ function Header() {
         selectedKeys={[currentNav]}
         mode="horizontal"
       >
-         <Menu.Item key="logo">
+         <Menu.Item id="name-company" key="logo">
          <div className="Logo-and-name">
           <img className="rotate" src={logo}></img>
           <span className="name">Milind Academy of Engineering</span>
