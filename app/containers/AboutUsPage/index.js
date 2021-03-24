@@ -15,17 +15,17 @@ const callback = (key) => {
       const text = `
       Today, while we are celebrating 30 years of excellence in teaching and guiding
       students, the alumnae of Milind Academy are spreading knowledge and wisdom
-      all over,
-      From conducive eco-system to excellent faculties, from study material to overall
+      all over`;
+
+      const text1 = ` From conducive eco-system to excellent faculties, from study material to overall
       development of the students, Milind Academy is committed to give best learning
       
-      experience to the students,
+      experience to the students`
 
-
+      const text2 = `
       Enriched with experience and 700 students abroad, the academy also serves the
 
-      purposes of study abroad and corporate lingual trainings,
-      `;
+      purposes of study abroad and corporate lingual trainings`
 
 export default function AboutUsPage() {
 return (
@@ -63,10 +63,10 @@ purposes of study abroad and corporate lingual trainings.
       <p>{text}</p>
     </Panel>
     <Panel header="Commitment to students" key="2" className="site-collapse-custom-panel">
-      <p>{text}</p>
+      <p>{text1}</p>
     </Panel>
     <Panel header="Paid Counselling and Study Abroad Consultation" key="3" className="site-collapse-custom-panel">
-      <p>{text}</p>
+      <p>{text2}</p>
     </Panel>
   </Collapse>,
 

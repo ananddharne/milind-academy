@@ -188,7 +188,7 @@ function Header() {
           <Link to="/timetable" />
         </Menu.Item>
         <Menu.Item key="downloads" icon={<DownloadOutlined />}>
-          Free Downloads
+          Free Resources
           <Link to="downloads/" />
         </Menu.Item>
         {user === null ? (
