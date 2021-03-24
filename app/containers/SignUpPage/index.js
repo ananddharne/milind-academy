@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import EditableTable from 'components/EditableTable';
-import {Form, Row, Checkbox, Input, Button, Col, message } from 'antd'
+import {Form, Row, Checkbox, Input, Button, Col, message, Card } from 'antd'
 import "./index.css"
 import { Auth, Hub } from "aws-amplify";
 
@@ -82,6 +82,7 @@ export default function SignUpPage() {
       };
   
   return (
+      <Card className="signup-container">
     <Row id="signup-form-row" type="flex" justify="center" align="middle" 
     >
     <Col>
@@ -208,5 +209,6 @@ export default function SignUpPage() {
   </Form>
   </Col>
   </Row>
+  </Card>
   );
 }
