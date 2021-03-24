@@ -59,6 +59,8 @@ export default function LoginPage() {
       };
   
   return (
+    <div className="signin-container">
+
     <Row id="signin-form-row" type="flex" justify="center" align="middle" 
     >
     <Col>
@@ -109,5 +111,6 @@ export default function LoginPage() {
   </Form>
   </Col>
   </Row>
+  </div>
   );
 }

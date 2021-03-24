@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Courses from 'components/Courses';
-import {Card, Button, Modal, Typography, List, Tabs} from 'antd'
+import {Card, Button, Modal, Typography, List, Tabs, Collapse} from 'antd'
 import "./index.css"
 import civil from "./civil.jpg"
 import mechanical from "./mechanical-engg.jpg"
@@ -23,6 +23,13 @@ export default function EnggCoursesPage() {
   const [isCompModalVisible, setIsCompModalVisible] = useState(false);
   const [isItModalVisible, setIsItModalVisible] = useState(false);
 
+  const toTitleCase = (phrase) => {
+    return phrase
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
 
 
   const showCivilModal = () => {
@@ -178,7 +185,7 @@ export default function EnggCoursesPage() {
       dataSource={civilSubjectsFE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item}</Typography.Text>
+          <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
         </List.Item>
       )}
     />
@@ -189,7 +196,7 @@ export default function EnggCoursesPage() {
       dataSource={civilSubjectsSE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item}</Typography.Text>
+          <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
         </List.Item>
       )}
     />
@@ -200,7 +207,7 @@ export default function EnggCoursesPage() {
       dataSource={civilSubjectsTE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong> {item} </Typography.Text> 
+          <Typography.Text strong> {toTitleCase(item)} </Typography.Text> 
         </List.Item>
       )}
     />
@@ -211,7 +218,7 @@ export default function EnggCoursesPage() {
       dataSource={civilSubjectsBE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
         </List.Item>
       )}
     />
@@ -242,7 +249,7 @@ export default function EnggCoursesPage() {
       dataSource={mechSubjectsFE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item} </Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)} </Typography.Text> 
         </List.Item>
       )}
     />
@@ -253,7 +260,7 @@ export default function EnggCoursesPage() {
       dataSource={mechSubjectsSE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
         </List.Item>
       )}
     />
@@ -264,7 +271,7 @@ export default function EnggCoursesPage() {
       dataSource={mechSubjectsTE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong> {item}</Typography.Text>
+          <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
         </List.Item>
       )}
     />
@@ -275,7 +282,7 @@ export default function EnggCoursesPage() {
       dataSource={mechSubjectsBE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
         </List.Item>
       )}
     />
@@ -322,7 +329,7 @@ export default function EnggCoursesPage() {
       dataSource={compSubjectsFE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item} </Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)} </Typography.Text> 
         </List.Item>
       )}
     />
@@ -333,7 +340,7 @@ export default function EnggCoursesPage() {
       dataSource={compSubjectsSE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
         </List.Item>
       )}
     />
@@ -344,7 +351,7 @@ export default function EnggCoursesPage() {
       dataSource={compSubjectsTE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong> {item}</Typography.Text>
+          <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
         </List.Item>
       )}
     />
@@ -355,7 +362,7 @@ export default function EnggCoursesPage() {
       dataSource={compSubjectsBE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
         </List.Item>
       )}
     />
@@ -389,7 +396,7 @@ export default function EnggCoursesPage() {
       dataSource={itSubjectsFE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item} </Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)} </Typography.Text> 
         </List.Item>
       )}
     />
@@ -400,7 +407,7 @@ export default function EnggCoursesPage() {
       dataSource={itSubjectsSE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
         </List.Item>
       )}
     />
@@ -411,7 +418,7 @@ export default function EnggCoursesPage() {
       dataSource={itSubjectsTE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong> {item}</Typography.Text>
+          <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
         </List.Item>
       )}
     />
@@ -422,7 +429,7 @@ export default function EnggCoursesPage() {
       dataSource={itSubjectsBE}
       renderItem={item => (
         <List.Item>
-          <Typography.Text strong>{item}</Typography.Text> 
+          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
         </List.Item>
       )}
     />
