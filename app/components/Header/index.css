@@ -42,6 +42,12 @@
       color: inherit !important;
   }
 
+  #name-company:active {
+    text-decoration: none !important;
+    border-bottom: 2px solid transparent !important;
+      color: inherit !important;
+  }
+
 
 
   .rotate{

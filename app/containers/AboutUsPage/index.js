@@ -23,9 +23,7 @@ const callback = (key) => {
       experience to the students`
 
       const text2 = `
-      Enriched with experience and 700 students abroad, the academy also serves the
-
-      purposes of study abroad and corporate lingual trainings`
+      `
 
 export default function AboutUsPage() {
 return (
@@ -66,9 +64,11 @@ purposes of study abroad and corporate lingual trainings.
       <p>{text1}</p>
     </Panel>
     <Panel header="Paid Counselling and Study Abroad Consultation" key="3" className="site-collapse-custom-panel">
-      <p>{text2}</p>
+      <p>Enriched with experience and 700 students abroad, the academy also serves the
+
+purposes of study abroad and corporate lingual trainings. Click <a href="/privateconsultpage">here </a> for more information</p>
     </Panel>
-  </Collapse>,
+  </Collapse>
 
     
 

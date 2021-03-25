@@ -55,3 +55,9 @@
         border-radius: 1em;
     }
     }
+
+    @media (min-width: 1500px) {
+        .master-container {
+            
+        }
+        }

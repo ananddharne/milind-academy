@@ -54,6 +54,10 @@ export default function DownloadsPage() {
     }
 
     const downloadS3 = async (itemKey) => {
+        const user = await Auth.currentAuthenticatedUser();
+        await Auth.updateUserAttributes(user, {
+            'address': itemKey
+        });
         console.log(itemKey)
         setCurrentPage(1)
         const result = await Storage.get(itemKey, { download: true });

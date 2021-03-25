@@ -189,7 +189,7 @@ function Header() {
         </Menu.Item>
         <Menu.Item key="downloads" icon={<DownloadOutlined />}>
           Free Resources
-          <Link to="downloads/" />
+          <Link to="/downloads" />
         </Menu.Item>
         {user === null ? (
           <Menu.Item
