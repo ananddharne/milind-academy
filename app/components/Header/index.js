@@ -43,11 +43,7 @@ function Header() {
   function getUser() {
     return Auth.currentAuthenticatedUser()
       .then(userData => {
-        userData;
-        console.log(userData);
         setUser(userData);
-        // const btn = document.getElementById('login-account')
-        // btn.innerHTML = userData.attributes.email;
       })
       .catch(() => console.log("Not signed in"));
   }
@@ -57,6 +53,10 @@ function Header() {
       .then(data => console.log(data))
       .catch(err => console.log(err));
       location.reload()
+  }
+
+  const goToHome = () => {
+    window.location.replace("/")
   }
 
   // in useEffect, we create the listener
@@ -151,12 +151,12 @@ function Header() {
         selectedKeys={[currentNav]}
         mode="horizontal"
       >
-         <Menu.Item id="name-company" key="logo">
+         <Menu.Item onClick={goToHome} id="name-company" key="logo">
          <div className="Logo-and-name">
           <img className="rotate" src={logo}></img>
           <span className="name">Milind Academy of Engineering</span>
         </div>
-          <Link to="/" />
+          {/* <Link to="/" /> */}
         </Menu.Item>
 
         <Menu.Item key="home" icon={<HomeOutlined />}>

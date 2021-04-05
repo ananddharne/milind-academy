@@ -24,7 +24,10 @@ body html {
   height: 100%;
   max-width: 100% !important;
   overflow-x: hidden !important;
-  background-color: black !important;
+}
+
+#app {
+  background-color: #F0F0F0 ;
 }
 
 .chatbot-btn {

@@ -1,13 +1,81 @@
 .gallery-grid {
         display: -ms-grid;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        grid-gap: 5rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        /* grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); */
+        grid-gap: 2rem;
         justify-items: center;
-        padding: 2%;
-        margin: 2%;
+        /* padding-left: 2%;
+        padding-right: 2%; */
+        margin: 7.5%;
 }
 
 .ant-modal-content {
         color: green!important;
+}
+
+.ant-tabs-tab {
+        background: none !important;
+        /* border: none !important */
+}
+
+.ant-tabs {
+        background-color: #F0F0F0 !important;
+        font-family: Montserrat !important;
+}
+
+.ant-modal-header {
+        background-color: #226872 !important;
+
+}
+
+.ant-modal-title {
+        color: white !important
+}
+
+.ant-modal-body {
+        background-color: #F0F0F0 !important;
+}
+
+
+.ant-tabs-tab-active {
+color: black !important;
+background: #EEC277 !important;
+border-radius: 1em !important;
+}
+
+.ant-tabs-tab-btn {
+color: black !important;
+}
+
+.ant-list-item {
+        font-family: Montserrat !important;
+}
+
+.ant-card {
+        border-radius: 1em !important;
+        font-family: Montserrat !important;
+        font-size: 160% !important;
+}
+
+.view-subjects-button {
+        background: #EEC277;
+        border: none !important;
+        cursor: pointer;
+        font-size: 100%;
+        outline: none;
+        font-family: Montserrat !important;
+        padding-left: 7%;
+        padding-right: 7%;
+        border-radius: 0.4em;
+}
+
+.view-subjects-button:hover {
+         background: rgb(241, 206, 145);
+         color: rgba(0, 0, 0, 0.856);
+}
+
+.view-subjects-button span {
+        font-size: x-large;
+        /* padding: 0.2%; */
 }

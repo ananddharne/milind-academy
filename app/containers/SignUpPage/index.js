@@ -47,7 +47,7 @@ export default function SignUpPage() {
           window.location.replace("/login")
           message.success('Sign Up successful')
         } catch (error) {
-            message.error('Uh Oh! Error signing up, ' + error.message)
+            message.error('Uh Oh! Error signing up Contact us to resolve, ' + error.message)
             console.log('error confirming sign up ', error);
         }
     }
@@ -72,7 +72,7 @@ export default function SignUpPage() {
             var code = prompt("Enter the code sent to your email for confirmation");
             confirmSignUp(values.email, code, values.password)
           } catch (error) {
-            message.error('Uh Oh! Error signing up, ' + error.message)
+            message.error('Uh Oh! Error signing up, Contact us to resolve ' + error.message)
             console.log("error signing up:", error);
           }
       };

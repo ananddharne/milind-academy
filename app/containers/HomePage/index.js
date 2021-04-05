@@ -29,6 +29,9 @@ import MainFeatures from 'components/MainFeatures';
 import ReviewsPanel from 'components/ReviewsPanel';
 import video from './homepage_bgg.mp4'
 import Footer from "components/Footer";
+import books from './books.svg'
+import circle from './circle.svg'
+
 
 
 const key = 'home';
@@ -80,13 +83,25 @@ export function HomePage({ username, onSubmitForm }) {
           </div>
           <H2>Welcome to Milind Academy!</H2>
           </div> */}
-          <MainFeatures/>
+          {/* <MainFeatures/> */}
           {/* <MainFeatures/> */}
          
           <div className="master-container">
-          <video className='videoTag' autoPlay loop muted>
+          {/* <video className='videoTag' autoPlay loop muted>
           <source src={video} type='video/mp4' />
-          </video>
+          </video> */}
+           <img className='videoTag'
+                                                src={books}
+                                          
+                                                alt="logo"
+                                            />
+
+<img className='videoTagCircle'
+                                                src={circle}
+                                          
+                                                alt="logo"
+                                            />
+
           </div>
      
       {/* <Footer /> */}

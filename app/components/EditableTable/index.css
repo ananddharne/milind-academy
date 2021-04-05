@@ -11,3 +11,14 @@
 .ant-pagination {
   margin: 2.5% !important;
 }
+
+
+.ant-table-thead tr th {
+  color: #226872;
+  font-weight: 600;
+}
+
+.ant-table-cell {
+  color: #226872;
+  font-family: Montserrat !important;
+}

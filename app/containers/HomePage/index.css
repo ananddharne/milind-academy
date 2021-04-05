@@ -29,20 +29,26 @@
 }
 
 .videoTag {
-    position: fixed;
-    /* top: 20%; */
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    z-index: -1;
-    min-width: 100%;
-    min-height: 100%;
+    /* margin-left: 60%;
+    height: 20%;
+    /* margin-top: 5%; */
+    width: 20%;
+}
+
+.videoTagCircle {
+    /* margin-left: 80%; */
+    height: 30%;
+    width: 30%;
+    margin-top: 10%;
 }
 
 .master-container {
-    position: relative;
+    /* position: relative;
     overflow: hidden;
-    height: 50%;
+    height: 50%; */
+    display: flex;
+    align-items: flex-end;     /* changed from align-content */
+  justify-content: flex-end;
 }
 
 }

@@ -3,17 +3,12 @@ import { Helmet } from 'react-helmet';
 import Courses from 'components/Courses';
 import { Card, Button, Modal, Typography, List, Tabs } from 'antd'
 import "./index.css"
-import civil from "./civil.jpg"
-import mechanical from "./mechanical-engg.jpg"
-import electrical from "./electrical.jpg"
-import computer from "./computer-engg.jpg"
-import auto from "./download.jpg"
-import elex from "./electronics1.jpg"
-import { ToastContainer, toast } from 'react-toastify';
-
-
-
-
+import civil1 from "./civil.svg"
+import mech from "./mech.svg"
+import electrical from "./electrical.svg"
+import computer from "./computer.svg"
+import auto from "./auto.svg"
+import elex from "./electronics.svg"
 
 export default function DiplomaCoursesPage() {
   const { Meta } = Card;
@@ -82,11 +77,13 @@ export default function DiplomaCoursesPage() {
     setIsCompModalVisible(false)
   }
 
-  const civilSubjectsFE = [
+  const civilSubjectsFESem1 = [
     "BASIC MATHEMATICS(M1)",
     "BASIC PHYSICS",
     "BASIC CHEMISTRY",
-    "ENGINEERING MECHANICS",
+    "ENGINEERING MECHANICS"
+  ];
+  const civilSubjectsFESem2 = [
     "APPLIED MATHEMATICS (M2)",
     "APPLIED MECHANICS",
     "APPLIED PHYSICS",
@@ -232,14 +229,26 @@ export default function DiplomaCoursesPage() {
 
 
   return (
+    <div>
+    <div style={{ backgroundColor: '#226872', textAlign: 'center', color: 'white'}} className="large-div">
+        <div style={{ padding: '10%', fontSize: '200%' }}> Diploma Engineering Courses </div>
+    </div>
     <div className="gallery-grid">
-      <Card
+    <Card
         hoverable
-        style={{ width: 275 }}
-        cover={<img alt="example" src={civil} />}
+                style={{ textAlign: 'center', width: '100%' }}
+
       >
-        <Meta title="Civil Engineering Diploma" description="" />
-        <Button onClick={showCivilModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <img 
+        
+        style={{marginBottom: '8%',  marginTop: '9%'}} 
+        
+        alt="example" src={civil1} />
+        <div>
+          <div> Civil </div>
+          <div> Engineering </div>
+        </div>
+        <button className="view-subjects-button" onClick={showCivilModal} style={{ marginTop: '15%' }}> <span> View Subjects </span> </button>
         <Modal
           title="Subjects List"
           visible={isCivilModalVisible}
@@ -247,37 +256,57 @@ export default function DiplomaCoursesPage() {
           footer={null}
           closable={true}
           id="join-pool-modal"
+          width={1000}
         >
-          <Tabs defaultActiveKey="1" >
-            <TabPane tab="FY" key="1">
+          <Tabs tabBarGutter={8} type="card" defaultActiveKey="1" >
+            <TabPane tab="First Year" key="1">
               <List
                 // bordered
-                dataSource={civilSubjectsFE}
+                header={<div style={{ fontFamily: 'Montserrat', fontWeight: '800', paddingBottom: '0.5%', color: '#226872', borderBottom: `0.08em solid black`}}>
+                  
+                  SEMESTER 1
+
+                </div>}
+                dataSource={civilSubjectsFESem1}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+              <List
+                // bordered
+                header={<div style={{ fontFamily: 'Montserrat', fontWeight: '800', paddingBottom: '0.5%', color: '#226872', borderBottom: `0.08em solid black`}}>
+                  
+                  SEMESTER 2
+
+                </div>}
+                dataSource={civilSubjectsFESem2}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="SY" key="2">
+            <TabPane tab="Second Year" key="2">
               <List
                 // bordered
                 dataSource={civilSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="TY" key="3">
+            <TabPane tab="Third Year" key="3">
               <List
                 // bordered
                 dataSource={civilSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {toTitleCase(item)} </Typography.Text>
+                    <Typography.Text> {toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
@@ -288,11 +317,15 @@ export default function DiplomaCoursesPage() {
       </Card>
       <Card
         hoverable
-        style={{ width: 275 }}
-        cover={<img alt="example" src={mechanical} />}
+                style={{ textAlign: 'center', width: '100%' }}
+
       >
-        <Meta title="Mechanical Engg. Diploma" description="" />
-        <Button onClick={showMechModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <img 
+        // style={{marginBottom: '-6%'}} 
+        alt="example" src={mech} />
+        <div> Mechanical </div>
+        <div> Engineering </div>
+        <button className="view-subjects-button" onClick={showMechModal} style={{ marginTop: '15%' }}> <span> View Subjects </span> </button>
         <Modal
           title="Subjects List"
           visible={isMechModalVisible}
@@ -300,37 +333,38 @@ export default function DiplomaCoursesPage() {
           footer={null}
           closable={true}
           id="join-pool-modal"
+          width={1000}
         >
-          <Tabs defaultActiveKey="1" >
-            <TabPane tab="FY" key="1">
+          <Tabs tabBarGutter={8} type="card" defaultActiveKey="1" >
+            <TabPane tab="First Year" key="1">
               <List
                 // bordered
                 dataSource={mechSubjectsFE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)} </Typography.Text>
+                    <Typography.Text>{toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="SY" key="2">
+            <TabPane tab="Second Year" key="2">
               <List
                 // bordered
                 dataSource={mechSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="TY" key="3">
+            <TabPane tab="Third Year" key="3">
               <List
                 // bordered
                 dataSource={mechSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
+                    <Typography.Text> {toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -341,27 +375,23 @@ export default function DiplomaCoursesPage() {
       </Card>
       <Card
         hoverable
-        style={{ width: 275 }}
-        cover={<img alt="example" src={electrical} />}
-      >
-        <Meta title="Electrical Engg. Diploma" description="" />
-      </Card>
-      {/* <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={mechanical} />}
-  >
-    <Meta title="Production Engg. Diploma" description="" />
-    <Button style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
+                style={{ textAlign: 'center', width: '100%' }}
 
-  </Card> */}
+      >
+        <img style={{marginBottom: '5%',  marginTop: '17%'}} alt="example" src={electrical} />
+        {/* <Meta style={{marginBottom: '10%'}} title="civil Engineering" description="" /> */}
+        <div> Electrical </div>
+        <div> Engineering </div>
+      </Card>
       <Card
         hoverable
-        style={{ width: 275 }}
-        cover={<img alt="example" src={computer} />}
+                style={{ textAlign: 'center', width: '100%' }}
+
       >
-        <Meta title="Computer/IT Engg Diploma" description="" />
-        <Button onClick={showCompModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <img style={{marginBottom: '5%',  marginTop: '17%'}} alt="example" src={computer} />
+        <div> Computer </div>
+        <div> Engineering </div>
+        <button className="view-subjects-button" onClick={showCompModal} style={{ marginTop: '15%' }}> <span> View Subjects </span> </button>
         <Modal
           title="Subjects List"
           visible={isCompModalVisible}
@@ -369,37 +399,38 @@ export default function DiplomaCoursesPage() {
           footer={null}
           closable={true}
           id="join-pool-modal"
+          width={1000}
         >
-          <Tabs defaultActiveKey="1" >
-            <TabPane tab="FY" key="1">
+          <Tabs tabBarGutter={8} type="card"tabBarGutter={8} defaultActiveKey="1" >
+            <TabPane tab="First Year" key="1">
               <List
                 // bordered
                 dataSource={compSubjectsFE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)} </Typography.Text>
+                    <Typography.Text>{toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="SY" key="2">
+            <TabPane tab="Second Year" key="2">
               <List
                 // bordered
                 dataSource={compSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="TY" key="3">
+            <TabPane tab="Third Year" key="3">
               <List
                 // bordered
                 dataSource={compSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
+                    <Typography.Text> {toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -412,11 +443,13 @@ export default function DiplomaCoursesPage() {
 
       <Card
         hoverable
-        style={{ width: 275 }}
-        cover={<img alt="example" src={auto} />}
+                style={{ textAlign: 'center', width: '100%' }}
+
       >
-        <Meta title="Automobile Engineering" description="" />
-        <Button onClick={showAutoModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <img style={{marginBottom: '5%',  marginTop: '17%'}} alt="example" src={auto} />
+        <div> Automobile </div>
+        <div> Engineering </div>
+        <button className="view-subjects-button" onClick={showAutoModal} style={{ marginTop: '18%' }}> <span> View Subjects </span> </button>
         <Modal
           title="Subjects List"
           visible={isAutoModalVisible}
@@ -424,37 +457,38 @@ export default function DiplomaCoursesPage() {
           footer={null}
           closable={true}
           id="join-pool-modal"
+          width={1000}
         >
-          <Tabs defaultActiveKey="1" >
-            <TabPane tab="FY" key="1">
+          <Tabs tabBarGutter={8} type="card" defaultActiveKey="1" >
+            <TabPane tab="First Year" key="1">
               <List
                 // bordered
                 dataSource={autoSubjectsFE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)} </Typography.Text>
+                    <Typography.Text>{toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="SY" key="2">
+            <TabPane tab="Second Year" key="2">
               <List
                 // bordered
                 dataSource={autoSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="TY" key="3">
+            <TabPane tab="Third Year" key="3">
               <List
                 // bordered
                 dataSource={autoSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
+                    <Typography.Text> {toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -467,11 +501,13 @@ export default function DiplomaCoursesPage() {
 
       <Card
         hoverable
-        style={{ width: 275 }}
-        cover={<img alt="example" src={elex} />}
+                style={{ textAlign: 'center', width: '100%' }}
+
       >
-        <Meta title="Electronics Engineering" description="" />
-        <Button onClick={showElexModal} style={{ marginTop: '5%', fontWeight: 'bold' }}>View Subjects</Button>
+        <img style={{marginBottom: '10%',  marginTop: '17%'}} alt="example" src={elex} />
+        <div> Electronics </div>
+        <div> Engineering </div>
+        <button className="view-subjects-button" onClick={showElexModal} style={{ marginTop: '25%' }}> <span> View Subjects </span> </button>
         <Modal
           title="Subjects List"
           visible={isElexModalVisible}
@@ -479,37 +515,38 @@ export default function DiplomaCoursesPage() {
           footer={null}
           closable={true}
           id="join-pool-modal"
+          width={1000}
         >
-          <Tabs defaultActiveKey="1" >
-            <TabPane tab="FY" key="1">
+          <Tabs type="card" defaultActiveKey="1" >
+            <TabPane tab="First Year" key="1">
               <List
                 // bordered
                 dataSource={elexSubjectsFE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)} </Typography.Text>
+                    <Typography.Text>{toTitleCase(item)} </Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="SY" key="2">
+            <TabPane tab="Second Year" key="2">
               <List
                 // bordered
                 dataSource={elexSubjectsSE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
             </TabPane>
-            <TabPane tab="TY" key="3">
+            <TabPane tab="Third Year" key="3">
               <List
                 // bordered
                 dataSource={elexSubjectsTE}
                 renderItem={item => (
                   <List.Item>
-                    <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
+                    <Typography.Text> {toTitleCase(item)}</Typography.Text>
                   </List.Item>
                 )}
               />
@@ -518,6 +555,7 @@ export default function DiplomaCoursesPage() {
 
         </Modal>
       </Card>
+    </div>
     </div>
   );
 }

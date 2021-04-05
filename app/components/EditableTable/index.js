@@ -350,7 +350,7 @@ const originData = [];
                     cell: EditableCell,
                   },
                 }}
-                bordered
+                // bordered
                 dataSource={data}
                 scroll={{ x: 1000 }}
                 columns={mergedColumns}
