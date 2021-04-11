@@ -15,6 +15,156 @@
     margin-top: '5%';
 }
 
+.slick-container {
+    padding-top: 5%;
+    padding-bottom: 8%; 
+}
+.slick-arrow {
+    
+}
+.slick-prev {
+    left: 3% !important;
+    z-index: 1;
+  }
+  .slick-next {
+    right: 3% !important;
+    z-index: 1;
+  }
+
+.slick-container .slick-prev:before,
+.slick-container .slick-next:before {
+  color: #226872 !important;
+}
+.about-us-container {
+        background-color: #226872;
+        color: white;
+        margin-bottom: 5%;
+        text-align: center;
+        font-family: Montserrat;
+}
+
+.about-us-heading-home {
+   padding-top: 5%;
+   padding-bottom: 2%;
+}
+
+.about-us-span{
+    font-size: 150%;
+    padding: 0 2.5%;
+    padding-bottom: 0.5%;
+    border-bottom: 0.01em solid white;
+}
+
+.our-specialty-container {
+    /* color: white; */
+    margin-bottom: 3%;
+    text-align: center;
+    font-family: Montserrat;
+}
+
+.our-specialty-content {
+    display: flex;
+    justify-content: center;
+}
+.study-material {
+    text-align: center;
+    margin: 1% 7.5% 1% 5%;
+}
+
+.assignments {
+    margin: 1% 7.5% 1% 5%;
+    text-align: center;
+}
+
+
+.our-specialty {
+    padding-top: 5%;
+    padding-bottom: 2%;
+ }
+ 
+ .our-specialty-span{
+     font-size: 150%;
+     padding: 0 2.5%;
+     padding-bottom: 0.5%;
+     border-bottom: 0.01em solid #226872;
+ }
+
+.our-reviews-span{
+    color: white;
+    font-size: 150%;
+    padding: 0 1.5%;
+    padding-bottom: 0.5%;
+    border-bottom: 0.01em solid white;
+}
+
+.about-us-content-home {
+    padding: 1% 5% 5%
+}
+
+.homepage-categories {
+   
+}
+
+.homepage-categories-1 {
+    margin-bottom: 5%
+}
+.homepage-categories-1 .category {
+    text-align: center;
+    margin: 2%;
+    border: 1px solid #226872;
+    border-radius: 0.8em;
+}
+
+.homepage-categories .category {
+    text-align: center;
+    margin: 2%;
+    border: 1px solid #226872;
+    border-radius: 0.8em;
+}
+
+.know-more-button {
+    background: #458994;
+    border: none !important;
+    cursor: pointer;
+    font-size: 100%;
+    outline: none;
+    font-family: Montserrat !important;
+    padding-left: 7%;
+    padding-right: 7%;
+    border-radius: 0.4em;
+    margin-bottom: 5%;
+    color: white;
+}
+
+.know-more-button:hover {
+    background: #446d74;
+    color: rgba(0, 0, 0, 0.856);
+    color: white;
+}
+
+.know-more-button span {
+    
+}
+
+.contact-office-hours {
+    justify-content: center;
+    display: flex;
+    background-color: #EEC277
+}
+.mobile {
+    margin: 5%;
+    text-align: center;
+    margin: 1% 7.5% 1% 5%;
+}
+
+.office-hours {
+    margin: 1% 7.5% 1% 5%;
+    text-align: center;
+}
+
+
+
+
 .home-form {
     background-color: #513a50;
     padding-right: 3%;
@@ -36,10 +186,11 @@
 }
 
 .videoTagCircle {
-    /* margin-left: 80%; */
-    height: 30%;
-    width: 30%;
-    margin-top: 10%;
+    margin-left: 20%;
+    /* min-width: 30%; */
+    height: 80%;
+    width: 80%;
+    /* margin-top: 10%; */
 }
 
 .master-container {
@@ -51,14 +202,52 @@
   justify-content: flex-end;
 }
 
+.reviews-container {
+    background-color: #226872;
+    padding-top: 3%;
+    padding-bottom: 3%; 
+    text-align: center;
+}
+
 }
 
 @media (min-width: 768px) {
+    .homepage-categories {
+         display: flex;
+        justify-content: center;
+        
+    }
+
+.about-us-content-home {
+    padding: 1% 25% 10%
+}
+    
+    .homepage-categories-1 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5%
+    }
+
+    .homepage-categories-1 .category {
+        max-width: 25%;
+
+    }
+    
+    .homepage-categories .category {
+        max-width: 25%;
+    }
     .home-content{
         flex-direction: row;
     } 
     .home-form {
         border-radius: 1em;
+    }
+    .videoTagCircle {
+        margin-left: 40%;
+        /* min-width: 30%; */
+        height: 60%;
+        width: 60%;
+        /* margin-top: 10%; */
     }
     }
 

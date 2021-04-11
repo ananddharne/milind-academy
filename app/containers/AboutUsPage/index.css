@@ -2,13 +2,14 @@
 
 @media (min-width: 300px) {
     .aboutus-page {
-        background-color: #EEC277;
         /* display: flex; */
         /* padding: 5%; */
         /* text-align: center; */
+        background-color: #EEC277;
     }
 
     .about-us-section {
+       
         font-family: Montserrat;
         padding: 2.5%;
     }
@@ -28,7 +29,7 @@
     }
 
     .about-us-content {
-        margin-top: 3%;
+        margin: 1% 1% 3% 1%;
         font-family: Montserrat;
      }
      .founders-message-section {
@@ -46,6 +47,8 @@
 
     .founder-message-content {
         margin-top: 3%;
+        margin: 1% 1% 3% 1%;
+
        font-family: Montserrat;
      }
 

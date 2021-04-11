@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Courses from 'components/Courses';
-import {Card, Button, Modal, Typography, List, Tabs, Collapse} from 'antd'
+import { Card, Button, Modal, Typography, List, Tabs } from 'antd'
 import "./index.css"
-import civil from "./civil.jpg"
-import mechanical from "./mechanical-engg.jpg"
-import electrical from "./electrical-engg.jpg"
-import computer from "./computer-engg.jpg"
-import it from "./it-engg.jpg"
-
-import SubjectsModal from 'components/SubjectsModal';
-import useModal from 'components/SubjectsModal/useModal';
+import civil1 from "./civil.svg"
+import mech from "./mech.svg"
+import electrical from "./electrical.svg"
+import computer from "./computer.svg"
+import auto from "./auto.svg"
+import elex from "./electronics.svg"
 
 
 
@@ -64,10 +62,14 @@ export default function EnggCoursesPage() {
   const handleOkIt = () => {
     setIsItModalVisible(false);
   };
-
-  const civilSubjectsFE = [
-    'Engineering Mechanics', 'M1', 'M2'
+  const civilSubjectsFESem1 = [
+    'Engineering Mechanics', 'M1'
   ];
+
+  const civilSubjectsFESem2 = [
+    'M2'
+  ];
+
   const civilSubjectsSE = [
     'M3', 'MECHANICS OF STRUCTURES', 'FLUID MECHANICS', 'STRUCTURAL ANALYSIS', 'STRUCTURAL ANALYSIS 1', 'FLUID MECHANICS 1'
   ];
@@ -162,283 +164,218 @@ export default function EnggCoursesPage() {
   ];
 
   return (
-      <div className="gallery-grid">
+    <div>
+    <div style={{ backgroundColor: '#226872', textAlign: 'center', color: 'white'}} className="large-div">
+        <div style={{ padding: '10%', fontSize: '200%' }}> Degree Engineering Courses </div>
+    </div>
+    <div className="gallery-grid">
     <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={civil} />}
-  >
-    <Meta title="Civil Engineering" description="" />
-    <Button onClick={showCivilModal} style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
-    <Modal
-                title="Subjects List"
-                visible={isCivilModalVisible}
-                onCancel={handleOkCivil}
-                footer={null}
-                closable={true}
-                id="join-pool-modal"
-            >
-                  <Tabs defaultActiveKey="1" >
-    <TabPane tab="FE" key="1">
-    <List
-      // // bordered
-      dataSource={civilSubjectsFE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="SE" key="2">
-    <List
-      // bordered
-      dataSource={civilSubjectsSE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)}</Typography.Text>
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="TE" key="3">
-    <List
-      // bordered
-      dataSource={civilSubjectsTE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong> {toTitleCase(item)} </Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="BE" key="4">
-    <List
-      // bordered
-      dataSource={civilSubjectsBE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-  </Tabs>
-             
-            </Modal>
-  </Card>
-  <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={mechanical} />}
-  >
-    <Meta title="Mechanical Engineering" description="" />
-    <Button onClick={showMechModal} style={{marginTop: '5%' , fontWeight: 'bold'}}>View Subjects</Button>
-    <Modal
-                title="Subjects List"
-                visible={isMechModalVisible}
-                onCancel={handleOkMech}
-                footer={null}
-                closable={true}
-                id="join-pool-modal"
-            >
-                  <Tabs defaultActiveKey="1" >
-    <TabPane tab="FE" key="1">
-    <List
-      // bordered
-      dataSource={mechSubjectsFE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)} </Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="SE" key="2">
-    <List
-      // bordered
-      dataSource={mechSubjectsSE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="TE" key="3">
-    <List
-      // bordered
-      dataSource={mechSubjectsTE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="BE" key="4">
-    <List
-      // bordered
-      dataSource={mechSubjectsBE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-  </Tabs>
-             
-            </Modal>
-  </Card>
-  <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={electrical} />}
-  >
-    <Meta title="Electrical Engineering" description="" />
-  </Card>
-  <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={mechanical} />}
-  >
-    <Meta title="Production Engineering" description="" />
-    <Button style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
+        hoverable
+                style={{ textAlign: 'center', width: '100%' }}
 
-  </Card>
-  <Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={computer} />}
-  >
-    <Meta title="Computer/IT Engineering" description="" />
-    <Button onClick={showCompModal} style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
-    <Modal
-                title="Subjects List"
-                visible={isCompModalVisible}
-                onCancel={handleOkComp}
-                footer={null}
-                closable={true}
-                id="join-pool-modal"
-            >
-                  <Tabs defaultActiveKey="1" >
-    <TabPane tab="FE" key="1">
-    <List
-      // bordered
-      dataSource={compSubjectsFE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)} </Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="SE" key="2">
-    <List
-      // bordered
-      dataSource={compSubjectsSE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="TE" key="3">
-    <List
-      // bordered
-      dataSource={compSubjectsTE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="BE" key="4">
-    <List
-      // bordered
-      dataSource={compSubjectsBE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-  </Tabs>
-             
-            </Modal>
-  </Card>
+      >
+        <img 
+        
+        style={{marginBottom: '8%',  marginTop: '9%'}} 
+        
+        alt="example" src={civil1} />
+        <div>
+          <div> Civil </div>
+          <div> Engineering </div>
+        </div>
+        <button className="view-subjects-button" onClick={showCivilModal} style={{ marginTop: '15%' }}> <span> View Subjects </span> </button>
+        <Modal
+          title="Subjects List"
+          visible={isCivilModalVisible}
+          onCancel={handleOkCivil}
+          footer={null}
+          closable={true}
+          id="join-pool-modal"
+          width={1000}
+        >
+          <Tabs tabBarGutter={8} type="card" defaultActiveKey="1" >
+            <TabPane tab="First Year" key="1">
+              <List
+                // bordered
+                header={<div style={{ fontFamily: 'Montserrat', fontWeight: '800', paddingBottom: '0.5%', color: '#226872', borderBottom: `0.08em solid black`}}>
+                  
+                  SEMESTER 1
 
+                </div>}
+                dataSource={civilSubjectsFESem1}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+              <List
+                // bordered
+                header={<div style={{ fontFamily: 'Montserrat', fontWeight: '800', paddingBottom: '0.5%', color: '#226872', borderBottom: `0.08em solid black`}}>
+                  
+                  SEMESTER 2
 
-{/* it engg */}
-<Card
-    hoverable
-    style={{ width: 275 }}
-    cover={<img alt="example" src={it} />}
-  >
-    <Meta title="Computer/IT Engineering" description="" />
-    <Button onClick={showItModal} style={{marginTop: '5%', fontWeight: 'bold'}}>View Subjects</Button>
-    <Modal
-                title="Subjects List"
-                visible={isItModalVisible}
-                onCancel={handleOkIt}
-                footer={null}
-                closable={true}
-                id="join-pool-modal"
-            >
-                  <Tabs defaultActiveKey="1" >
-    <TabPane tab="FE" key="1">
-    <List
-      // bordered
-      dataSource={itSubjectsFE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)} </Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="SE" key="2">
-    <List
-      // bordered
-      dataSource={itSubjectsSE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="TE" key="3">
-    <List
-      // bordered
-      dataSource={itSubjectsTE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong> {toTitleCase(item)}</Typography.Text>
-        </List.Item>
-      )}
-    />
-    </TabPane>
-    <TabPane tab="BE" key="4">
-    <List
-      // bordered
-      dataSource={itSubjectsBE}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text strong>{toTitleCase(item)}</Typography.Text> 
-        </List.Item>
-      )}
-    />
-    </TabPane>
-  </Tabs>
-             
-            </Modal>
-  </Card>
+                </div>}
+                dataSource={civilSubjectsFESem2}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="Second Year" key="2">
+              <List
+                // bordered
+                dataSource={civilSubjectsSE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="Third Year" key="3">
+              <List
+                // bordered
+                dataSource={civilSubjectsTE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text> {toTitleCase(item)} </Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+          </Tabs>
 
-  </div>
+        </Modal>
+      </Card>
+      <Card
+        hoverable
+                style={{ textAlign: 'center', width: '100%' }}
+
+      >
+        <img 
+        // style={{marginBottom: '-6%'}} 
+        alt="example" src={mech} />
+        <div> Mechanical </div>
+        <div> Engineering </div>
+        <button className="view-subjects-button" onClick={showMechModal} style={{ marginTop: '15%' }}> <span> View Subjects </span> </button>
+        <Modal
+          title="Subjects List"
+          visible={isMechModalVisible}
+          onCancel={handleOkMech}
+          footer={null}
+          closable={true}
+          id="join-pool-modal"
+          width={1000}
+        >
+          <Tabs tabBarGutter={8} type="card" defaultActiveKey="1" >
+            <TabPane tab="First Year" key="1">
+              <List
+                // bordered
+                dataSource={mechSubjectsFE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text>{toTitleCase(item)} </Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="Second Year" key="2">
+              <List
+                // bordered
+                dataSource={mechSubjectsSE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="Third Year" key="3">
+              <List
+                // bordered
+                dataSource={mechSubjectsTE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text> {toTitleCase(item)}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+          </Tabs>
+
+        </Modal>
+      </Card>
+      <Card
+        hoverable
+                style={{ textAlign: 'center', width: '100%' }}
+
+      >
+        <img style={{marginBottom: '5%',  marginTop: '17%'}} alt="example" src={electrical} />
+        {/* <Meta style={{marginBottom: '10%'}} title="civil Engineering" description="" /> */}
+        <div> Electrical </div>
+        <div> Engineering </div>
+      </Card>
+      <Card
+        hoverable
+                style={{ textAlign: 'center', width: '100%' }}
+
+      >
+        <img style={{marginBottom: '5%',  marginTop: '17%'}} alt="example" src={computer} />
+        <div> Computer </div>
+        <div> Engineering </div>
+        <button className="view-subjects-button" onClick={showCompModal} style={{ marginTop: '15%' }}> <span> View Subjects </span> </button>
+        <Modal
+          title="Subjects List"
+          visible={isCompModalVisible}
+          onCancel={handleOkComp}
+          footer={null}
+          closable={true}
+          id="join-pool-modal"
+          width={1000}
+        >
+          <Tabs tabBarGutter={8} type="card"tabBarGutter={8} defaultActiveKey="1" >
+            <TabPane tab="First Year" key="1">
+              <List
+                // bordered
+                dataSource={compSubjectsFE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text>{toTitleCase(item)} </Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="Second Year" key="2">
+              <List
+                // bordered
+                dataSource={compSubjectsSE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text>{toTitleCase(item)}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+            <TabPane tab="Third Year" key="3">
+              <List
+                // bordered
+                dataSource={compSubjectsTE}
+                renderItem={item => (
+                  <List.Item>
+                    <Typography.Text> {toTitleCase(item)}</Typography.Text>
+                  </List.Item>
+                )}
+              />
+            </TabPane>
+          </Tabs>
+
+        </Modal>
+      </Card>
+
+    </div>
+    </div>
   );
 }

@@ -13,7 +13,6 @@ import elex from "./electronics.svg"
 export default function DiplomaCoursesPage() {
   const { Meta } = Card;
   const { TabPane } = Tabs;
-
   const [isCivilModalVisible, setIsCivilModalVisible] = useState(false);
   const [isMechModalVisible, setIsMechModalVisible] = useState(false);
   const [isCompModalVisible, setIsCompModalVisible] = useState(false);

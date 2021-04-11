@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Collapse } from 'antd'
 import ReviewsPanel from 'components/ReviewsPanel';
-import {
-  CaretRightOutlined
-} from "@ant-design/icons";
+import FacultyTable from 'components/FacultyTable';
 import "./index.css"
 import students1 from "./students1.svg"
 import students2 from "./students2.svg"
@@ -29,6 +27,8 @@ const text2 = `
 
 export default function AboutUsPage() {
   return (
+    <div>
+    <div>
     <div className="aboutus-page">
       <div className="about-us-section">
         <div className="about-us-heading">
@@ -107,7 +107,15 @@ purposes of study abroad and corporate lingual trainings. Click <a href="/privat
     
 
 <ReviewsPanel/> */}
+
     </div>
+      </div>
+
+      <div>
+      <FacultyTable style={{marginTop: '2%'}}/>
+
+      </div>
+      </div>
 
   )
 

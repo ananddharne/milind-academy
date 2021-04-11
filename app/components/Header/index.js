@@ -110,8 +110,7 @@ function Header() {
       //   // s.style.background = '#F1F8FF';
       //   // s.style.color = 'black';
       //   s.style.zIndex = 10;
-
-      // }
+ 
     }
   }, [offset])
 
@@ -153,7 +152,7 @@ function Header() {
       >
          <Menu.Item onClick={goToHome} id="name-company" key="logo">
          <div className="Logo-and-name">
-          <img className="rotate" src={logo}></img>
+          {/* <img className="rotate" src={logo}></img> */}
           <span className="name">Milind Academy of Engineering</span>
         </div>
           {/* <Link to="/" /> */}
