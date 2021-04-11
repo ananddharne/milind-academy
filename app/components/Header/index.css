@@ -39,7 +39,7 @@
   #name-company:hover {
     text-decoration: none !important;
     border-bottom: 2px solid transparent !important;
-      color: inherit !important;
+    color: inherit !important;
   }
 
   #name-company:active {

@@ -344,13 +344,13 @@ const originData = [];
          { 
               data.length ?
               <Table
-                id="ant-table-timetable"
+                id="tt-table"
                 components={{
                   body: {
                     cell: EditableCell,
                   },
                 }}
-                bordered
+                // bordered
                 dataSource={data}
                 scroll={{ x: 1000 }}
                 columns={mergedColumns}

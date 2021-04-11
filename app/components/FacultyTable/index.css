@@ -11,18 +11,35 @@
 .ant-pagination {
   margin: 2.5% !important;
 }
+.ant-table-tbody > tr > td {
+  border-bottom: 0px solid #226872 !important;
+}
+
+.ant-table-thead tr th {
+  border-bottom: 0.5px inset #226872 !important;
+  /* border-style: groove; */
+}
 
 
 .ant-table-thead tr th {
   color: #226872;
-  font-weight: 600;
+  font-weight: 1000 !important;
+  background: #F0F0F0 !important;
+  font-family: Montserrat !important;
+
 }
+
 
 .ant-table-cell {
   color: #226872;
   font-family: Montserrat !important;
 }
-#tt-table {
+
+#faculty-table {
   margin: 2.5% !important;
   background: #F0F0F0;
+}
+
+.subjects-faculty p {
+  margin: 0px !important
 }

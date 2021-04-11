@@ -1,36 +1,120 @@
 @import '~antd/dist/antd.css';
 
-@import url('https://fonts.googleapis.com/css?family=Sacramento');
-@import url('https://fonts.googleapis.com/css?family=Bungee');
-@import url('https://fonts.googleapis.com/css?family=Cherry+Swash');
+@media (min-width: 300px) {
+    .aboutus-page {
+        /* display: flex; */
+        /* padding: 5%; */
+        /* text-align: center; */
+        background-color: #EEC277;
+    }
 
-.hana {
-    /* font-family: 'Sacramento'; */
-    font-family: 'Bungee';
-    font-family: 'CherrySwash';
+    .about-us-section {
+       
+        font-family: Montserrat;
+        padding: 2.5%;
+    }
 
-    /* text-align: 'center';
-    padding: '40%';
-    font-size: '450%';
-    z-index: 1; */
-    /* color:#1890ff; */
+    .about-us-heading {
+        font-size: 250%;
+        font-weight: bold;
+        font-family: Montserrat;
+    }
+
+    .about-us-heading {
+        font-size: 200%;
+        font-weight: bold;
+        font-family: Montserrat;
+        /* max-width: 25%; */
+        /* border-bottom: 0.08em solid #201d15; */
+    }
+
+    .about-us-content {
+        margin: 1% 1% 3% 1%;
+        font-family: Montserrat;
+     }
+     .founders-message-section {
+        padding: 2.5%;
+    }
+
+     .founder-message-heading {
+        font-size: 200%;
+        font-weight: bold;
+        /* max-width: 45%; */
+        font-family: Montserrat;
+        margin: 2%;
+        /* border-bottom: 0.08em solid #201d15; */
+    }
+
+    .founder-message-content {
+        margin-top: 3%;
+        margin: 1% 1% 3% 1%;
+
+       font-family: Montserrat;
+     }
+
+     .photo-container {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+     /* .img-1 {
+        width: 20%;
+      }
+
+    .img-2 {
+        width: 20%;
+        margin-top: 7%;
+      } */
+    
+
 }
 
-[data-theme='compact'] .site-collapse-custom-collapse .site-collapse-custom-panel,
-.site-collapse-custom-collapse .site-collapse-custom-panel {
-  margin-bottom: 24px;
-  overflow: hidden;
-  background: #f7f7f7;
-  border: 0px;
-  border-radius: 2px;
-}
 
-.ant-collapse-header {
-    font-weight: bold !important;
-    font-size: 120% !important;
-    color: #375bd2 !important
-}
+@media (min-width: 768px) {
+    .about-us-section {
+        /* background-color: #EEC277; */
+        margin-left: 45%;
+    }
+    
+    .founders-message-section {
+        max-width: 45%;
+    }
+    .photo-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .img-1 {
+        width: 52%;
+      }
 
-.ant-collapse-content {
-    font-size: 110% !important;
-}
+    .img-2 {
+        width: 45%;
+        margin-top: 7%;
+      }
+    }
+
+    @media (min-width: 1500px) {
+      
+        .founder-message-content {
+            font-size: 180%;
+        }  
+        .about-us-content {
+            font-size: 180%;
+         } 
+         .about-us-heading {
+             font-size: 250%;
+         } 
+         .founder-message-heading {
+            font-size: 250%;
+        } 
+    }
+
+
+
+
+
+ 
+

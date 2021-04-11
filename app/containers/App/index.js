@@ -52,7 +52,7 @@ function App() {
       >
         <i className="fa fa-whatsapp my-float" />
       </a>
-      <SimpleForm className="chatbot" />
+      {/* <SimpleForm className="chatbot" /> */}
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
