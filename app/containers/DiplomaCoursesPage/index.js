@@ -238,16 +238,13 @@ export default function DiplomaCoursesPage() {
                 style={{ textAlign: 'center', width: '100%' }}
 
       >
-        <img 
-        
-        style={{marginBottom: '8%',  marginTop: '9%'}} 
-        
+        <img style={{padding: '5%'}}
         alt="example" src={civil1} />
         <div>
           <div> Civil </div>
           <div> Engineering </div>
         </div>
-        <button className="view-subjects-button" onClick={showCivilModal} style={{ marginTop: '15%' }}> <span> View Subjects </span> </button>
+        <button className="view-subjects-button" onClick={showCivilModal} style={{ marginTop: '18%' }}> <span> View Subjects </span> </button>
         <Modal
           title="Subjects List"
           visible={isCivilModalVisible}
@@ -320,11 +317,10 @@ export default function DiplomaCoursesPage() {
 
       >
         <img 
-        // style={{marginBottom: '-6%'}} 
         alt="example" src={mech} />
         <div> Mechanical </div>
         <div> Engineering </div>
-        <button className="view-subjects-button" onClick={showMechModal} style={{ marginTop: '15%' }}> <span> View Subjects </span> </button>
+        <button className="view-subjects-button" onClick={showMechModal}> <span> View Subjects </span> </button>
         <Modal
           title="Subjects List"
           visible={isMechModalVisible}
@@ -377,7 +373,7 @@ export default function DiplomaCoursesPage() {
                 style={{ textAlign: 'center', width: '100%' }}
 
       >
-        <img style={{marginBottom: '5%',  marginTop: '17%'}} alt="example" src={electrical} />
+        <img alt="example" style={{padding: '5%'}} src={electrical} />
         {/* <Meta style={{marginBottom: '10%'}} title="civil Engineering" description="" /> */}
         <div> Electrical </div>
         <div> Engineering </div>
@@ -387,10 +383,10 @@ export default function DiplomaCoursesPage() {
                 style={{ textAlign: 'center', width: '100%' }}
 
       >
-        <img style={{marginBottom: '5%',  marginTop: '17%'}} alt="example" src={computer} />
+        <img style={{padding: '5%'}} alt="example" src={computer} />
         <div> Computer </div>
         <div> Engineering </div>
-        <button className="view-subjects-button" onClick={showCompModal} style={{ marginTop: '15%' }}> <span> View Subjects </span> </button>
+        <button className="view-subjects-button" onClick={showCompModal} style={{ marginTop: '18%' }}> <span> View Subjects </span> </button>
         <Modal
           title="Subjects List"
           visible={isCompModalVisible}
@@ -445,7 +441,7 @@ export default function DiplomaCoursesPage() {
                 style={{ textAlign: 'center', width: '100%' }}
 
       >
-        <img style={{marginBottom: '5%',  marginTop: '17%'}} alt="example" src={auto} />
+        <img alt="example" src={auto} />
         <div> Automobile </div>
         <div> Engineering </div>
         <button className="view-subjects-button" onClick={showAutoModal} style={{ marginTop: '18%' }}> <span> View Subjects </span> </button>
@@ -503,10 +499,10 @@ export default function DiplomaCoursesPage() {
                 style={{ textAlign: 'center', width: '100%' }}
 
       >
-        <img style={{marginBottom: '10%',  marginTop: '17%'}} alt="example" src={elex} />
+        <img style={{padding: '3.5%'}}  alt="example" src={elex} />
         <div> Electronics </div>
         <div> Engineering </div>
-        <button className="view-subjects-button" onClick={showElexModal} style={{ marginTop: '25%' }}> <span> View Subjects </span> </button>
+        <button style={{ marginTop: '18%' }} className="view-subjects-button" onClick={showElexModal}> <span> View Subjects </span> </button>
         <Modal
           title="Subjects List"
           visible={isElexModalVisible}
