@@ -40,6 +40,24 @@ function Header() {
     setCurrentNav(e.key);
   };
 
+  const onAffix = affix => {
+    console.log(affix)
+    var navbar = document.getElementsByClassName('navbar-1')
+    if(affix) {
+      console.log(navbar[0])
+      // navbar[0].style.padding = '1% 5%'
+      navbar[0].style.padding = '0% 0%'
+      navbar[0].style.backgroundColor = 'white'
+
+    } else {
+      navbar[0].style.backgroundColor = '#F0F0F0'
+      navbar[0].style.padding = '1.5% 0%'
+      navbar[0].style.boxShadow = '0px 1px 10px #999'
+      navbar[0].style.borderRadius = '0.5em'
+    }
+  
+  }
+
   function getUser() {
     return Auth.currentAuthenticatedUser()
       .then(userData => {
@@ -142,9 +160,11 @@ function Header() {
       </div> */}
 
       <div />
-  <Affix offsetTop={0} onChange={(affixed) => console.log(affixed)}>
+  <Affix offsetTop={0} onChange={ (affixed) => onAffix(affixed)}>
+  {/* onChange={(affixed) => console.log(affixed)} */}
       <Menu
         id="navbar"
+        className="navbar-1"
         theme="light"
         onClick={handleClick}
         selectedKeys={[currentNav]}
@@ -158,15 +178,21 @@ function Header() {
           {/* <Link to="/" /> */}
         </Menu.Item>
 
-        <Menu.Item key="home" icon={<HomeOutlined />}>
+        <Menu.Item key="home" 
+        // icon={<HomeOutlined />}
+        >
           Home
           <Link to="/" />
         </Menu.Item>
-        <Menu.Item key="about" icon={<ContactsOutlined />}>
+        <Menu.Item key="about" 
+        // icon={<ContactsOutlined />}
+        >
           About us
           <Link to="/aboutus" />
         </Menu.Item>
-        <SubMenu key="SubMenu" icon={<UnorderedListOutlined />} title="Courses">
+        <SubMenu key="SubMenu" 
+        // icon={<UnorderedListOutlined />} 
+        title="Courses">
           <Menu.ItemGroup>
             <Menu.Item key="setting:1">
               Engineering
@@ -181,12 +207,14 @@ function Header() {
         <Menu.Item
           // onClick={getUser}
           key="timetable"
-          icon={<ClockCircleFilled />}
+          // icon={<ClockCircleFilled />}
         >
           TimeTable
           <Link to="/timetable" />
         </Menu.Item>
-        <Menu.Item key="downloads" icon={<DownloadOutlined />}>
+        <Menu.Item key="downloads" 
+        // icon={<DownloadOutlined />}
+        >
           Free Resources
           <Link to="/downloads" />
         </Menu.Item>
@@ -195,7 +223,7 @@ function Header() {
             id="login-accounts"
             // onClick={signIn}
             key="login"
-            icon={<LoginOutlined />}
+            // icon={<LoginOutlined />}
           >
           <Link to="/login"/>
             Login
@@ -203,14 +231,14 @@ function Header() {
         ) : (
           <SubMenu
             key="SubMenus"
-            icon={<UserOutlined />}
+            // icon={<UserOutlined />}
             title={user.attributes.email}
           >
             <Menu.ItemGroup>
               <Menu.Item
                 onClick={signOut}
                 key="settings:2"
-                icon={<LogoutOutlined />}
+                // icon={<LogoutOutlined />}
               >
                 Sign out
               </Menu.Item>
@@ -224,7 +252,7 @@ function Header() {
           id="login-accounts"
           // onClick={signUp}
           key="loginfr"
-          icon={<LoginOutlined />}
+          // icon={<LoginOutlined />}
         >
           <Link to="/signup"/>
           Sign up
