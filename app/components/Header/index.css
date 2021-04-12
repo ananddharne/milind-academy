@@ -4,14 +4,16 @@
    
 #navbar {
   padding: 1% 0% 1% 0%;
-  background-color: #F4F7FD;
   /* background: linear-gradient(to right, #D7DDE8, #757F9A); */
-  background: white;
+  background-color: #F0F0F0 ;
   color: black;
   /* position: fixed; */
   top: 0;
   z-index: 999;
   width: 100%;
+  padding: 1.5% 0%;
+  box-shadow: 0px 1px 10px #999;
+  border-radius: 0.5em;
 }
   .grid-container {
     display: grid;
@@ -123,9 +125,18 @@
  /* .ant-menu-horizontal{
       border-bottom: 2.5px solid #ED7170 !important;
 } */
-/* .ant-menu-submenu:hover {
+.ant-menu-submenu:hover {
   color: #F2184F !important;
-}  */
+} 
+.ant-menu-item-selected {
+  border-bottom: 2px solid black !important;
+  color: black !important;
+}
+
+.ant-menu-submenu-selected {
+  border-bottom: 2px solid black !important;
+  color: black !important;
+}
 
 .students-image {
   background-image: url('./students2.jpg');

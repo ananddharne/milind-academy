@@ -117,11 +117,9 @@ export function HomePage({ username, onSubmitForm }) {
                                             />
           </div>
           <div>
-            <div style={{padding: '20% 0% 0% 18%', fontFamily: 'Montserrat', color: '#226872', fontSize: '205%', fontWeight: '800'}}>Career counselling and  </div>
-            <div style={{padding: '0% 0% 0% 18%', fontFamily: 'Montserrat', color: '#226872', fontSize: '205%', fontWeight: '800'}}>paid assignments</div>
+            <div style={{padding: '20% 0% 0% 18%', fontFamily: 'Montserrat', color: '#226872', fontSize: '205%', fontWeight: '800'}}>Career counselling  </div>
             <div style={{padding: '0% 0% 0% 18%', color: '#226872', fontWeight: '400' }}> Stuck in one of the questions, sections or a unit? Dont want to join the class but need help with specific topics? No worries we got you!
-
-We also help with Gate exam, MPSC exam, GRE exam consultations </div>
+ </div>
           </div>
           <div>
           <img className='videoTagCircle'
